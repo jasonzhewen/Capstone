@@ -333,6 +333,8 @@ namespace OmniDrome.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    var user = await UserManager.FindAsync(loginInfo.Login);
+                    await InsertAccessToken(user, loginInfo.Login.LoginProvider);
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -344,6 +346,22 @@ namespace OmniDrome.Controllers
                     ViewBag.ReturnUrl = returnUrl;
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
                     return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
+            }
+        }
+
+        private async Task InsertAccessToken(ApplicationUser user, string loginProvider)
+        {
+            var externalIdentity = await AuthenticationManager.GetExternalIdentityAsync(DefaultAuthenticationTypes.ExternalCookie);
+
+            if (externalIdentity != null)
+            {
+                var userClaims = await UserManager.GetClaimsAsync(user.Id);
+                var accessTokenClaim = externalIdentity.FindAll(loginProvider + "_AccessToken").First();
+
+                if (userClaims.Count() <= 0)
+                {
+                    await UserManager.AddClaimAsync(user.Id, accessTokenClaim);
+                }
             }
         }
 

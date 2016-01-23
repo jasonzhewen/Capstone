@@ -54,3 +54,9 @@ c:\users\zhewen\documents\visual studio 2013\Projects\OmniDrome\bin\Microsoft.Ow
 c:\users\zhewen\documents\visual studio 2013\Projects\OmniDrome\obj\Debug\OmniDrome.csprojResolveAssemblyReference.cache
 c:\users\zhewen\documents\visual studio 2013\Projects\OmniDrome\obj\Debug\OmniDrome.dll
 c:\users\zhewen\documents\visual studio 2013\Projects\OmniDrome\obj\Debug\OmniDrome.pdb
+C:\Users\Zhewen\Documents\Visual Studio 2013\Projects\OmniDrome\bin\LinkedIn.Api.Client.Core.dll
+C:\Users\Zhewen\Documents\Visual Studio 2013\Projects\OmniDrome\bin\LinkedIn.Api.Client.Owin.dll
+C:\Users\Zhewen\Documents\Visual Studio 2013\Projects\OmniDrome\bin\LinkedIn.NET.dll
+C:\Users\Zhewen\Documents\Visual Studio 2013\Projects\OmniDrome\bin\LinkedIn.NET.xml
+C:\Users\Zhewen\documents\visual studio 2013\Projects\OmniDrome\bin\MySql.Data.dll
+C:\Users\Zhewen\documents\visual studio 2013\Projects\OmniDrome\bin\MySql.Web.dll

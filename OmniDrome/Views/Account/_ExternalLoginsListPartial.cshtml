@@ -1,6 +1,7 @@
 ﻿@model OmniDrome.Models.ExternalLoginListViewModel
 @using Microsoft.Owin.Security
 
+
 <h4>Use LinkedIn to log in.</h4>
 <hr />
 @{
@@ -19,20 +20,22 @@
             <div id="socialLoginList">
                 <p>
                     @foreach (AuthenticationDescription p in loginProviders) {
-                        <button type="submit" style="border:none; padding:0;" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account"><img id="linkedIn_Login_btn" src="~/Content/themes/base/images/Sign_In_Large_Default.png" /></button>
+                        <button type="submit" style="border:none; padding:0;" id="@p.AuthenticationType" name="provider" value="@p.AuthenticationType" title="Log in using your @p.Caption account"><img id="linkedIn_Login_btn" src="~/Images/Sign_In_Large_Default.png" /></button>
                     }
                 </p>
             </div>
         }
     }
-    
+}
+
+@*@section Scripts {
     <script type="text/javascript">
         $("#linkedIn_Login_btn")
             .mouseenter(function () {
-                $(this).attr("src", "../Content/themes/base/images/Sign_In_Large_Active.png");
+                $(this).attr('src', '../../Images/Sign_In_Large_Active.png');
             })
             .mouseout(function () {
-                $(this).attr("src", "../Content/themes/base/images/Sign_In_Large_Default.png");
-            })
+                $(this).attr('src', '../../Images/Sign_In_Large_Default.png');
+        });
     </script>
-}
+}*@

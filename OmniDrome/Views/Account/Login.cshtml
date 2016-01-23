@@ -5,8 +5,8 @@
 }
 
 @section HeaderSection{
-    <link rel="stylesheet" href="/Content/jquery-ui.css" />
-    <script src="/Scripts/jquery-ui-1.11.4.js"></script>
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/jqueryui")
 }
 
 <div class="row" id="tabs_Login">
@@ -60,10 +60,10 @@
                 <p>
                     @Html.ActionLink("Register as a new user", "Register")
                 </p>
-                @* Enable this once you have account confirmation enabled for password reset functionality
+                @* Enable this once you have account confirmation enabled for password reset functionality*@
                     <p>
                         @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                    </p>*@
+                    </p>
             }
         </section>
     </div>
@@ -77,4 +77,13 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $("#linkedIn_Login_btn")
+            .mouseenter(function () {
+                $(this).attr("src", "./Images/Sign_In_Large_Active.png");
+            })
+            .mouseout(function () {
+                $(this).attr("src", "./Images/Sign_In_Large_Default.png");
+            });
+    </script>
 }

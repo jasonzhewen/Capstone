@@ -65,9 +65,29 @@ namespace OmniDrome
             //    ClientSecret = ""
             //});
 
-            app.UseLinkedInAuthentication(
-                clientId: "77pah7ccc33mwt",
-                clientSecret: "ox4SkRtigJLBAtpv");
+            //app.UseLinkedInAuthentication(
+            //    clientId: "77pah7ccc33mwt",
+            //    clientSecret: "ox4SkRtigJLBAtpv");
+
+            var linkedInOptions = new LinkedInAuthenticationOptions();
+
+            linkedInOptions.ClientId = "77pah7ccc33mwt";
+            linkedInOptions.ClientSecret = "ox4SkRtigJLBAtpv";
+            
+
+            linkedInOptions.Scope.Add("r_basicprofile");
+
+            linkedInOptions.Provider = new LinkedInAuthenticationProvider()
+            {
+                OnAuthenticated = async context =>
+                {
+                    context.Identity.AddClaim(new System.Security.Claims.Claim("LinkedIn_AccessToken", context.AccessToken));
+                }
+            };
+
+            linkedInOptions.SignInAsAuthenticationType = DefaultAuthenticationTypes.ExternalCookie;
+
+            app.UseLinkedInAuthentication(linkedInOptions);
         }
     }
 }
