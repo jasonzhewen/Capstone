@@ -4,5 +4,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Profile</h2>
+@section HeaderSection{
+    @Scripts.Render("~/bundles/timeline")
+    @Styles.Render("~/Content/timeline")
+}
+
+<h2>Profile</h2><br/>
+@Html.Partial("TimeLinePartial")
 

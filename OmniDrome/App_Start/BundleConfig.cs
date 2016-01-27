@@ -46,6 +46,15 @@ namespace OmniDrome
                       "~/Content/themes/base/jquery.ui.datepicker.css",
                       "~/Content/themes/base/jquery.ui.progressbar.css",
                       "~/Content/themes/base/jquery.ui.theme.css"));
+
+            bundles.Add(new StyleBundle("~/Content/timeline").Include(
+                      "~/Content/themes/profile/reset.css",
+                      "~/Content/themes/profile/timeLine.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/timeline").Include(
+                      "~/Scripts/profile/modernizr.js",
+                      "~/Scripts/profile/jquery.mobile.custom.min.js",
+                      "~/Scripts/profile/timeLine.js"));
         }
     }
 }

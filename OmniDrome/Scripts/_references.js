@@ -20,3 +20,6 @@
 /// <reference path="angular-aria.min.js" />
 /// <reference path="angular-animate.min.js" />
 /// <reference path="angular.min.js" />
+/// <reference path="profile/jquery.mobile.custom.min.js" />
+/// <reference path="profile/modernizr.js" />
+/// <reference path="profile/timeline.js" />

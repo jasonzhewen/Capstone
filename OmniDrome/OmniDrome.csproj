@@ -233,10 +233,14 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Content\themes\img\cd-arrow.svg" />
+    <Content Include="Content\themes\profile\reset.css" />
+    <Content Include="Content\themes\profile\timeLine.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\cd-arrow.svg" />
     <Content Include="Images\Sign_In_Large_Active.png" />
     <Content Include="Images\Sign_In_Large_Default.png" />
     <Content Include="Scripts\angular-animate.js" />
@@ -1038,6 +1042,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\profile\jquery.mobile.custom.min.js" />
+    <Content Include="Scripts\profile\timeLine.js" />
+    <Content Include="Scripts\profile\modernizr.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
