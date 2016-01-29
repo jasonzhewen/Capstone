@@ -23,3 +23,4 @@
 /// <reference path="profile/jquery.mobile.custom.min.js" />
 /// <reference path="profile/modernizr.js" />
 /// <reference path="profile/timeline.js" />
+/// <reference path="profile/jquery.zoomooz.min.js" />

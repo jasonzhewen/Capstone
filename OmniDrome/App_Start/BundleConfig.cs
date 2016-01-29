@@ -47,14 +47,27 @@ namespace OmniDrome
                       "~/Content/themes/base/jquery.ui.progressbar.css",
                       "~/Content/themes/base/jquery.ui.theme.css"));
 
+            bundles.Add(new StyleBundle("~/Content/profile").Include(
+                      "~/Content/themes/profile/Profile.css",
+                      "~/Content/themes/profile/pastCircle.css",
+                      "~/Content/themes/profile/Style.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/zoomCircle").Include(
+                      "~/Scripts/profile/jquery.zoomooz.min.js"));
+
             bundles.Add(new StyleBundle("~/Content/timeline").Include(
                       "~/Content/themes/profile/reset.css",
                       "~/Content/themes/profile/timeLine.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/timeline").Include(
+                "~/Scripts/profile/timeLine.js",
                       "~/Scripts/profile/modernizr.js",
-                      "~/Scripts/profile/jquery.mobile.custom.min.js",
-                      "~/Scripts/profile/timeLine.js"));
+                      "~/Scripts/profile/jquery.mobile.custom.min.js"
+                      ));
+
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                      "~/Scripts/angular.js",
+                      "~/Scripts/angular.route.min.js"));
         }
     }
 }

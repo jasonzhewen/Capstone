@@ -68,6 +68,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -190,11 +192,23 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601290230367_UserInfo.cs" />
+    <Compile Include="Migrations\201601290230367_UserInfo.Designer.cs">
+      <DependentUpon>201601290230367_UserInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="ViewModels\BackgroundInfoViewModel.cs" />
+    <Compile Include="Models\BackgroundInfoModel.cs" />
+    <Compile Include="Models\DreamJobModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PersonalDetailsModel.cs" />
+    <Compile Include="Models\PersonalSkillsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\BackgroundInfoListViewModel.cs" />
+    <Compile Include="ViewModels\PersonalDetailsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -234,13 +248,19 @@
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Content\themes\img\cd-arrow.svg" />
+    <Content Include="Content\themes\profile\pastCircle.css" />
+    <Content Include="Content\themes\profile\Profile.css" />
     <Content Include="Content\themes\profile\reset.css" />
+    <Content Include="Content\themes\profile\Style.css" />
     <Content Include="Content\themes\profile\timeLine.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\cd-arrow.svg" />
+    <Content Include="Images\PersonalImages\no-image.png" />
+    <Content Include="Images\PersonalImages\Zhewen.jpg" />
+    <Content Include="Images\profileTrial.svg" />
     <Content Include="Images\Sign_In_Large_Active.png" />
     <Content Include="Images\Sign_In_Large_Default.png" />
     <Content Include="Scripts\angular-animate.js" />
@@ -1043,6 +1063,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\profile\jquery.mobile.custom.min.js" />
+    <Content Include="Scripts\profile\jquery.zoomooz.min.js" />
     <Content Include="Scripts\profile\timeLine.js" />
     <Content Include="Scripts\profile\modernizr.js" />
     <Content Include="Scripts\respond.js" />
@@ -1099,6 +1120,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201601290230367_UserInfo.resx">
+      <DependentUpon>201601290230367_UserInfo.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

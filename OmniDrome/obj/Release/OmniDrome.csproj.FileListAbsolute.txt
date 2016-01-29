@@ -60,3 +60,5 @@ C:\Users\Zhewen\documents\visual studio 2013\Projects\OmniDrome\bin\Microsoft.Ow
 C:\Users\Zhewen\documents\visual studio 2013\Projects\OmniDrome\obj\Release\OmniDrome.csprojResolveAssemblyReference.cache
 C:\Users\Zhewen\documents\visual studio 2013\Projects\OmniDrome\obj\Release\OmniDrome.dll
 C:\Users\Zhewen\documents\visual studio 2013\Projects\OmniDrome\obj\Release\OmniDrome.pdb
+C:\Users\Zhewen\documents\visual studio 2013\Projects\OmniDrome\obj\Release\OmniDrome.Migrations.UserInfo.resources
+C:\Users\Zhewen\documents\visual studio 2013\Projects\OmniDrome\obj\Release\OmniDrome.csproj.GenerateResource.Cache

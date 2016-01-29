@@ -79,6 +79,9 @@ namespace OmniDrome.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    
+                    var user = await UserManager.FindByIdAsync(await SignInManager.GetVerifiedUserIdAsync());
+                    var id = await SignInManager.GetVerifiedUserIdAsync();
                     return RedirectToAction("Index","Profile");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -151,7 +154,16 @@ namespace OmniDrome.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser 
+                { 
+                    UserName = model.Email, 
+                    Email = model.Email,
+                    UserInfo = new UserInfo
+                    {
+                        Email = model.Email,
+                        RegisterDate = DateTime.Now
+                    }
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -335,6 +347,7 @@ namespace OmniDrome.Controllers
                 case SignInStatus.Success:
                     var user = await UserManager.FindAsync(loginInfo.Login);
                     await InsertAccessToken(user, loginInfo.Login.LoginProvider);
+                    
                     return RedirectToAction("Index", "Profile");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -385,7 +398,16 @@ namespace OmniDrome.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser 
+                { 
+                    UserName = model.Email, 
+                    Email = model.Email,
+                    UserInfo = new UserInfo
+                    {
+                        Email = model.Email,
+                        RegisterDate = DateTime.Now
+                    }
+                };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

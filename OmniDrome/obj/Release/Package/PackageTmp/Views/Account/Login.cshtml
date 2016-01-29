@@ -78,12 +78,12 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript">
-        $("#linkedIn_Login_btn")
-            .mouseenter(function () {
-                $(this).attr("src", "./Images/Sign_In_Large_Active.png");
+    $("#linkedIn_Login_btn")
+        .mouseenter(function () {
+            $(this).attr("src", "@Url.Content("~/Images/Sign_In_Large_Active.png")");
             })
             .mouseout(function () {
-                $(this).attr("src", "./Images/Sign_In_Large_Default.png");
+                $(this).attr("src", "@Url.Content("~/Images/Sign_In_Large_Default.png")");
             });
     </script>
 }

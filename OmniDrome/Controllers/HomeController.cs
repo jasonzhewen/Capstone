@@ -14,23 +14,17 @@ namespace OmniDrome.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
-        {
-            
-            return View();
-        }
 
         public async Task<ActionResult> About()
         {
-            //ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Your application description page.";
             var am = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var user = am.FindById(this.User.Identity.GetUserId());
             var claim = user.Claims.ToList().Where(m => m.ClaimType == "LinkedIn_AccessToken").SingleOrDefault();
 
             var client = new LinkedInApiClient(HttpContext.GetOwinContext().Request, claim.ClaimValue);
             var profileApi = new LinkedInProfileApi(client);
-            ViewBag.Message = profileApi.ToString();
-            //var userProfile = await profileApi.GetBasicProfileAsync();
+            var userProfile = await profileApi.GetBasicProfileAsync();
             
             return View();
         }
