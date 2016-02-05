@@ -16,20 +16,136 @@ namespace OmniDrome.Controllers
     {
         [Authorize]
         public ActionResult Index()
+        {          
+            return View("Profile");
+        }
+
+        [Authorize]
+        public ActionResult ShowInfo()
+        {
+            return PartialView();
+        }
+
+        [Authorize]
+        public ActionResult AddInfo()
+        {
+            return PartialView();
+        }
+
+        [Authorize]
+        public ActionResult EditInfo()
+        {
+            return PartialView();
+        }
+
+        [Authorize]
+        public ActionResult GetInfoData()
         {
             var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
             var currentUser = manager.FindById(User.Identity.GetUserId());
             int id = currentUser.UserInfo.Id;
-            return View("Profile" , GetPersonalDetails(id));
+            return Json(GetPersonalDetails(id), JsonRequestBehavior.AllowGet);
         }
 
         [Authorize]
-        public ActionResult TimeLinePartial()
+        public PersonalDetailsViewModel GetPersonalDetails(int? id)
+        {
+            PersonalDetailsViewModel personalDetailsViewModel = new PersonalDetailsViewModel();
+            personalDetailsViewModel.personalDetailsModel = new Models.PersonalDetailsModel();
+            PersonalDetailsBusinessLayer pdBal = new PersonalDetailsBusinessLayer();
+            PersonalDetails pd = pdBal.GetPersonalDetailsByID(id);
+            if (pd == null)
+            {
+            }
+            else
+            {
+                personalDetailsViewModel.personalDetailsModel.ID = pd.ID;
+                personalDetailsViewModel.personalDetailsModel.firstName = pd.firstName;
+                personalDetailsViewModel.personalDetailsModel.lastName = pd.lastName;
+                personalDetailsViewModel.personalDetailsModel.contactNumber = pd.contactNumber;
+                personalDetailsViewModel.personalDetailsModel.profession = pd.profession;
+                personalDetailsViewModel.personalDetailsModel.currentCity = pd.currentCity;
+                personalDetailsViewModel.personalDetailsModel.currentCountry = pd.currentCountry;
+                personalDetailsViewModel.personalDetailsModel.dateOfBirth = pd.dateOfBirth.ToString("yyyy-MM-dd");
+                personalDetailsViewModel.personalDetailsModel.imageUrl = pd.imageUrl;
+                if (personalDetailsViewModel.personalDetailsModel.imageUrl == null)
+                {
+                    personalDetailsViewModel.personalDetailsModel.imageUrl = "/Images/PersonalImages/no-Image.png";
+                }
+            }
+
+            return personalDetailsViewModel;
+        }
+
+        [HttpPost]
+        [Authorize]
+        public void AddPersonalInfo(PersonalDetailsModel PersonalDetailsModelClient)
         {
             var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
             var currentUser = manager.FindById(User.Identity.GetUserId());
-            int id = currentUser.UserInfo.Id;          
-            return PartialView(GetBackgroundInfo(id, false));
+            int id = currentUser.UserInfo.Id;
+
+            PersonalDetails pd = new PersonalDetails();
+            pd.firstName = PersonalDetailsModelClient.firstName;
+            pd.lastName = PersonalDetailsModelClient.lastName;
+            pd.profession = PersonalDetailsModelClient.profession;
+            pd.contactNumber = PersonalDetailsModelClient.contactNumber;
+            pd.currentCity = PersonalDetailsModelClient.currentCity;
+            pd.currentCountry = PersonalDetailsModelClient.currentCountry;
+            pd.dateOfBirth = Convert.ToDateTime(PersonalDetailsModelClient.dateOfBirth);
+            pd.imageUrl = PersonalDetailsModelClient.imageUrl;
+            pd.UserInfoID = id;
+            PersonalDetailsBusinessLayer pdBal = new PersonalDetailsBusinessLayer();
+            pdBal.InsertPersonalDetails(pd);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public void UpdatePersonalInfo(PersonalDetails PersonalDetailsModelClient)
+        {
+            //var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            //var currentUser = manager.FindById(User.Identity.GetUserId());
+            //int id = currentUser.UserInfo.Id;
+
+            //PersonalDetails pd = new PersonalDetails();
+            //pd.firstName = PersonalDetailsModelClient.firstName;
+            //pd.lastName = PersonalDetailsModelClient.lastName;
+            //pd.profession = PersonalDetailsModelClient.profession;
+            //pd.contactNumber = PersonalDetailsModelClient.contactNumber;
+            //pd.currentCity = PersonalDetailsModelClient.currentCity;
+            //pd.currentCountry = PersonalDetailsModelClient.currentCountry;
+            //pd.dateOfBirth = Convert.ToDateTime(PersonalDetailsModelClient.dateOfBirth);
+            //pd.imageUrl = PersonalDetailsModelClient.imageUrl;
+            //pd.UserInfoID = id;
+            PersonalDetailsBusinessLayer pdBal = new PersonalDetailsBusinessLayer();
+            pdBal.UpdatePersonalDetails(PersonalDetailsModelClient);
+        }
+
+        [Authorize]
+        public ActionResult ShowBackgroundInfo()
+        {
+            return PartialView();
+        }
+
+        [Authorize]
+        public ActionResult AddBackgroundInfo()
+        {
+            return PartialView();
+        }
+
+        [Authorize]
+        public ActionResult EditBackgroundInfo()
+        {
+            return PartialView();
+        }
+
+        [Authorize]
+        public ActionResult GetBackgroundInfoData()
+        {
+            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var currentUser = manager.FindById(User.Identity.GetUserId());
+            int id = currentUser.UserInfo.Id;
+            return Json(GetBackgroundInfo(id,false), JsonRequestBehavior.AllowGet);
         }
 
         [Authorize]
@@ -39,59 +155,6 @@ namespace OmniDrome.Controllers
             var currentUser = manager.FindById(User.Identity.GetUserId());
             int id = currentUser.UserInfo.Id;
             return PartialView(GetBackgroundInfo(id, true));
-        }
-
-        public PersonalDetailsViewModel GetPersonalDetails(int? id)
-        {
-            PersonalDetailsViewModel personalDetailsViewModel = new PersonalDetailsViewModel();
-            personalDetailsViewModel.personalDetailsModel = new Models.PersonalDetailsModel();
-            try
-            {
-                string ConnString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-                using (SqlConnection sqlcon = new SqlConnection(ConnString))
-                {
-                    if (sqlcon.State == System.Data.ConnectionState.Closed)
-                    {
-                        sqlcon.Open();
-                    }
-                    SqlCommand cmd = null;
-                    cmd = new SqlCommand("select * from tblDetailsPersonal where UserId = '" + id + "' ", sqlcon);
-                    SqlDataReader dr = cmd.ExecuteReader();
-                    if (dr.HasRows)
-                    {
-                        while (dr.Read())
-                        {
-                            personalDetailsViewModel.personalDetailsModel.firstName = Convert.ToString(dr["FirstName"]);
-                            personalDetailsViewModel.personalDetailsModel.lastName = Convert.ToString(dr["LastName"]);
-                            personalDetailsViewModel.personalDetailsModel.contactNumber = Convert.ToString(dr["ContactNumber"]);
-                            personalDetailsViewModel.personalDetailsModel.profession = Convert.ToString(dr["Profession"]);
-                            personalDetailsViewModel.personalDetailsModel.currentCity = Convert.ToString(dr["CurrentCity"]);
-                            personalDetailsViewModel.personalDetailsModel.currentCountry = Convert.ToString(dr["CurrentCountry"]);
-                            personalDetailsViewModel.personalDetailsModel.dateOfBirth = Convert.ToDateTime(dr["DateOfBirth"]).ToString("yyyy-MM-dd");
-                            personalDetailsViewModel.personalDetailsModel.imageUrl = Convert.ToString(dr["ImageUrl"]);
-                            if (personalDetailsViewModel.personalDetailsModel.imageUrl == null)
-                            {
-                                personalDetailsViewModel.personalDetailsModel.imageUrl = "~/Images/PersonalImages/no-Image.png";
-                            }
-                        }
-                    }
-                    else
-                    {
-                        personalDetailsViewModel.personalDetailsModel.firstName = "";
-                        personalDetailsViewModel.personalDetailsModel.lastName = "";
-                        personalDetailsViewModel.personalDetailsModel.contactNumber = "";
-                        personalDetailsViewModel.personalDetailsModel.profession = "";
-                        personalDetailsViewModel.personalDetailsModel.currentCity = "";
-                        personalDetailsViewModel.personalDetailsModel.currentCountry = "";
-                        personalDetailsViewModel.personalDetailsModel.dateOfBirth = "";
-                        personalDetailsViewModel.personalDetailsModel.imageUrl = "~/Images/PersonalImages/no-Image.png";
-                    }
-                }
-            }
-            catch
-            {
-            }
-            return personalDetailsViewModel;
         }
 
         public BackgroundInfoListViewModel GetBackgroundInfo(int? id, Boolean isCurrentPosition)

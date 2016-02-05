@@ -67,7 +67,19 @@ namespace OmniDrome
 
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                       "~/Scripts/angular.js",
-                      "~/Scripts/angular.route.min.js"));
+                      "~/Scripts/angular-ui-router.min.js",
+                      "~/Scripts/angular-input-date.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/personalInfo").Include(
+                      "~/Scripts/profile/personalInfo.js",
+                      "~/Scripts/profile/showInfo.js",
+                      "~/Scripts/profile/addInfo.js",
+                      "~/Scripts/profile/editInfo.js",
+                      "~/Scripts/profile/editBackgroundInfo.js",
+                      "~/Scripts/profile/showBackgroundInfo.js",
+                      "~/Scripts/profile/addBackgroundInfo.js",
+                      "~/Scripts/profile/deleteBackgroundInfo.js",
+                      "~/Scripts/profile/Service.js"));
         }
     }
 }

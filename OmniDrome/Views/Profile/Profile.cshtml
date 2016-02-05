@@ -1,17 +1,18 @@
-﻿@model OmniDrome.ViewModels.PersonalDetailsViewModel
-@{
+﻿@{
     ViewBag.Title = "Profile";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @section HeaderSection{
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/personalInfo")
     @Scripts.Render("~/bundles/timeline")
     @Styles.Render("~/Content/timeline")
     @Styles.Render("~/Content/profile")
     @Scripts.Render("~/bundles/zoomCircle")
 }
 
-<div id="mainProfile">
+<div id="mainProfile" ng-app="PersonalInfo">
     <div class="grid" id="firstCircle">
         <div class="main">
             <div class="circle zoomTarget" style="background: green;">
@@ -19,18 +20,15 @@
                     <div class="ch-info">
                         <div class="ch-info-front ch-img-1"></div>
                         <div class="ch-info-back">
-                            <img alt="No Image" src="@Url.Content(Model.personalDetailsModel.imageUrl)" /><br/>
-                            Name: @Model.personalDetailsModel.firstName @Model.personalDetailsModel.lastName <br/>
-                            Contact Number: @Model.personalDetailsModel.contactNumber <br/>
-                            Profession: @Model.personalDetailsModel.profession <br/>
-                            City: @Model.personalDetailsModel.currentCity <br/>
-                            Country: @Model.personalDetailsModel.currentCountry <br/>
-                            Date of Birth: @Model.personalDetailsModel.dateOfBirth<br/>
+                            <ul class="nav navbar-nav">
+                                <li><a ui-sref="ShowInfo">Show</a></li>
+                                <li><a ui-sref="EditInfo">Edit</a></li>
+                            </ul>
+                            <div ui-view="mainProfile"></div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -44,12 +42,11 @@
                         <div class="ch-info-frontPast ch-img-1"></div>
                         <div class="ch-info-backPast">
                             <h3>TimeLine</h3>
-                            
+
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -67,7 +64,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -86,11 +82,18 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
-    @{Html.RenderAction("TimeLinePartial");}
+    <div>
+        <ul class="nav navbar-nav">
+            <li><a ui-sref="ShowBackgroundInfo">Show</a></li>
+            <li><a ui-sref="AddBackgroundInfo">Add</a></li>
+            <li><a ui-sref="EditBackgroundInfo">Edit</a></li>
+        </ul>
+        <div ui-view="timeLine"></div>
+    </div>
+
 </div>
 
 

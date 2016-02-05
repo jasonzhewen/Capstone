@@ -186,18 +186,28 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PersonalDetailsController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="DataAccessLayer\PersonalInfoERPDAL.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201601290230367_UserInfo.cs" />
-    <Compile Include="Migrations\201601290230367_UserInfo.Designer.cs">
-      <DependentUpon>201601290230367_UserInfo.cs</DependentUpon>
+    <Compile Include="Migrations\201602050337247_init.cs" />
+    <Compile Include="Migrations\201602050337247_init.Designer.cs">
+      <DependentUpon>201602050337247_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602050340575_new.cs" />
+    <Compile Include="Migrations\201602050340575_new.Designer.cs">
+      <DependentUpon>201602050340575_new.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BackgroundInfo.cs" />
+    <Compile Include="Models\DreamJob.cs" />
+    <Compile Include="Models\MySkills.cs" />
+    <Compile Include="Models\PersonalDetails.cs" />
+    <Compile Include="Models\PersonalDetailsBusinessLayer.cs" />
     <Compile Include="ViewModels\BackgroundInfoViewModel.cs" />
     <Compile Include="Models\BackgroundInfoModel.cs" />
     <Compile Include="Models\DreamJobModel.cs" />
@@ -270,6 +280,7 @@
     <Content Include="Scripts\angular-cookies.js" />
     <Content Include="Scripts\angular-cookies.min.js" />
     <Content Include="Scripts\angular-csp.css" />
+    <Content Include="Scripts\angular-input-date.js" />
     <Content Include="Scripts\angular-loader.js" />
     <Content Include="Scripts\angular-loader.min.js" />
     <Content Include="Scripts\angular-message-format.js" />
@@ -286,6 +297,8 @@
     <Content Include="Scripts\angular-scenario.js" />
     <Content Include="Scripts\angular-touch.js" />
     <Content Include="Scripts\angular-touch.min.js" />
+    <Content Include="Scripts\angular-ui-router.js" />
+    <Content Include="Scripts\angular-ui-router.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -1062,8 +1075,17 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\profile\addBackgroundInfo.js" />
+    <Content Include="Scripts\profile\addInfo.js" />
+    <Content Include="Scripts\profile\deleteBackgroundInfo.js" />
+    <Content Include="Scripts\profile\editBackgroundInfo.js" />
+    <Content Include="Scripts\profile\editInfo.js" />
     <Content Include="Scripts\profile\jquery.mobile.custom.min.js" />
     <Content Include="Scripts\profile\jquery.zoomooz.min.js" />
+    <Content Include="Scripts\profile\personalInfo.js" />
+    <Content Include="Scripts\profile\Service.js" />
+    <Content Include="Scripts\profile\showBackgroundInfo.js" />
+    <Content Include="Scripts\profile\showInfo.js" />
     <Content Include="Scripts\profile\timeLine.js" />
     <Content Include="Scripts\profile\modernizr.js" />
     <Content Include="Scripts\respond.js" />
@@ -1110,6 +1132,17 @@
     <Content Include="Views\Profile\CurrentPositionPartial.cshtml" />
     <Content Include="Views\Profile\Profile.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Profile\EditInfo.cshtml" />
+    <Content Include="Views\Profile\ShowInfo.cshtml" />
+    <Content Include="Views\Profile\AddInfo.cshtml" />
+    <Content Include="Views\Profile\ShowBackgroundInfo.cshtml" />
+    <Content Include="Views\Profile\AddBackgroundInfo.cshtml" />
+    <Content Include="Views\Profile\EditBackgroundInfo.cshtml" />
+    <Content Include="Views\PersonalDetails\Create.cshtml" />
+    <Content Include="Views\PersonalDetails\Delete.cshtml" />
+    <Content Include="Views\PersonalDetails\Details.cshtml" />
+    <Content Include="Views\PersonalDetails\Edit.cshtml" />
+    <Content Include="Views\PersonalDetails\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1125,8 +1158,11 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201601290230367_UserInfo.resx">
-      <DependentUpon>201601290230367_UserInfo.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201602050337247_init.resx">
+      <DependentUpon>201602050337247_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602050340575_new.resx">
+      <DependentUpon>201602050340575_new.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,0 +1,30 @@
+﻿<table ng-show="!isEmpty(PersonalDetailsModel)">
+    <tr>
+        <td colspan="2"><img alt="No Image" ng-src="@Url.Content("{{ PersonalDetailsModel.imageUrl }}")" /></td>
+    </tr>
+    <tr>
+        <td>Name: </td>
+        <td>{{ PersonalDetailsModel.firstName + " " +  PersonalDetailsModel.lastName }}</td>
+    </tr>
+    <tr>
+        <td>Contact Number: </td>
+        <td>{{ PersonalDetailsModel.contactNumber }}</td>
+    </tr>
+    <tr>
+        <td>Profession: </td>
+        <td>{{ PersonalDetailsModel.profession }}</td>
+    </tr>
+    <tr>
+        <td>City: </td>
+        <td>{{ PersonalDetailsModel.currentCity }}</td>
+    </tr>
+    <tr>
+        <td>Country: </td>
+        <td>{{ PersonalDetailsModel.currentCountry }}</td>
+    </tr>
+    <tr>
+        <td>Date of Birth: </td>
+        <td>{{ PersonalDetailsModel.dateOfBirth }}</td>
+    </tr>
+</table>
+<p ng-show="isEmpty(PersonalDetailsModel)">There is no profile yet. Click <a ui-sref="AddInfo">here</a> to create your own profile!</p>

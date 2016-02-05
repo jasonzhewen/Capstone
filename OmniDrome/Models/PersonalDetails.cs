@@ -5,7 +5,7 @@ using System.Web;
 
 namespace OmniDrome.Models
 {
-    public class PersonalDetailsModel
+    public class PersonalDetails
     {
         public int ID { get; set; }
         public string firstName { get; set; }
@@ -14,7 +14,10 @@ namespace OmniDrome.Models
         public string profession { get; set; }
         public string currentCity { get; set; }
         public string currentCountry { get; set; }
-        public string dateOfBirth { get; set; }
+        public DateTime dateOfBirth { get; set; }
         public string imageUrl { get; set; }
+        public int UserInfoID { get; set; }
+
+        public virtual UserInfo UserInfo { get; set; }
     }
 }

@@ -1,0 +1,84 @@
+﻿<div style="height:40px">
+    <table ng-show ="!isEmpty(PersonalDetailsModel)">
+        <tr>
+            <td>
+                <strong>Head Image:</strong>
+            </td>
+            <td>
+                <img alt="No Image" src="@Url.Content("{{ PersonalDetailsModel.imageUrl }}")" />
+                <input type="file" class="form-control" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <strong>First Name:</strong>
+            </td>
+            <td>
+                <input type="text" class="form-control" ng-model="PersonalDetailsModel.firstName" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Last Name:</strong>
+            </td>
+            <td>
+                <input type="text" class="form-control" ng-model="PersonalDetailsModel.lastName" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Contact Number:</strong>
+            </td>
+            <td>
+                <input type="text" class="form-control" ng-model="PersonalDetailsModel.contactNumber" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Profession:</strong>
+            </td>
+            <td>
+                <input type="text" class="form-control" ng-model="PersonalDetailsModel.profession" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <strong>Current City:</strong>
+            </td>
+            <td>
+                <input type="text" class="form-control" ng-model="PersonalDetailsModel.currentCity" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <strong>Current Country:</strong>
+            </td>
+            <td>
+                <input type="text" class="form-control" ng-model="PersonalDetailsModel.currentCountry" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <strong>Date of Birth:</strong>
+            </td>
+            <td>
+                <input type="date" class="form-control" ng-model="realdate" />
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <button type="button" ng-click="EditPersonalInfo();" class="btn btn-primary">Update</button>
+            </td>
+            <td>
+                <button type="button" ng-click="Cancel();" class="btn btn-primary">Cancel</button>
+            </td>
+        </tr>
+    </table>
+
+    <p ng-show="isEmpty(PersonalDetailsModel)">There is no profile to be edited. Click <a ui-sref="AddInfo">here</a> to create your own profile!</p>
+</div>

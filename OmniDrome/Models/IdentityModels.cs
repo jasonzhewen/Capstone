@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
+using System.Collections.Generic;
 
 namespace OmniDrome.Models
 {
@@ -27,6 +28,12 @@ namespace OmniDrome.Models
         public int Id { get; set; }
         public string Email { get; set; }
         public DateTime RegisterDate { get; set; }
+
+        public virtual ICollection<PersonalDetails> PersonalDetails { get; set; }
+        public virtual ICollection<BackgroundInfo> BackgroundInfo { get; set; }
+        public virtual ICollection<DreamJob> DreamJob { get; set; }
+        public virtual ICollection<MySkills> MySkills { get; set; }
+        //public virtual UserInfo UserInfo { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
