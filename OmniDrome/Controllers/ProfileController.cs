@@ -103,20 +103,6 @@ namespace OmniDrome.Controllers
         [Authorize]
         public void UpdatePersonalInfo(PersonalDetails PersonalDetailsModelClient)
         {
-            //var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-            //var currentUser = manager.FindById(User.Identity.GetUserId());
-            //int id = currentUser.UserInfo.Id;
-
-            //PersonalDetails pd = new PersonalDetails();
-            //pd.firstName = PersonalDetailsModelClient.firstName;
-            //pd.lastName = PersonalDetailsModelClient.lastName;
-            //pd.profession = PersonalDetailsModelClient.profession;
-            //pd.contactNumber = PersonalDetailsModelClient.contactNumber;
-            //pd.currentCity = PersonalDetailsModelClient.currentCity;
-            //pd.currentCountry = PersonalDetailsModelClient.currentCountry;
-            //pd.dateOfBirth = Convert.ToDateTime(PersonalDetailsModelClient.dateOfBirth);
-            //pd.imageUrl = PersonalDetailsModelClient.imageUrl;
-            //pd.UserInfoID = id;
             PersonalDetailsBusinessLayer pdBal = new PersonalDetailsBusinessLayer();
             pdBal.UpdatePersonalDetails(PersonalDetailsModelClient);
         }
@@ -145,74 +131,138 @@ namespace OmniDrome.Controllers
             var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
             var currentUser = manager.FindById(User.Identity.GetUserId());
             int id = currentUser.UserInfo.Id;
-            return Json(GetBackgroundInfo(id,false), JsonRequestBehavior.AllowGet);
+            List<BackgroundInfo> backInfoes = GetBackgroundInfo(id,false);
+            return Json(backInfoes, JsonRequestBehavior.AllowGet);
         }
 
         [Authorize]
-        public ActionResult CurrentPositionPartial()
+        public List<BackgroundInfo> GetBackgroundInfo(int? id, Boolean isCurrentPosition)
+        {
+            BackgroundInfoBusinessLayer bibl = new BackgroundInfoBusinessLayer();
+            List<BackgroundInfo> BackgroundInfoes = bibl.GetBackgroundInfoByID(id, isCurrentPosition);
+            if (BackgroundInfoes == null)
+            {
+                var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+                var currentUser = manager.FindById(User.Identity.GetUserId());
+                DateTime registerDate = currentUser.UserInfo.RegisterDate;
+                BackgroundInfo bi = new BackgroundInfo();
+                bi.title = "Welcome to OmniDrome";
+                bi.startDate = registerDate;
+                bi.endDate = registerDate;
+                bi.description = "You come to us at this day! If you see this, which means you do not have any information with us.";
+                BackgroundInfoes.Add(bi);
+            }
+            return BackgroundInfoes;
+        }
+
+        [HttpPost]
+        [Authorize]
+        public void AddBackgroundInfo(BackgroundInfo BackgroundInfoClient)
         {
             var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
             var currentUser = manager.FindById(User.Identity.GetUserId());
             int id = currentUser.UserInfo.Id;
-            return PartialView(GetBackgroundInfo(id, true));
+            BackgroundInfo bi = new BackgroundInfo();
+            bi.UserInfoID = id;
+            bi.title = BackgroundInfoClient.title;
+            bi.startDate = BackgroundInfoClient.startDate;
+            bi.endDate = BackgroundInfoClient.endDate;
+            bi.description = BackgroundInfoClient.description;
+            bi.isCurrentPosition = false;
+            BackgroundInfoBusinessLayer biBal = new BackgroundInfoBusinessLayer();
+            biBal.InsertBackgroundInfo(bi);
         }
 
-        public BackgroundInfoListViewModel GetBackgroundInfo(int? id, Boolean isCurrentPosition)
+        [HttpPost]
+        [Authorize]
+        public ActionResult GetBackgroundInfoByInfoID(int? id)
         {
-            BackgroundInfoListViewModel backgroundInfoList = new BackgroundInfoListViewModel();
-            List<BackgroundInfoViewModel> backgroundInfoes = new List<BackgroundInfoViewModel>();
-            try
-            {
-                string ConnString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-                using (SqlConnection sqlcon = new SqlConnection(ConnString))
-                {
-                    if (sqlcon.State == System.Data.ConnectionState.Closed)
-                    {
-                        sqlcon.Open();
-                    }
-                    SqlCommand cmd = null;
-                    cmd = new SqlCommand("select * from tblBackgroundInfo where UserId = '" + id + "' ORDER BY EndDate ASC ", sqlcon);
-                    SqlDataReader dr = cmd.ExecuteReader();
-                    if (dr.HasRows)
-                    {
-                        while (dr.Read())
-                        {
-                            BackgroundInfoModel backgroundInfo = new BackgroundInfoModel();
-                            backgroundInfo.type = Convert.ToInt32(dr["Type"]);
-                            backgroundInfo.title = Convert.ToString(dr["Title"]);
-                            backgroundInfo.startDate = Convert.ToDateTime(dr["StartDate"]);
-                            backgroundInfo.endDate = Convert.ToDateTime(dr["EndDate"]);
-                            backgroundInfo.description = Convert.ToString(dr["Description"]);
+            BackgroundInfoBusinessLayer biBal = new BackgroundInfoBusinessLayer();          
+            return Json(biBal.GetBackgroundInfoByInfoID(id), JsonRequestBehavior.AllowGet);
+        }
 
-                            BackgroundInfoViewModel backgroundInfoView = new BackgroundInfoViewModel();
-                            backgroundInfoView.type = backgroundInfo.type;
-                            backgroundInfoView.title = backgroundInfo.title;
-                            backgroundInfoView.duration = backgroundInfo.startDate.ToString("yyyy-MM-dd") + " - " + backgroundInfo.endDate.ToString("yyyy-MM-dd");
-                            backgroundInfoView.endDate = backgroundInfo.endDate.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                            backgroundInfoView.description = backgroundInfo.description;
+        [HttpPost]
+        [Authorize]
+        public void UpdateBackgroundInfo(BackgroundInfo BackgroundInfoClient)
+        {
+            BackgroundInfoBusinessLayer biBal = new BackgroundInfoBusinessLayer();
+            biBal.UpdateBackgroundInfo(BackgroundInfoClient);
+        }
 
-                            backgroundInfoes.Add(backgroundInfoView);
-                        }
-                    }
-                    else
-                    {
-                        BackgroundInfoViewModel backgroundInfoViewEmpty = new BackgroundInfoViewModel();
-                        var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-                        var currentUser = manager.FindById(User.Identity.GetUserId());
-                        DateTime registerDate = currentUser.UserInfo.RegisterDate;
-                        backgroundInfoViewEmpty.title = "Welcome to OmniDrome";
-                        backgroundInfoViewEmpty.duration = registerDate.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                        backgroundInfoViewEmpty.endDate = registerDate.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                        backgroundInfoViewEmpty.description = "You come to us at this day! If you see this, which means you do not have any information with us.";
-                        backgroundInfoes.Add(backgroundInfoViewEmpty);
-                    }
-                        backgroundInfoList.backgroundInfoListViewModel = backgroundInfoes;                  
-                }
-            }
-            catch
-            {
-            }
-            return backgroundInfoList;
+        [HttpPost]
+        [Authorize]
+        public void DeleteBackgroundInfo(int? id)
+        {
+            BackgroundInfoBusinessLayer biBal = new BackgroundInfoBusinessLayer();
+            biBal.DeleteBackgroundInfoByID(id);
+        }
+
+        [Authorize]
+        public ActionResult CurrentPosition()
+        {
+            return PartialView();
+        }
+
+        [Authorize]
+        public ActionResult AddCurrentPosition()
+        {
+            return PartialView();
+        }
+
+        [Authorize]
+        public ActionResult EditCurrentPosition()
+        {
+            return PartialView();
+        }
+
+        [Authorize]
+        public ActionResult DoneCurrentPosition()
+        {
+            return PartialView();
+        }
+
+        [Authorize]
+        public ActionResult GetCurrentPosition()
+        {
+            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var currentUser = manager.FindById(User.Identity.GetUserId());
+            int id = currentUser.UserInfo.Id;
+            BackgroundInfo currentP = GetCurrentPositionData(id, true);
+            return Json(currentP, JsonRequestBehavior.AllowGet);
+        }
+
+        [Authorize]
+        public BackgroundInfo GetCurrentPositionData(int? id, Boolean isCurrentPosition)
+        {
+            CurrentPositionBusinessLayer cpbl = new CurrentPositionBusinessLayer();
+            BackgroundInfo currentPosition = cpbl.GetCurrentPositionByID(id, isCurrentPosition);
+            return currentPosition;
+        }
+
+        [HttpPost]
+        [Authorize]
+        public void AddCurrentPositionData(BackgroundInfo BackgroundInfoClient)
+        {
+            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var currentUser = manager.FindById(User.Identity.GetUserId());
+            int id = currentUser.UserInfo.Id;
+            BackgroundInfo bi = new BackgroundInfo();
+            bi.UserInfoID = id;
+            bi.title = BackgroundInfoClient.title;
+            bi.endDate = new DateTime(2013,02,08);
+            bi.startDate = BackgroundInfoClient.startDate;
+            bi.description = BackgroundInfoClient.description;
+            bi.isCurrentPosition = true;
+            CurrentPositionBusinessLayer cpBal = new CurrentPositionBusinessLayer();
+            cpBal.InsertCurrentPosition(bi);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public void UpdateCurrentPosition(BackgroundInfo CurrentPositionClient)
+        {
+            CurrentPositionBusinessLayer cpbl = new CurrentPositionBusinessLayer();
+            cpbl.UpdateCurrentPosition(CurrentPositionClient);
         }
     }
 }

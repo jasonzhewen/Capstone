@@ -1,0 +1,16 @@
+﻿<table ng-show="!isEmpty(CurrentPositionModel)">
+    <tr>
+        <td colspan="2">{{ CurrentPositionModel.title }}</td>
+    </tr>
+    <tr>
+        <td colspan="2">{{ CurrentPositionModel.startDate }} - Now</td>
+    </tr>
+    <tr>
+        <td colspan="2">{{ CurrentPositionModel.description }}</td>
+    </tr>
+    <tr>
+        <td><button type="button" ng-click="Edit()" class="btn btn-primary">Edit</button></td>
+        <td><button type="button" ng-click="Done()"  class="btn btn-primary">Finish</button></td>
+    </tr>
+</table>
+<p ng-show="isEmpty(CurrentPositionModel)">There is no data yet. Click <a ui-sref="AddCurrentPosition">here</a> to create your current position!</p>

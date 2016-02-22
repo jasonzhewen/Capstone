@@ -1,7 +1,7 @@
 ﻿var personalInfoModule = angular.module('PersonalInfo', ['ui.router']);
 personalInfoModule.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
-
+    
     $stateProvider
     .state('ShowInfo', {
         url: '/',
@@ -13,6 +13,10 @@ personalInfoModule.config(['$stateProvider', '$urlRouterProvider', function ($st
             'timeLine': {
                 templateUrl: '/Profile/ShowBackgroundInfo',
                 controller: 'ShowBackgroundInfoCtrl'
+            },
+            'currentPosition': {
+                templateUrl: '/Profile/CurrentPosition',
+                controller: 'ShowCurrentPositionCtrl'
             }
         }
     })
@@ -27,6 +31,10 @@ personalInfoModule.config(['$stateProvider', '$urlRouterProvider', function ($st
             'timeLine': {
                 templateUrl: '/Profile/ShowBackgroundInfo',
                 controller: 'ShowBackgroundInfoCtrl'
+            },
+            'currentPosition': {
+                templateUrl: '/Profile/CurrentPosition',
+                controller: 'ShowCurrentPositionCtrl'
             }
         }
     })
@@ -41,6 +49,10 @@ personalInfoModule.config(['$stateProvider', '$urlRouterProvider', function ($st
             'timeLine': {
                 templateUrl: '/Profile/ShowBackgroundInfo',
                 controller: 'ShowBackgroundInfoCtrl'
+            },
+            'currentPosition': {
+                templateUrl: '/Profile/CurrentPosition',
+                controller: 'ShowCurrentPositionCtrl'
             }
         }
     })
@@ -55,6 +67,10 @@ personalInfoModule.config(['$stateProvider', '$urlRouterProvider', function ($st
             'timeLine': {
                 templateUrl: '/Profile/ShowBackgroundInfo',
                 controller: 'ShowBackgroundInfoCtrl'
+            },
+            'currentPosition': {
+                templateUrl: '/Profile/CurrentPosition',
+                controller: 'ShowCurrentPositionCtrl'
             }
         }
     })
@@ -69,6 +85,10 @@ personalInfoModule.config(['$stateProvider', '$urlRouterProvider', function ($st
             'timeLine': {
                 templateUrl: '/Profile/AddBackgroundInfo',
                 controller: 'AddBackgroundInfoCtrl'
+            },
+            'currentPosition': {
+                templateUrl: '/Profile/CurrentPosition',
+                controller: 'ShowCurrentPositionCtrl'
             }
         }
     })
@@ -83,6 +103,64 @@ personalInfoModule.config(['$stateProvider', '$urlRouterProvider', function ($st
             'timeLine': {
                 templateUrl: '/Profile/EditBackgroundInfo',
                 controller: 'EditBackgroundInfoCtrl'
+            },
+            'currentPosition': {
+                templateUrl: '/Profile/CurrentPosition',
+                controller: 'ShowCurrentPositionCtrl'
+            }
+        }
+    })
+
+    .state('ShowCurrentPosition', {
+        url: '/ShowCurrentPosition',
+        views: {
+            'mainProfile': {
+                templateUrl: '/Profile/ShowInfo',
+                controller: 'ShowPersonalInfoCtrl'
+            },
+            'timeLine': {
+                templateUrl: '/Profile/ShowBackgroundInfo',
+                controller: 'ShowBackgroundInfoCtrl'
+            },
+            'currentPosition': {
+                templateUrl: '/Profile/CurrentPosition',
+                controller: 'ShowCurrentPositionCtrl'
+            }
+        }
+    })
+
+    .state('AddCurrentPosition', {
+        url: '/AddCurrentPosition',
+        views: {
+            'mainProfile': {
+                templateUrl: '/Profile/ShowInfo',
+                controller: 'ShowPersonalInfoCtrl'
+            },
+            'timeLine': {
+                templateUrl: '/Profile/ShowBackgroundInfo',
+                controller: 'ShowBackgroundInfoCtrl'
+            },
+            'currentPosition': {
+                templateUrl: '/Profile/AddCurrentPosition',
+                controller: 'AddCurrentPositionCtrl'
+            }
+        }
+    })
+
+    .state('EditCurrentPosition', {
+        url: '/EditCurrentPosition',
+        views: {
+            'mainProfile': {
+                templateUrl: '/Profile/ShowInfo',
+                controller: 'ShowPersonalInfoCtrl'
+            },
+            'timeLine': {
+                templateUrl: '/Profile/ShowBackgroundInfo',
+                controller: 'ShowBackgroundInfoCtrl'
+            },
+            'currentPosition': {
+                templateUrl: '/Profile/EditCurrentPosition',
+                controller: 'EditCurrentPositionCtrl'
             }
         }
     })

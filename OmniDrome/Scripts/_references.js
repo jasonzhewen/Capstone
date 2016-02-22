@@ -35,3 +35,6 @@
 /// <reference path="profile/deletebackgroundinfo.js" />
 /// <reference path="angular-ui-router.min.js" />
 /// <reference path="angular-input-date.js" />
+/// <reference path="profile/showcurrentposition.js" />
+/// <reference path="profile/addcurrentposition.js" />
+/// <reference path="profile/editcurrentposition.js" />

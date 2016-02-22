@@ -7,6 +7,7 @@ namespace OmniDrome.ViewModels
 {
     public class BackgroundInfoViewModel
     {
+        public int ID { get; set; }
         public int type { get; set; }
         public string title { get; set; }
         public string endDate { get; set; }

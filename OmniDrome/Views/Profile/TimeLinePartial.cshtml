@@ -1,14 +1,15 @@
 ﻿@using OmniDrome.ViewModels
+@using OmniDrome.Models
 @model BackgroundInfoListViewModel
 
-<section class="cd-horizontal-timeline">
+<section ng-class="cd-horizontal-timeline">
     <div class="timeline">
         <div class="events-wrapper">
             <div class="events">
                 <ol>
-                    @foreach (BackgroundInfoViewModel item in Model.backgroundInfoListViewModel)
+                    @foreach (BackgroundInfo item in Model.backgroundInfoListViewModel)
                     {
-                        <li><a href="#0" id="aaaa" data-date="@item.endDate">@item.endDate</a></li>
+                        <li><a href="#0" id="aaaa" data-date="02/03/2014">@item.endDate</a></li>
                     }
                 </ol>
 
@@ -24,11 +25,11 @@
 
     <div class="events-content">
         <ol>
-            @foreach (BackgroundInfoViewModel itemm in Model.backgroundInfoListViewModel)
+            @foreach (BackgroundInfo itemm in Model.backgroundInfoListViewModel)
             {
-                <li id="bbbb" data-date="@itemm.endDate">
+                <li id="bbbb" data-date="02/03/2014">
                     <h2>@itemm.title</h2>
-                    <em>@itemm.duration</em>
+                    <em>@itemm.startDate - @itemm.endDate</em>
                     <p>
                         @itemm.description
                     </p>

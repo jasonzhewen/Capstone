@@ -187,7 +187,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PersonalDetailsController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="DataAccessLayer\PersonalInfoERPDAL.cs" />
     <Compile Include="Global.asax.cs">
@@ -204,12 +203,13 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BackgroundInfo.cs" />
+    <Compile Include="Models\BackgroundInfoBusinessLayer.cs" />
+    <Compile Include="Models\CurrentPositionBusinessLayer.cs" />
     <Compile Include="Models\DreamJob.cs" />
     <Compile Include="Models\MySkills.cs" />
     <Compile Include="Models\PersonalDetails.cs" />
     <Compile Include="Models\PersonalDetailsBusinessLayer.cs" />
     <Compile Include="ViewModels\BackgroundInfoViewModel.cs" />
-    <Compile Include="Models\BackgroundInfoModel.cs" />
     <Compile Include="Models\DreamJobModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -1076,15 +1076,18 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\profile\addBackgroundInfo.js" />
+    <Content Include="Scripts\profile\addCurrentPosition.js" />
     <Content Include="Scripts\profile\addInfo.js" />
     <Content Include="Scripts\profile\deleteBackgroundInfo.js" />
     <Content Include="Scripts\profile\editBackgroundInfo.js" />
+    <Content Include="Scripts\profile\editCurrentPosition.js" />
     <Content Include="Scripts\profile\editInfo.js" />
     <Content Include="Scripts\profile\jquery.mobile.custom.min.js" />
     <Content Include="Scripts\profile\jquery.zoomooz.min.js" />
     <Content Include="Scripts\profile\personalInfo.js" />
     <Content Include="Scripts\profile\Service.js" />
     <Content Include="Scripts\profile\showBackgroundInfo.js" />
+    <Content Include="Scripts\profile\showCurrentPosition.js" />
     <Content Include="Scripts\profile\showInfo.js" />
     <Content Include="Scripts\profile\timeLine.js" />
     <Content Include="Scripts\profile\modernizr.js" />
@@ -1129,7 +1132,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Profile\TimeLinePartial.cshtml" />
     <Content Include="Views\Profile\DreamJobPartial.cshtml" />
-    <Content Include="Views\Profile\CurrentPositionPartial.cshtml" />
     <Content Include="Views\Profile\Profile.cshtml" />
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Profile\EditInfo.cshtml" />
@@ -1138,11 +1140,9 @@
     <Content Include="Views\Profile\ShowBackgroundInfo.cshtml" />
     <Content Include="Views\Profile\AddBackgroundInfo.cshtml" />
     <Content Include="Views\Profile\EditBackgroundInfo.cshtml" />
-    <Content Include="Views\PersonalDetails\Create.cshtml" />
-    <Content Include="Views\PersonalDetails\Delete.cshtml" />
-    <Content Include="Views\PersonalDetails\Details.cshtml" />
-    <Content Include="Views\PersonalDetails\Edit.cshtml" />
-    <Content Include="Views\PersonalDetails\Index.cshtml" />
+    <Content Include="Views\Profile\CurrentPosition.cshtml" />
+    <Content Include="Views\Profile\AddCurrentPosition.cshtml" />
+    <Content Include="Views\Profile\EditCurrentPosition.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

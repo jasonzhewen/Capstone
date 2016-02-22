@@ -72,6 +72,7 @@ namespace OmniDrome
 
             bundles.Add(new ScriptBundle("~/bundles/personalInfo").Include(
                       "~/Scripts/profile/personalInfo.js",
+                      "~/Scripts/profile/Service.js",
                       "~/Scripts/profile/showInfo.js",
                       "~/Scripts/profile/addInfo.js",
                       "~/Scripts/profile/editInfo.js",
@@ -79,7 +80,9 @@ namespace OmniDrome
                       "~/Scripts/profile/showBackgroundInfo.js",
                       "~/Scripts/profile/addBackgroundInfo.js",
                       "~/Scripts/profile/deleteBackgroundInfo.js",
-                      "~/Scripts/profile/Service.js"));
+                      "~/Scripts/profile/showCurrentPosition.js",
+                      "~/Scripts/profile/addCurrentPosition.js",
+                      "~/Scripts/profile/editCurrentPosition.js"));
         }
     }
 }

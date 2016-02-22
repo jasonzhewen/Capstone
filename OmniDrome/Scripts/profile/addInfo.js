@@ -16,11 +16,9 @@
 
     $scope.AddPersonalInfo = function () {
         $scope.PersonalDetailsModel.dateOfBirth = $filter('date')($scope.realdate, "yyyy-MM-dd");
-        //console.log($scope.PersonalDetailsModel);
-        var callBack = personalInfoService.addPersonalDetails($scope.PersonalDetailsModel);
-        callBack.then(function (mess) {
-            $state.go('ShowInfo');
-        })
+        //console.log($scope.realdate);
+        var callBack = personalInfoService.addPersonalDetails($scope.PersonalDetailsModel);        
+        $state.go('ShowInfo');        
     }
 
     $scope.Cancel = function () {

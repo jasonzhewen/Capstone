@@ -5,7 +5,7 @@
                 <strong>Title:</strong>
             </td>
             <td>
-                <input type="text" class="form-control" ng-model="BackgroundInfoModel.title" />
+                <input type="text" class="form-control" ng-model="CurrentPositionModel.title" />
             </td>
         </tr>
         <tr>
@@ -13,15 +13,7 @@
                 <strong>Start Date:</strong>
             </td>
             <td>
-                <input type="date" class="form-control" ng-model="BackgroundInfoModel.startDate" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <strong>End Date:</strong>
-            </td>
-            <td>
-                <input type="date" class="form-control" ng-model="BackgroundInfoModel.endDate" />
+                <input type="date" class="form-control" ng-model="CurrentPositionModel.startDate" />
             </td>
         </tr>
         <tr>
@@ -29,12 +21,12 @@
                 <strong>Description:</strong>
             </td>
             <td>
-                <input type="text" class="form-control" ng-model="BackgroundInfoModel.description" />
+                <input type="text" class="form-control" ng-model="CurrentPositionModel.description" />
             </td>
         </tr>
         <tr>
             <td>
-                <button type="button" ng-click="UpdateBackgroundInfo();" class="btn btn-primary">Update</button>
+                <button type="button" ng-click="UpdateCurrentPosition();" class="btn btn-primary">Update</button>
             </td>
             <td>
                 <button type="button" ng-click="Cancel();" class="btn btn-primary">Cancel</button>
