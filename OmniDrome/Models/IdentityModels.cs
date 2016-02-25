@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace OmniDrome.Models
 {
@@ -36,6 +37,15 @@ namespace OmniDrome.Models
         //public virtual UserInfo UserInfo { get; set; }
     }
 
+
+    public class MainCategory
+    {
+         [Key]
+        public int MainCategoryID { get; set; }
+        public string Category { get; set; }
+
+        public virtual ICollection<Subcategory> Subcategory { get; set; }
+    }
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
@@ -44,7 +54,7 @@ namespace OmniDrome.Models
         }
 
         public System.Data.Entity.DbSet<UserInfo> UserInfo { get; set; }
-
+        public System.Data.Entity.DbSet<MainCategory> MainCategory { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

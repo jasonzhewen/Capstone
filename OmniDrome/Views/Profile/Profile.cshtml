@@ -42,7 +42,13 @@
                         <div class="ch-info-frontPast ch-img-1"></div>
                         <div class="ch-info-backPast">
                             <h3>TimeLine</h3>
-                            
+                            <div>
+                                <ul class="nav navbar-nav">
+                                    <li><a ui-sref="ShowBackgroundInfo">Show</a></li>
+                                    <li><a ui-sref="AddBackgroundInfo">Add</a></li>
+                                </ul>
+                                <div ui-view="timeLine"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -85,13 +91,7 @@
         </div>
     </div>
 
-    <div>
-        <ul class="nav navbar-nav">
-            <li><a ui-sref="ShowBackgroundInfo">Show</a></li>
-            <li><a ui-sref="AddBackgroundInfo">Add</a></li>
-        </ul>
-        <div ui-view="timeLine"></div>
-    </div>
+    
     <div id="main_timeline" style="background-color:white;width:50vw;height:25vw">
         @{Html.RenderAction("TimeLinePartial");}
     </div>

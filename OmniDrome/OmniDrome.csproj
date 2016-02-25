@@ -200,15 +200,23 @@
     <Compile Include="Migrations\201602050340575_new.Designer.cs">
       <DependentUpon>201602050340575_new.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602250407338_gvdb.cs" />
+    <Compile Include="Migrations\201602250407338_gvdb.Designer.cs">
+      <DependentUpon>201602250407338_gvdb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BackgroundInfo.cs" />
     <Compile Include="Models\BackgroundInfoBusinessLayer.cs" />
     <Compile Include="Models\CurrentPositionBusinessLayer.cs" />
     <Compile Include="Models\DreamJob.cs" />
+    <Compile Include="Models\Duty.cs" />
     <Compile Include="Models\MySkills.cs" />
     <Compile Include="Models\PersonalDetails.cs" />
     <Compile Include="Models\PersonalDetailsBusinessLayer.cs" />
+    <Compile Include="Models\Requirement.cs" />
+    <Compile Include="Models\Subcategory.cs" />
+    <Compile Include="Models\Title.cs" />
     <Compile Include="ViewModels\BackgroundInfoViewModel.cs" />
     <Compile Include="Models\DreamJobModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -1163,6 +1171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602050340575_new.resx">
       <DependentUpon>201602050340575_new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602250407338_gvdb.resx">
+      <DependentUpon>201602250407338_gvdb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

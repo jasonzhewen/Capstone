@@ -5,11 +5,11 @@
     <section class="cd-horizontal-timeline">
         <div class="timeline">
             <div class="events-wrapper">
-                <div class="events">
+                <div id="tl_nv" class="events">
                     <ol>
                         @foreach (BackgroundInfoViewModel item in Model.backgroundInfoListViewModel)
                         {
-                            <li><a href="#0" id="aaaa" data-date="@item.endDate">@item.endDate</a></li>
+                            <li><a href="#0" id="aaaa" data-title="@item.type" data-date="@item.endDate">@item.endDate</a></li>
                         }
                     </ol>
 
@@ -45,6 +45,12 @@
         $('#overlay').remove();
         $('#main_timeline').css("visibility", "hidden");
     })
+
+    $('#tl_nv').find('a').each(function () {
+        if ($(this).attr('data-title') == 0) {
+            $(this).css('color', 'blue');
+        }
+    });
 </script>
 
 
