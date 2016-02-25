@@ -114,6 +114,35 @@ namespace OmniDrome.Controllers
         }
 
         [Authorize]
+        public ActionResult TimeLinePartial()
+        {
+            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var currentUser = manager.FindById(User.Identity.GetUserId());
+            int id = currentUser.UserInfo.Id;
+            return PartialView(GetBInfo(id, false));
+        }
+
+        public BackgroundInfoListViewModel GetBInfo(int? id, Boolean isCurrentPosition)
+        {
+            BackgroundInfoListViewModel backgroundInfoList = new BackgroundInfoListViewModel();
+            List<BackgroundInfoViewModel> backgroundInfoes = new List<BackgroundInfoViewModel>();
+            List<BackgroundInfo> backInfoes = GetBackgroundInfo(id, isCurrentPosition);
+            foreach (BackgroundInfo bi in backInfoes)
+            {
+                BackgroundInfoViewModel backgroundInfoView = new BackgroundInfoViewModel();
+                backgroundInfoView.ID = bi.ID;
+                backgroundInfoView.type = bi.type;
+                backgroundInfoView.title = bi.title;
+                backgroundInfoView.duration = bi.startDate.ToString("yyyy-MM-dd") + " - " + bi.endDate.ToString("yyyy-MM-dd");
+                backgroundInfoView.endDate = bi.endDate.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                backgroundInfoView.description = bi.description;
+                backgroundInfoes.Add(backgroundInfoView);
+            }
+            backgroundInfoList.backgroundInfoListViewModel = backgroundInfoes;
+            return backgroundInfoList;
+        }
+
+        [Authorize]
         public ActionResult AddBackgroundInfo()
         {
             return PartialView();

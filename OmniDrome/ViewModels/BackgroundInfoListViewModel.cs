@@ -8,6 +8,6 @@ namespace OmniDrome.ViewModels
 {
     public class BackgroundInfoListViewModel
     {
-        public List<BackgroundInfo> backgroundInfoListViewModel { set; get; }
+        public List<BackgroundInfoViewModel> backgroundInfoListViewModel { set; get; }
     }
 }

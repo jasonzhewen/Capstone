@@ -1,4 +1,4 @@
-﻿<div id="bbbb" data-ng-repeat="bi in BackgroundInfoList">
+﻿@*<div id="bbbb" data-ng-repeat="bi in BackgroundInfoList">
     <h2>{{ bi.title }}</h2>
     <em>{{ bi.startDate }} - {{ bi.endDate }}</em>
     <p>
@@ -6,6 +6,27 @@
     </p>
     <button type="button" ng-click="EditBackgroundInfo(bi.ID);" class="btn btn-primary">Edit</button>
     <button type="button" ng-click="DeleteBackgroundInfo(bi.ID);" class="btn btn-primary">Delete</button>
+</div>*@
+<div>
+    <button type="button" id="btn_viewtl" class="btn btn-primary">View TimeLine</button>
 </div>
+<script>
+    $('#btn_viewtl').click(function () {
+        $('#main_timeline').css("visibility", "visible");
+        $('<div id="overlay">').css({
+            width: $(document).width(),
+            height: $(document).height(),
+            opacity: 0.6,
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            backgroundColor: 'black',
+            zIndex: 40
+        }).appendTo('body').click(function () {
+            $(this).remove();
+            $('#main_timeline').css("visibility", "hidden");
+        });
+    });
+</script>
         
 
