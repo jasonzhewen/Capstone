@@ -6,8 +6,21 @@ personalInfoModule.controller('EditBackgroundInfoCtrl', function ($scope, $filte
         $scope.BackgroundInfoModel = data.data;
         $scope.BackgroundInfoModel.startDate = new Date(parseInt(data.data.startDate.substr(6)));
         $scope.BackgroundInfoModel.endDate = new Date(parseInt(data.data.endDate.substr(6)));
-        //console.log($scope.BackgroundInfoModel);
     });
+
+    $scope.Types = [{
+        Id: 1,
+        Name: 'Education'
+    }, {
+        Id: 2,
+        Name: 'Work'
+    }, {
+        Id: 3,
+        Name: 'Volunteer'
+    }, {
+        Id: 4,
+        Name: 'InternShip'
+    }];
 
     $scope.BackgroundInfoModel =
         {

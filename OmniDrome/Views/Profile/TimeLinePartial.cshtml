@@ -47,8 +47,17 @@
     })
 
     $('#tl_nv').find('a').each(function () {
-        if ($(this).attr('data-title') == 0) {
+        if ($(this).attr('data-title') == 1) {
             $(this).css('color', 'blue');
+        }
+        else if ($(this).attr('data-title') == 2) {
+            $(this).css('color', 'red');
+        }
+        else if ($(this).attr('data-title') == 3) {
+            $(this).css('color', 'yellow');
+        }
+        else if ($(this).attr('data-title') == 4) {
+            $(this).css('color', 'green');
         }
     });
 </script>

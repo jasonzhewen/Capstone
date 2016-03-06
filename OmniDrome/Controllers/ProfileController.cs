@@ -194,6 +194,7 @@ namespace OmniDrome.Controllers
             BackgroundInfo bi = new BackgroundInfo();
             bi.UserInfoID = id;
             bi.title = BackgroundInfoClient.title;
+            bi.type = BackgroundInfoClient.type;
             bi.startDate = BackgroundInfoClient.startDate;
             bi.endDate = BackgroundInfoClient.endDate;
             bi.description = BackgroundInfoClient.description;

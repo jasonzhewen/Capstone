@@ -63,3 +63,4 @@ C:\Users\Zhewen\documents\visual studio 2013\Projects\OmniDrome\bin\Microsoft.Ow
 C:\Users\Zhewen\documents\visual studio 2013\Projects\OmniDrome\obj\Debug\OmniDrome.Migrations.gvdb.resources
 C:\Users\Zhewen\documents\visual studio 2013\Projects\OmniDrome\obj\Debug\OmniDrome.dll
 C:\Users\Zhewen\documents\visual studio 2013\Projects\OmniDrome\obj\Debug\OmniDrome.pdb
+C:\Users\Zhewen\documents\visual studio 2013\Projects\OmniDrome\obj\Debug\OmniDrome.csprojResolveAssemblyReference.cache

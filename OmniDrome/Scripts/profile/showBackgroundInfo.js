@@ -20,7 +20,7 @@ personalInfoModule.controller('ShowBackgroundInfoCtrl', function ($scope, $state
     //});
 
     $scope.EditBackgroundInfo = function (id) {
-        console.log($scope.BackgroundInfoModel);
+        //console.log($scope.BackgroundInfoModel);
         personalInfoService.setSharedProperty(id);
         $state.go('EditBackgroundInfo');
         //alert('jjjjj');

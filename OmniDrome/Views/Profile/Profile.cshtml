@@ -13,85 +13,62 @@
 }
 
 <div id="mainProfile" ng-app="PersonalInfo">
-    <div class="grid" id="firstCircle">
-        <div class="main">
-            <div class="circle zoomTarget" style="background: green;">
-                <div class="info-wrap">
-                    <div class="ch-info">
-                        <div class="ch-info-front ch-img-1"></div>
-                        <div class="ch-info-back">
-                            <ul class="nav navbar-nav">
-                                <li><a ui-sref="ShowInfo">Show</a></li>
-                                <li><a ui-sref="EditInfo">Edit</a></li>
-                            </ul>
-                            <div ui-view="mainProfile"></div>
-                        </div>
+
+    <div class="wrapper">
+        <div class="outer" style="display:block; text-align: center; background:grey; width:10vw;height:10vw;">
+            <div class="inner" style="background-position: center center; display:inline-block;background:lightblue; width:9vw; height:9vw; position:absolute;">
+                <div class="box" style="display:inline-block; position:absolute; top:3vw; right:3vw;">
+                    <h3>Profile</h3>
+                    <div class="innerDiv" style="visibility:hidden">
+                        <ul class="nav navbar-nav">
+                            <li><a ui-sref="ShowInfo">Show</a></li>
+                            <li><a ui-sref="EditInfo">Edit</a></li>
+                        </ul>
+                        <div ui-view="mainProfile"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-
-
-    <div class="gridPast" id="secondCircle">
-        <div class="mainPast">
-            <div class="circlePast zoomTarget" style="background: green;">
-                <div class="info-wrapPast">
-                    <div class="ch-infoPast">
-                        <div class="ch-info-frontPast ch-img-1"></div>
-                        <div class="ch-info-backPast">
-                            <h3>TimeLine</h3>
-                            <div>
-                                <ul class="nav navbar-nav">
-                                    <li><a ui-sref="ShowBackgroundInfo">Show</a></li>
-                                    <li><a ui-sref="AddBackgroundInfo">Add</a></li>
-                                </ul>
-                                <div ui-view="timeLine"></div>
-                            </div>
-                        </div>
+    <div class="wrapper">
+        <div class="outer" style="display:block; text-align: center; background:grey; width:10vw;height:10vw;">
+            <div class="inner" style="background-position: center center; display:inline-block;background:lightblue; width:9vw; height:9vw; position:absolute;">
+                <div class="box" style="display:inline-block; position:absolute; top:3vw; right:3vw;">
+                    <h3>My Experience</h3>
+                    <div class="innerDiv" style="visibility:hidden">
+                        <ul class="nav navbar-nav">
+                            <li><a ui-sref="ShowBackgroundInfo">Show</a></li>
+                            <li><a ui-sref="AddBackgroundInfo">Add</a></li>
+                        </ul>
+                        <div ui-view="timeLine"></div>
                     </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="outer" style="display:block; text-align: center; background:grey; width:10vw;height:10vw;">
+            <div class="inner" style="background-position: center center; display:inline-block;background:lightblue; width:9vw; height:9vw; position:absolute;">
+                <div class="box" style="display:inline-block; position:absolute; top:3vw; right:3vw;">
+                    <h3>Where am I now</h3>
+                    <div class="innerDiv" style="visibility:hidden">
+                        <div ui-view="currentPosition"></div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="outer" style="display:block; text-align: center; background:grey; width:10vw;height:10vw;">
+            <div class="inner" style="background-position: center center; display:inline-block;background:lightblue; width:9vw; height:9vw; position:absolute;">
+                <div class="box" style="display:inline-block; position:absolute; top:3vw; right:3vw;">
+                    <h3>Where I want to go</h3>
                 </div>
             </div>
         </div>
     </div>
 
-
-    <div class="gridPast" id="thirdCircle">
-        <div class="mainPast">
-            <div class="circlePast zoomTarget" style="background: green;">
-                <div class="info-wrapPast">
-                    <div class="ch-infoPast">
-                        <div class="ch-info-frontPast ch-img-1"></div>
-                        <div class="ch-info-backPast">
-                            <h3>Where am I now</h3>
-                            <div ui-view="currentPosition"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-    <div class="gridPast" id="fourthCircle">
-        <div class="mainPast">
-            <div class="circlePast zoomTarget" style="background: green;">
-                <div class="info-wrapPast">
-                    <div class="ch-infoPast">
-                        <div class="ch-info-frontPast ch-img-1"></div>
-                        <div class="ch-info-backPast">
-                            <h3>Where I want to go</h3>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    
     <div id="main_timeline" style="background-color:white;width:50vw;height:25vw">
         @{Html.RenderAction("TimeLinePartial");}
     </div>
@@ -106,6 +83,36 @@
         zIndex: 50,       
     });
 </script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.zoomooz.setup({ nativeanimation: true, debug: false });
+
+        $(".inner").click(function (evt) {
+            if (evt.target !== this)
+                return;
+
+            $(this).find("h3").css("visibility", "hidden");
+            $(this).find(".innerDiv").css("visibility", "visible");
+            evt.stopPropagation();
+            $(this).zoomTo({ duration: 1000, targetsize: 1.0 });
+        });
+
+        $(window).click(function (evt) {         
+            evt.stopPropagation();
+            $("body").zoomTo({ duration: 1000, targetsize: 1.0 });
+        });
+
+        $('body').click(function () {
+            $(this).find("h3").css("visibility", "visible");
+            $(this).find(".innerDiv").css("visibility", "hidden");
+        });
+    });
+</script>
+
+
+
+
+
 
 
 

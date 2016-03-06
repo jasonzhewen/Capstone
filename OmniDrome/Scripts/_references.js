@@ -38,3 +38,7 @@
 /// <reference path="profile/showcurrentposition.js" />
 /// <reference path="profile/addcurrentposition.js" />
 /// <reference path="profile/editcurrentposition.js" />
+/// <reference path="jquery.animtrans.js" />
+/// <reference path="jquery.zoomooz.js" />
+/// <reference path="purecssmatrix.js" />
+/// <reference path="sylvester.js" />

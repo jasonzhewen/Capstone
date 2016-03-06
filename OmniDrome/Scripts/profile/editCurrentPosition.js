@@ -15,6 +15,20 @@
             UserInfoID: ''
         };
 
+    $scope.Types = [{
+        Id: 1,
+        Name: 'Education'
+    }, {
+        Id: 2,
+        Name: 'Work'
+    }, {
+        Id: 3,
+        Name: 'Volunteer'
+    }, {
+        Id: 4,
+        Name: 'InternShip'
+    }];
+
     var GetCurrentPosition = personalInfoService.getCurrentPosition();
     GetCurrentPosition.then(function (data) {
         if (data.data !== "") {

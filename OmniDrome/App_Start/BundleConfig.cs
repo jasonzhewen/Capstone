@@ -53,8 +53,12 @@ namespace OmniDrome
                       "~/Content/themes/profile/Style.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/zoomCircle").Include(
-                      "~/Scripts/profile/jquery.zoomooz.min.js"));
-
+                      "~/Scripts/sylvester.js",
+                      "~/Scripts/purecssmatrix.js",
+                      "~/Scripts/jquery.animtrans.js",
+                      "~/Scripts/jquery.zoomooz.js",
+                      "~/Scripts/jquery.zoomooz.min.js"));
+            
             bundles.Add(new StyleBundle("~/Content/timeline").Include(
                       "~/Content/themes/profile/reset.css",
                       "~/Content/themes/profile/timeLine.css"));

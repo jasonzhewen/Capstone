@@ -32,6 +32,7 @@ namespace OmniDrome.Models
                 cP.endDate = peo.endDate;
                 cP.startDate = peo.startDate;
                 cP.ID = peo.ID;
+                cP.type = peo.type;
                 cP.isCurrentPosition = peo.isCurrentPosition;
                 cP.title = peo.title;
                 cP.description = peo.description;
