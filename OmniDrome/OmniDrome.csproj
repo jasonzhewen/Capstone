@@ -278,10 +278,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Ambox_clock.png" />
     <Content Include="Images\login.png" />
     <Content Include="Images\logo_mockup_alto.png" />
+    <Content Include="Images\PersonalImages\john.png" />
     <Content Include="Images\PersonalImages\no-image.png" />
-    <Content Include="Images\PersonalImages\Zhewen.jpg" />
     <Content Include="Images\Sign_In_Large_Default.png" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />

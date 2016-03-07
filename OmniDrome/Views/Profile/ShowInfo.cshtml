@@ -1,23 +1,14 @@
 ﻿<div ng-show="!isEmpty(PersonalDetailsModel)">
     <table>
         <tr>
-            <td colspan="2"><img alt="No Image" style="width:4vw; height:3vw;" ng-src="@Url.Content("{{ PersonalDetailsModel.imageUrl }}")" /></td>
+            <td><img alt="No Image" style="width:20vw; height:15vw;" ng-src="@Url.Content("{{ PersonalDetailsModel.imageUrl }}")" /></td>
         </tr>
         <tr>
-            <td>Name: </td>
             <td>{{ PersonalDetailsModel.firstName + " " +  PersonalDetailsModel.lastName }}</td>
         </tr>
+        <tr></tr>
         <tr>
-            <td>Profession: </td>
             <td>{{ PersonalDetailsModel.profession }}</td>
-        </tr>
-        <tr>
-            <td>City: </td>
-            <td>{{ PersonalDetailsModel.currentCity }}</td>
-        </tr>
-        <tr>
-            <td>Country: </td>
-            <td>{{ PersonalDetailsModel.currentCountry }}</td>
         </tr>
     </table>
     <button type="button" ng-click="Edit();" class="btn btn-primary">Edit</button>

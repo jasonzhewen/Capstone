@@ -214,7 +214,10 @@ Main Components
   background: url(../../../Images/cd-arrow.svg) no-repeat 0 0;
 }
 .cd-timeline-navigation a.prev {
-  left: 0;
+  /*left: 0;*/
+  position:absolute;
+  left:2vw;
+  top:4.3vw;
   -webkit-transform: translateY(-50%) rotate(180deg);
   -moz-transform: translateY(-50%) rotate(180deg);
   -ms-transform: translateY(-50%) rotate(180deg);
@@ -298,7 +301,7 @@ Main Components
 }
 .cd-horizontal-timeline .events-content h2 {
   font-weight: bold;
-  font-size: 2.6rem;
+  font-size: 2.6vw;
   font-family: "Playfair Display", serif;
   font-weight: 700;
   line-height: 1.2;
@@ -320,13 +323,13 @@ Main Components
 }
 @media only screen and (min-width: 768px) {
   .cd-horizontal-timeline .events-content h2 {
-    font-size: 7rem;
+    font-size: 3vw;
   }
   .cd-horizontal-timeline .events-content em {
-    font-size: 2rem;
+    font-size: 1.5vw;
   }
   .cd-horizontal-timeline .events-content p {
-    font-size: 1.8rem;
+    font-size: 1.0vw;
   }
 }
 

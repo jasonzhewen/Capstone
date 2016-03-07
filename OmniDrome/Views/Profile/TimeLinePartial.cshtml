@@ -42,9 +42,11 @@
                         <p>
                             @itemm.description
                         </p>
-                        <button id="btn_timeline_add" ng-click="AddBackgroundInfo()" class="btn btn-primary">Add New</button>
-                        <button id="btn_timeline_edit" ng-click="EditBackgroundInfo(@itemm.ID)" class="btn btn-primary">Edit</button>
-                        <button id="btn_timeline_delete" ng-click="DeleteBackgroundInfo(@itemm.ID)" class="btn btn-primary">Delete</button>
+                        <div style="padding-left:15vw;">
+                            <button id="btn_timeline_add" ng-click="AddBackgroundInfo()" class="btn btn-primary">Add New</button>
+                            <button id="btn_timeline_edit" ng-click="EditBackgroundInfo(@itemm.ID)" class="btn btn-primary">Edit</button>
+                            <button id="btn_timeline_delete" ng-click="DeleteBackgroundInfo(@itemm.ID)" class="btn btn-primary">Delete</button>
+                        </div>
                     </li>
                 }
             </ol>
