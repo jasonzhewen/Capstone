@@ -33,9 +33,9 @@
         return ServerData;
     }
 
-    this.getBackgroundInfo = function () {
-        return $http.get('/Profile/GetBackgroundInfoData');
-    };
+    //this.getBackgroundInfo = function () {
+    //    return $http.get('/Profile/GetBackgroundInfoData');
+    //};
 
     this.addBackgroundInfo = function (BackgroundInfo) {
         var ServerData = $http({
@@ -105,5 +105,70 @@
             //contentType: 'application/json',
         });
         //return ServerData;
+    }
+
+    this.getJobTitles = function (searchString) {
+        var ServerData = $http({
+            method: "Post",
+            url: "/Profile/GetTenTitles",
+            data: JSON.stringify({ searchStringClient: searchString }),
+            dataType: 'json',
+            //contentType: 'application/json',
+        });
+        return ServerData;
+    }
+
+
+    this.getDutiesForTitle = function (noc) {
+        var ServerData = $http({
+            method: "Post",
+            url: "/Profile/GetSuggestedDuties",
+            data: JSON.stringify({ NocCode: noc }),
+            dataType: 'json',
+            //contentType: 'application/json',
+        });
+        return ServerData;
+    }
+
+
+
+    this.getReqForTitle = function (noc) {
+        var ServerData = $http({
+            method: "Post",
+            url: "/Profile/GetRequirements",
+            data: JSON.stringify({ NocCode: noc }),
+            dataType: 'json',
+            //contentType: 'application/json',
+        });
+        return ServerData;
+    }
+
+
+
+
+    this.getDreamJobInfo = function () {
+        return $http.get('/Profile/CtrlGetDreamJob');
+    }
+
+    this.addDreamJobInfo = function (DreamJob) {
+        var ServerData = $http({
+            method: "Post",
+            url: "/Profile/AddDreamJobDetails",
+            data: JSON.stringify({ DreamJobClient: DreamJob }),
+            dataType: 'json',
+            //contentType: 'application/json',
+        });
+        //return ServerData;
+    }
+
+    this.deleteDreamJob = function (dreamjobinfoID) {
+        var ServerData = $http({
+            method: "Post",
+            url: "/Profile/DeleteDreamJobInfo",
+            data: JSON.stringify({ id: dreamjobinfoID }),
+            dataType: 'json',
+            //contentType: 'application/json',
+        });
+        return ServerData;
     }
 });

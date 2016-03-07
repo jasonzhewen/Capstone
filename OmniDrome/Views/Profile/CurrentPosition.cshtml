@@ -1,4 +1,4 @@
-﻿<table ng-show="!isEmpty(CurrentPositionModel)">
+﻿<table class="test" ng-show="!isEmpty(CurrentPositionModel)">
     <tr>
         <td colspan="2">{{ CurrentPositionModel.title }}</td>
     </tr>
@@ -14,3 +14,4 @@
     </tr>
 </table>
 <p ng-show="isEmpty(CurrentPositionModel)">There is no data yet. Click <a ui-sref="AddCurrentPosition">here</a> to create your current position!</p>
+

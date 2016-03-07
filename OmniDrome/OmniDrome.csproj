@@ -210,7 +210,9 @@
     <Compile Include="Models\BackgroundInfoBusinessLayer.cs" />
     <Compile Include="Models\CurrentPositionBusinessLayer.cs" />
     <Compile Include="Models\DreamJob.cs" />
+    <Compile Include="Models\DreamJobBusinessLayer.cs" />
     <Compile Include="Models\Duty.cs" />
+    <Compile Include="Models\GovDbBusinessLayer.cs" />
     <Compile Include="Models\MySkills.cs" />
     <Compile Include="Models\PersonalDetails.cs" />
     <Compile Include="Models\PersonalDetailsBusinessLayer.cs" />
@@ -232,6 +234,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\LoginLayout.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -275,11 +278,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\cd-arrow.svg" />
+    <Content Include="Images\login.png" />
+    <Content Include="Images\logo_mockup_alto.png" />
     <Content Include="Images\PersonalImages\no-image.png" />
     <Content Include="Images\PersonalImages\Zhewen.jpg" />
-    <Content Include="Images\profileTrial.svg" />
-    <Content Include="Images\Sign_In_Large_Active.png" />
     <Content Include="Images\Sign_In_Large_Default.png" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
@@ -311,6 +313,10 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="fonts\CaviarDreams.ttf" />
+    <Content Include="fonts\CaviarDreams_Bold.ttf" />
+    <Content Include="fonts\CaviarDreams_BoldItalic.ttf" />
+    <Content Include="fonts\CaviarDreams_Italic.ttf" />
     <None Include="Properties\PublishProfiles\od.pubxml" />
     <None Include="Properties\PublishProfiles\thezhewen.com - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\zhewensun.co.nf - Web Deploy %282%29.pubxml" />
@@ -1088,6 +1094,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\profile\addBackgroundInfo.js" />
     <Content Include="Scripts\profile\addCurrentPosition.js" />
+    <Content Include="Scripts\profile\AddDreamJob.js" />
     <Content Include="Scripts\profile\addInfo.js" />
     <Content Include="Scripts\profile\deleteBackgroundInfo.js" />
     <Content Include="Scripts\profile\editBackgroundInfo.js" />
@@ -1099,6 +1106,7 @@
     <Content Include="Scripts\profile\Service.js" />
     <Content Include="Scripts\profile\showBackgroundInfo.js" />
     <Content Include="Scripts\profile\showCurrentPosition.js" />
+    <Content Include="Scripts\profile\ShowDreamJob.js" />
     <Content Include="Scripts\profile\showInfo.js" />
     <Content Include="Scripts\profile\timeLine.js" />
     <Content Include="Scripts\profile\modernizr.js" />
@@ -1156,6 +1164,8 @@
     <Content Include="Views\Profile\CurrentPosition.cshtml" />
     <Content Include="Views\Profile\AddCurrentPosition.cshtml" />
     <Content Include="Views\Profile\EditCurrentPosition.cshtml" />
+    <Content Include="Views\Profile\GetTitles.cshtml" />
+    <Content Include="Views\Profile\ShowDreamJob.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

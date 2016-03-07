@@ -14,62 +14,58 @@
 
 <div id="mainProfile" ng-app="PersonalInfo">
 
-    <div class="wrapper">
+    <div class="wrapper" id="circle_timeline">
         <div class="outer" style="display:block; text-align: center; background:grey; width:10vw;height:10vw;">
             <div class="inner" style="background-position: center center; display:inline-block;background:lightblue; width:9vw; height:9vw; position:absolute;">
-                <div class="box" style="display:inline-block; position:absolute; top:3vw; right:3vw;">
-                    <h3>Profile</h3>
+                <div class="box" style="display:inline-block; position:absolute; top:1vw; right:1.1vw;">
+                    <h3>My Experience</h3>
                     <div class="innerDiv" style="visibility:hidden">
-                        <ul class="nav navbar-nav">
-                            <li><a ui-sref="ShowInfo">Show</a></li>
-                            <li><a ui-sref="EditInfo">Edit</a></li>
-                        </ul>
-                        <div ui-view="mainProfile"></div>
+                        <div class="test" ui-view="timeLine"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="wrapper">
-        <div class="outer" style="display:block; text-align: center; background:grey; width:10vw;height:10vw;">
-            <div class="inner" style="background-position: center center; display:inline-block;background:lightblue; width:9vw; height:9vw; position:absolute;">
-                <div class="box" style="display:inline-block; position:absolute; top:3vw; right:3vw;">
-                    <h3>My Experience</h3>
-                    <div class="innerDiv" style="visibility:hidden">
-                        <ul class="nav navbar-nav">
-                            <li><a ui-sref="ShowBackgroundInfo">Show</a></li>
-                            <li><a ui-sref="AddBackgroundInfo">Add</a></li>
-                        </ul>
-                        <div ui-view="timeLine"></div>
+    <div class="wrapperMid" id="circle_profile">
+        <div class="outer" style="display:block; text-align: center; background:grey; width:30vw;height:30vw;">
+            <div class="inner" style="background-position: center center; display:inline-block;background:lightblue; width:29vw; height:29vw; position:absolute;">
+                <div class="box" style="display:inline-block; position:absolute; top:5vw; right:5vw;">
+                    <h3>Profile</h3>
+                    <div class="innerDiv" style="visibility:visible">
+                        <div class="test" ui-view="mainProfile"></div>
                     </div>
+                </div>
             </div>
         </div>
     </div>
-
-    <div class="wrapper">
+    
+    <div class="wrapper" id="circle_current">
         <div class="outer" style="display:block; text-align: center; background:grey; width:10vw;height:10vw;">
             <div class="inner" style="background-position: center center; display:inline-block;background:lightblue; width:9vw; height:9vw; position:absolute;">
                 <div class="box" style="display:inline-block; position:absolute; top:3vw; right:3vw;">
                     <h3>Where am I now</h3>
                     <div class="innerDiv" style="visibility:hidden">
-                        <div ui-view="currentPosition"></div>
+                        <div class="test" ui-view="currentPosition"></div>
                     </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="wrapper">
-        <div class="outer" style="display:block; text-align: center; background:grey; width:10vw;height:10vw;">
-            <div class="inner" style="background-position: center center; display:inline-block;background:lightblue; width:9vw; height:9vw; position:absolute;">
-                <div class="box" style="display:inline-block; position:absolute; top:3vw; right:3vw;">
-                    <h3>Where I want to go</h3>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="main_timeline" style="background-color:white;width:50vw;height:25vw">
+    <div class="wrapper" id="circle_dream">
+        <div class="outer" style="display:block; text-align: center; background:grey; width:10vw;height:10vw;">
+            <div class="inner" style="background-position: center center; display:inline-block;background:lightblue; width:9vw; height:9vw; position:absolute;">
+                <div class="box" style="display:inline-block; position:absolute; top:3vw; right:3vw;">
+                    <h3>Where I want to go</h3>
+                    <div class="innerDiv" style="visibility:hidden">
+                        <div ui-view="dreamJob"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="main_timeline" style="background-color:white;width:50vw;height:30vw">
         @{Html.RenderAction("TimeLinePartial");}
     </div>
 </div>
@@ -82,6 +78,7 @@
         top: (($(window).height() - $('#main_timeline').height()) / 2),
         zIndex: 50,       
     });
+
 </script>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -97,14 +94,18 @@
             $(this).zoomTo({ duration: 1000, targetsize: 1.0 });
         });
 
+       
+
         $(window).click(function (evt) {         
             evt.stopPropagation();
             $("body").zoomTo({ duration: 1000, targetsize: 1.0 });
         });
 
         $('body').click(function () {
-            $(this).find("h3").css("visibility", "visible");
-            $(this).find(".innerDiv").css("visibility", "hidden");
+            $(this).find("h3").css("visibility", "hidden");
+            $(this).find(".innerDiv").css("visibility", "visible");
+
+
         });
     });
 </script>
@@ -112,6 +113,18 @@
 
 
 
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        $.zoomooz.setup({ nativeanimation: true, debug: false });
+        $(".test").click(function (evt) {
+            if (evt.target !== this)
+                return;
+            evt.stopPropagation();
+            $(this).zoomTo({ duration: 1000, targetsize: 0.3 });
+
+        })
+    });
+</script>*@
 
 
 

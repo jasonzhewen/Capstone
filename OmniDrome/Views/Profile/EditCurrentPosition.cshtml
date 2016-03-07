@@ -1,4 +1,4 @@
-﻿<div>
+﻿<div class="test">
     <table>
         <tr>
             <td>
@@ -46,3 +46,18 @@
 
     </table>
 </div>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.zoomooz.setup({ nativeanimation: true, debug: false });
+        $(".cd-horizontal-timeline").click(function (evt) {
+            if (evt.target !== this)
+                return;
+            evt.stopPropagation();
+            $(this).zoomTo({ duration: 1000, targetsize: 0.6 });
+
+        })
+    });
+</script>

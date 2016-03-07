@@ -1,0 +1,25 @@
+﻿<table ng-show="!isEmpty(DreamJobModel)">
+    
+    <tr>
+        <td>Company Name: </td>
+        <td>{{ DreamJobModel.companyName}}</td>
+    </tr>
+    <tr>
+        <td>Title: </td>
+        <td>{{ DreamJobModel.position }}</td>
+    </tr>
+    <tr>
+        <td>Start Date: </td>
+        <td>{{ DreamJobModel.startDate }}</td>
+    </tr>
+    <tr>
+        <td>Description: </td>
+        <td>{{ DreamJobModel.description }}</td>
+    </tr>
+    <tr>
+        <td><button id="btn_timeline_delete" ng-click="DeleteDreamJob(DreamJobModel.ID)" class="btn btn-primary">Delete</button></td>
+    </tr>
+    
+</table>
+<p ng-show="isEmpty(DreamJobModel)">No dream job is set up Click <a ui-sref="AddDreamJob">here</a> to set your dream job!</p>
+

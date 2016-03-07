@@ -42,3 +42,5 @@
 /// <reference path="jquery.zoomooz.js" />
 /// <reference path="purecssmatrix.js" />
 /// <reference path="sylvester.js" />
+/// <reference path="profile/showdreamjob.js" />
+/// <reference path="profile/adddreamjob.js" />

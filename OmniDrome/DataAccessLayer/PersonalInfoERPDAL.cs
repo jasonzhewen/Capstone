@@ -19,19 +19,19 @@ namespace OmniDrome.DataAccessLayer
         {
             modelBuilder.Entity<PersonalDetails>().ToTable("PersonalDetails");
             modelBuilder.Entity<BackgroundInfo>().ToTable("BackgroundInfoes");
+            modelBuilder.Entity<DreamJob>().ToTable("DreamJobs");
             base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<PersonalDetails> PersonalInfoes { get; set; }
         public DbSet<BackgroundInfo> BackgroundInfoes { get; set; }
+        public DbSet<DreamJob> DreamJobs { get; set; }
 
-
-        public DbSet<MainCategory> MainCategory{ get; set; }
-        public DbSet<Subcategory>Subcategory { get; set; }
-        public DbSet<Duty> Duty { get; set; }
-        public DbSet<Title> Title{ get; set; }
-        public DbSet<Requirement> Requirement { get; set; }
-
+        public DbSet<MainCategory> MainCategories { get; set; }
+        public DbSet<Subcategory> Subcategory { get; set; }
+        public DbSet<Duty> Duties { get; set; }
+        public DbSet<Title> Titles { get; set; }
+        public DbSet<Requirement> Requirements { get; set; }
         public System.Data.Entity.DbSet<OmniDrome.Models.UserInfo> UserInfoes { get; set; }
     }
 }

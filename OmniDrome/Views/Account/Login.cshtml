@@ -1,49 +1,46 @@
 ﻿@using OmniDrome.Models
 @model LoginViewModel
 @{
+
     ViewBag.Title = "Log in";
+    <link rel="shortcut icon" type="image/x-icon" href="~/favicon (1).ico" />
+
 }
 
 @section HeaderSection{
     @Scripts.Render("~/bundles/jqueryui")
     @Styles.Render("~/Content/jqueryui")
+    @Styles.Render("~/Content/mycss")
 }
 
 <div class="row" id="tabs_Login">
 
-    <ul>
-        <li><a href="#tabs-1">LinkedIn Login</a></li>
-        <li><a href="#tabs-2">OmniDrome Login</a></li>
-    </ul>
 
-    <div class="col-md-4" id="tabs-1">
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-        </section>
-    </div>
 
-    <div class="col-md-8" id="tabs-2">
-        <section id="loginForm">
+    <div class="col-md-8">
+        <section id="sidelogin">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                <h4>Use a local account to log in.</h4>
-                <hr />
+
+                <h4 class="headtext">LOGIN TO OMNIDRÖM</h4>
+
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
                     @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
+                    <div class="logintextbox">
                         @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
+                    <div class="logintextbox">
                         @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                     </div>
                 </div>
+
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <div class="checkbox">
@@ -52,21 +49,33 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="Log in" class="btn btn-default" />
                     </div>
                 </div>
+
+
+
                 <p>
                     @Html.ActionLink("Register as a new user", "Register")
                 </p>
                 @* Enable this once you have account confirmation enabled for password reset functionality*@
-                    <p>
-                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                    </p>
+                <p>
+                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                </p>
             }
+            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+
+
         </section>
     </div>
+</div>
+
+<div class="Logo">
+
+    <img id="Logo" src="~/Images/logo_mockup_alto.png " />
 </div>
 
 <script>
@@ -78,12 +87,12 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript">
-    $("#linkedIn_Login_btn")
-        .mouseenter(function () {
-            $(this).attr("src", "@Url.Content("~/Images/Sign_In_Large_Active.png")");
+        $("#linkedIn_Login_btn")
+            .mouseenter(function () {
+                $(this).attr("src", "@Url.Content("~/Images/Sign_In_Large_Active.png")");
             })
-            .mouseout(function () {
-                $(this).attr("src", "@Url.Content("~/Images/Sign_In_Large_Default.png")");
-            });
+                .mouseout(function () {
+                    $(this).attr("src", "@Url.Content("~/Images/Sign_In_Large_Default.png")");
+                });
     </script>
 }

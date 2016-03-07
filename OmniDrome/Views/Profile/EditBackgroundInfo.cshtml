@@ -2,18 +2,18 @@
     <table>
         <tr>
             <td>
-                <strong>Title:</strong>
+                <label class="smallCircle">Title:</label>
             </td>
             <td>
-                <input type="text" class="form-control" ng-model="BackgroundInfoModel.title" />
+                <input type="text" class="form-controll" ng-model="BackgroundInfoModel.title" />
             </td>
         </tr>
         <tr>
             <td>
-                <strong>Type:</strong>
+                <label class="smallCircle">Type:</label>
             </td>
             <td>
-                <select class="form-control" ng-model="BackgroundInfoModel.type">
+                <select class="form-controll" ng-model="BackgroundInfoModel.type">
                     <option value="">--Select --</option>
                     <option ng-repeat="type in Types" value="{{type.Id}}" ng-selected="type.Id == BackgroundInfoModel.type">{{type.Name}}</option>
                 </select>
@@ -21,34 +21,34 @@
         </tr>
         <tr>
             <td>
-                <strong>Start Date:</strong>
+                <label class="smallCircle">Start Date:</label>
             </td>
             <td>
-                <input type="date" class="form-control" ng-model="BackgroundInfoModel.startDate" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <strong>End Date:</strong>
-            </td>
-            <td>
-                <input type="date" class="form-control" ng-model="BackgroundInfoModel.endDate" />
+                <input type="date" class="form-controll" ng-model="BackgroundInfoModel.startDate" />
             </td>
         </tr>
         <tr>
             <td>
-                <strong>Description:</strong>
+                <label class="smallCircle">End Date:</label>
             </td>
             <td>
-                <input type="text" class="form-control" ng-model="BackgroundInfoModel.description" />
+                <input type="date" class="form-controll" ng-model="BackgroundInfoModel.endDate" />
             </td>
         </tr>
         <tr>
             <td>
-                <button type="button" ng-click="UpdateBackgroundInfo();" class="btn btn-primary">Update</button>
+                <label class="smallCircle">Description:</label>
             </td>
             <td>
-                <button type="button" ng-click="Cancel();" class="btn btn-primary">Cancel</button>
+                <input type="text" class="form-controll" ng-model="BackgroundInfoModel.description" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="button" ng-click="UpdateBackgroundInfo();" class="btnn btn-primary">Update</button>
+            </td>
+            <td>
+                <button type="button" ng-click="Cancel();" class="btnn btn-primary">Cancel</button>
             </td>
         </tr>
 

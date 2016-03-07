@@ -1,7 +1,7 @@
 ﻿var personalInfoModule = angular.module('PersonalInfo', ['ui.router']);
 personalInfoModule.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/');
-    
+
     $stateProvider
     .state('ShowInfo', {
         url: '/',
@@ -17,6 +17,10 @@ personalInfoModule.config(['$stateProvider', '$urlRouterProvider', function ($st
             'currentPosition': {
                 templateUrl: '/Profile/CurrentPosition',
                 controller: 'ShowCurrentPositionCtrl'
+            },
+            'dreamJob': {
+                templateUrl: '/Profile/ShowDreamJob',
+                controller: 'ShowDreamJobCtrl'
             }
         }
     })
@@ -35,6 +39,10 @@ personalInfoModule.config(['$stateProvider', '$urlRouterProvider', function ($st
             'currentPosition': {
                 templateUrl: '/Profile/CurrentPosition',
                 controller: 'ShowCurrentPositionCtrl'
+            },
+            'dreamJob': {
+                templateUrl: '/Profile/ShowDreamJob',
+                controller: 'ShowDreamJobCtrl'
             }
         }
     })
@@ -53,6 +61,10 @@ personalInfoModule.config(['$stateProvider', '$urlRouterProvider', function ($st
             'currentPosition': {
                 templateUrl: '/Profile/CurrentPosition',
                 controller: 'ShowCurrentPositionCtrl'
+            },
+            'dreamJob': {
+                templateUrl: '/Profile/ShowDreamJob',
+                controller: 'ShowDreamJobCtrl'
             }
         }
     })
@@ -71,6 +83,10 @@ personalInfoModule.config(['$stateProvider', '$urlRouterProvider', function ($st
             'currentPosition': {
                 templateUrl: '/Profile/CurrentPosition',
                 controller: 'ShowCurrentPositionCtrl'
+            },
+            'dreamJob': {
+                templateUrl: '/Profile/ShowDreamJob',
+                controller: 'ShowDreamJobCtrl'
             }
         }
     })
@@ -89,6 +105,10 @@ personalInfoModule.config(['$stateProvider', '$urlRouterProvider', function ($st
             'currentPosition': {
                 templateUrl: '/Profile/CurrentPosition',
                 controller: 'ShowCurrentPositionCtrl'
+            },
+            'dreamJob': {
+                templateUrl: '/Profile/ShowDreamJob',
+                controller: 'ShowDreamJobCtrl'
             }
         }
     })
@@ -107,6 +127,10 @@ personalInfoModule.config(['$stateProvider', '$urlRouterProvider', function ($st
             'currentPosition': {
                 templateUrl: '/Profile/CurrentPosition',
                 controller: 'ShowCurrentPositionCtrl'
+            },
+            'dreamJob': {
+                templateUrl: '/Profile/ShowDreamJob',
+                controller: 'ShowDreamJobCtrl'
             }
         }
     })
@@ -125,6 +149,10 @@ personalInfoModule.config(['$stateProvider', '$urlRouterProvider', function ($st
             'currentPosition': {
                 templateUrl: '/Profile/CurrentPosition',
                 controller: 'ShowCurrentPositionCtrl'
+            },
+            'dreamJob': {
+                templateUrl: '/Profile/ShowDreamJob',
+                controller: 'ShowDreamJobCtrl'
             }
         }
     })
@@ -143,6 +171,10 @@ personalInfoModule.config(['$stateProvider', '$urlRouterProvider', function ($st
             'currentPosition': {
                 templateUrl: '/Profile/AddCurrentPosition',
                 controller: 'AddCurrentPositionCtrl'
+            },
+            'dreamJob': {
+                templateUrl: '/Profile/ShowDreamJob',
+                controller: 'ShowDreamJobCtrl'
             }
         }
     })
@@ -161,6 +193,75 @@ personalInfoModule.config(['$stateProvider', '$urlRouterProvider', function ($st
             'currentPosition': {
                 templateUrl: '/Profile/EditCurrentPosition',
                 controller: 'EditCurrentPositionCtrl'
+            },
+            'dreamJob': {
+                templateUrl: '/Profile/ShowDreamJob',
+                controller: 'ShowDreamJobCtrl'
+            }
+        }
+    })
+
+    .state('ShowDreamJob', {
+        url: '/ShowDreamJob',
+        views: {
+            'mainProfile': {
+                templateUrl: '/Profile/ShowInfo',
+                controller: 'ShowPersonalInfoCtrl'
+            },
+            'timeLine': {
+                templateUrl: '/Profile/ShowBackgroundInfo',
+                controller: 'ShowBackgroundInfoCtrl'
+            },
+            'currentPosition': {
+                templateUrl: '/Profile/CurrentPosition',
+                controller: 'EditCurrentPositionCtrl'
+            },
+            'dreamJob': {
+                templateUrl: '/Profile/ShowDreamJob',
+                controller: 'ShowDreamJobCtrl'
+            }
+        }
+    })
+
+    .state('EditDreamJob', {
+        url: '/EditDreamJob',
+        views: {
+            'mainProfile': {
+                templateUrl: '/Profile/ShowInfo',
+                controller: 'ShowPersonalInfoCtrl'
+            },
+            'timeLine': {
+                templateUrl: '/Profile/ShowBackgroundInfo',
+                controller: 'ShowBackgroundInfoCtrl'
+            },
+            'currentPosition': {
+                templateUrl: '/Profile/CurrentPosition',
+                controller: 'EditCurrentPositionCtrl'
+            },
+            'dreamJob': {
+                templateUrl: '/Profile/EditDreamJob',
+                controller: 'EditDreamJobCtrl'
+            }
+        }
+    })
+    .state('AddDreamJob', {
+        url: '/AddDreamJob',
+        views: {
+            'mainProfile': {
+                templateUrl: '/Profile/ShowInfo',
+                controller: 'ShowPersonalInfoCtrl'
+            },
+            'timeLine': {
+                templateUrl: '/Profile/ShowBackgroundInfo',
+                controller: 'ShowBackgroundInfoCtrl'
+            },
+            'currentPosition': {
+                templateUrl: '/Profile/CurrentPosition',
+                controller: 'EditCurrentPositionCtrl'
+            },
+            'dreamJob': {
+                templateUrl: '/Profile/GetTitles',
+                controller: 'AddDreamJobCtrl'
             }
         }
     })

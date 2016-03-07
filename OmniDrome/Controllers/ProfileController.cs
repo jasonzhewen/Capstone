@@ -127,16 +127,32 @@ namespace OmniDrome.Controllers
             BackgroundInfoListViewModel backgroundInfoList = new BackgroundInfoListViewModel();
             List<BackgroundInfoViewModel> backgroundInfoes = new List<BackgroundInfoViewModel>();
             List<BackgroundInfo> backInfoes = GetBackgroundInfo(id, isCurrentPosition);
-            foreach (BackgroundInfo bi in backInfoes)
+            if (backInfoes.Count == 0)
             {
-                BackgroundInfoViewModel backgroundInfoView = new BackgroundInfoViewModel();
-                backgroundInfoView.ID = bi.ID;
-                backgroundInfoView.type = bi.type;
-                backgroundInfoView.title = bi.title;
-                backgroundInfoView.duration = bi.startDate.ToString("yyyy-MM-dd") + " - " + bi.endDate.ToString("yyyy-MM-dd");
-                backgroundInfoView.endDate = bi.endDate.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                backgroundInfoView.description = bi.description;
-                backgroundInfoes.Add(backgroundInfoView);
+                var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+                var currentUser = manager.FindById(User.Identity.GetUserId());
+                DateTime registerDate = currentUser.UserInfo.RegisterDate;
+                BackgroundInfoViewModel bi = new BackgroundInfoViewModel();
+                bi.title = "Welcome to OmniDrome";
+                bi.type = 0;
+                bi.duration = registerDate.ToString("yyyy-MM-dd") + " - ";
+                bi.endDate = registerDate.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                bi.description = "You come to us at this day! If you see this, which means you do not have any information with us.";
+                backgroundInfoes.Add(bi);
+            }
+            else
+            {
+                foreach (BackgroundInfo bi in backInfoes)
+                {
+                    BackgroundInfoViewModel backgroundInfoView = new BackgroundInfoViewModel();
+                    backgroundInfoView.ID = bi.ID;
+                    backgroundInfoView.type = bi.type;
+                    backgroundInfoView.title = bi.title;
+                    backgroundInfoView.duration = bi.startDate.ToString("yyyy-MM-dd") + " - " + bi.endDate.ToString("yyyy-MM-dd");
+                    backgroundInfoView.endDate = bi.endDate.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    backgroundInfoView.description = bi.description;
+                    backgroundInfoes.Add(backgroundInfoView);
+                }
             }
             backgroundInfoList.backgroundInfoListViewModel = backgroundInfoes;
             return backgroundInfoList;
@@ -155,32 +171,10 @@ namespace OmniDrome.Controllers
         }
 
         [Authorize]
-        public ActionResult GetBackgroundInfoData()
-        {
-            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-            var currentUser = manager.FindById(User.Identity.GetUserId());
-            int id = currentUser.UserInfo.Id;
-            List<BackgroundInfo> backInfoes = GetBackgroundInfo(id,false);
-            return Json(backInfoes, JsonRequestBehavior.AllowGet);
-        }
-
-        [Authorize]
         public List<BackgroundInfo> GetBackgroundInfo(int? id, Boolean isCurrentPosition)
         {
             BackgroundInfoBusinessLayer bibl = new BackgroundInfoBusinessLayer();
             List<BackgroundInfo> BackgroundInfoes = bibl.GetBackgroundInfoByID(id, isCurrentPosition);
-            if (BackgroundInfoes == null)
-            {
-                var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-                var currentUser = manager.FindById(User.Identity.GetUserId());
-                DateTime registerDate = currentUser.UserInfo.RegisterDate;
-                BackgroundInfo bi = new BackgroundInfo();
-                bi.title = "Welcome to OmniDrome";
-                bi.startDate = registerDate;
-                bi.endDate = registerDate;
-                bi.description = "You come to us at this day! If you see this, which means you do not have any information with us.";
-                BackgroundInfoes.Add(bi);
-            }
             return BackgroundInfoes;
         }
 
@@ -293,6 +287,94 @@ namespace OmniDrome.Controllers
         {
             CurrentPositionBusinessLayer cpbl = new CurrentPositionBusinessLayer();
             cpbl.UpdateCurrentPosition(CurrentPositionClient);
+        }
+
+        //DREAMJOB STARTS HERE
+        //add dream job
+        public ActionResult GetTitles()
+        {
+            return PartialView();
+        }
+
+        public ActionResult GetTenTitles(string searchStringClient)
+        {
+            GovDbBusinessLayer gv = new GovDbBusinessLayer();
+            List<Title> titleList = gv.GetTitles(searchStringClient);
+            if (String.IsNullOrEmpty(searchStringClient))
+            {
+                Title t = new Title();
+                t.Titl = "no title is selected";
+                titleList.Add(t);
+            }
+
+            return Json(titleList, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetSuggestedDuties(int NocCode)
+        {
+            GovDbBusinessLayer gv = new GovDbBusinessLayer();
+            List<Duty> dutyList = gv.GetDutiesForTitle(NocCode);
+            return Json(dutyList, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetRequirements(int NocCode)
+        {
+            GovDbBusinessLayer gv = new GovDbBusinessLayer();
+            List<Requirement> requirementList = gv.GetRequirementsForTitle(NocCode);
+            return Json(requirementList, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public void AddDreamJobDetails(DreamJob DreamJobClient)
+        {
+            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var currentUser = manager.FindById(User.Identity.GetUserId());
+            int id = currentUser.UserInfo.Id;
+            DreamJob dj = new DreamJob();
+            dj.UserInfoID = id;
+            dj.companyName = DreamJobClient.companyName;
+            dj.position = DreamJobClient.position;
+            dj.startDate = DreamJobClient.startDate;
+            dj.description = DreamJobClient.description;
+
+            DreamJobBusinessLayer djBal = new DreamJobBusinessLayer();
+            djBal.InsertDreamJobDetails(dj);
+        }
+
+        //get view of dream job
+        [Authorize]
+        public ActionResult ShowDreamJob()
+        {
+            return PartialView();
+        }
+
+        [Authorize]
+        public ActionResult CtrlGetDreamJob()
+        {
+            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var currentUser = manager.FindById(User.Identity.GetUserId());
+            int id = currentUser.UserInfo.Id;
+            DreamJobBusinessLayer drjobdb = new DreamJobBusinessLayer();
+            return Json(drjobdb.GetDreamJobByID(id), JsonRequestBehavior.AllowGet);
+        }
+
+        //delete dream job
+        [HttpPost]
+        [Authorize]
+        public void DeleteDreamJobInfo(int? id)
+        {
+            DreamJobBusinessLayer drjobdb = new DreamJobBusinessLayer();
+            drjobdb.DeleteDreamJobByID(id);
+        }
+
+        //edit dream job
+        [HttpPost]
+        [Authorize]
+        public void UpdateDreamJob(DreamJob DreamJobClient)
+        {
+            DreamJobBusinessLayer drjobdb = new DreamJobBusinessLayer();
+            drjobdb.UpdateDreamJobById(DreamJobClient);
         }
     }
 }

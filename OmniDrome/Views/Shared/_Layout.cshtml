@@ -3,14 +3,23 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - OmniDrome</title>
+
+
+
+    <link href="~/Content/LoginLayout.css" rel="stylesheet" />
+
+
+    <title>   @ViewBag.Title - OmniDrom</title>
+
+
+    <link href="~/Content/LoginLayout.css" rel="stylesheet" />
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-
+    @Styles.Render("~/Content/mycss")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    
+
     @RenderSection("HeaderSection", false)
 
 </head>
@@ -23,7 +32,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("OmniDrome", "Index", "Profile", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("OmniDröm", "Index", "Profile", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -31,19 +40,27 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
+
+
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - OmniDrome</p>
-        </footer>
+
+    @RenderBody()
+
+
+    <div id="footer">
+
+        &copy; @DateTime.Now.Year - OmniDröm
     </div>
 
-   
+
+
+
     @RenderSection("scripts", false)
 </body>
 </html>
+
+
+

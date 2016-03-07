@@ -2,7 +2,16 @@
 @using OmniDrome.Models
 @model BackgroundInfoListViewModel
 
+    
     <section class="cd-horizontal-timeline">
+        <table style="margin:0 auto">
+            <tr>
+                <td><div style="width:1vw; height:1vw; background-color:blue; float:left;"></div>  Education &nbsp; &nbsp;</td>
+                <td><div style="width:1vw; height:1vw; background-color:red; float:left;"></div>  Intership &nbsp; &nbsp;</td>
+                <td><div style="width:1vw; height:1vw; background-color:yellow; float:left;"></div>  Work Experience &nbsp; &nbsp;</td>
+                <td><div style="width:1vw; height:1vw; background-color:green; float:left;"></div>  Volunteer</td>
+            </tr>
+        </table>
         <div class="timeline">
             <div class="events-wrapper">
                 <div id="tl_nv" class="events">
@@ -33,6 +42,7 @@
                         <p>
                             @itemm.description
                         </p>
+                        <button id="btn_timeline_add" ng-click="AddBackgroundInfo()" class="btn btn-primary">Add New</button>
                         <button id="btn_timeline_edit" ng-click="EditBackgroundInfo(@itemm.ID)" class="btn btn-primary">Edit</button>
                         <button id="btn_timeline_delete" ng-click="DeleteBackgroundInfo(@itemm.ID)" class="btn btn-primary">Delete</button>
                     </li>
@@ -41,7 +51,7 @@
         </div> <!-- .events-content -->
     </section>
 <script>
-    $('#btn_timeline_edit,#btn_timeline_delete').click(function () {
+    $('#btn_timeline_edit,#btn_timeline_delete,#btn_timeline_add').click(function () {
         $('#overlay').remove();
         $('#main_timeline').css("visibility", "hidden");
     })
@@ -61,5 +71,6 @@
         }
     });
 </script>
+
 
 

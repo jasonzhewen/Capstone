@@ -27,6 +27,10 @@ namespace OmniDrome
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
+            bundles.Add(new StyleBundle("~/Content/mycss").Include(
+                  "~/Content/LoginLayout.css"));
+
+
             bundles.Add(new StyleBundle("~/Content/jqueryui").Include(
                       "~/Content/jquery-ui.css"));
 
@@ -53,12 +57,8 @@ namespace OmniDrome
                       "~/Content/themes/profile/Style.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/zoomCircle").Include(
-                      "~/Scripts/sylvester.js",
-                      "~/Scripts/purecssmatrix.js",
-                      "~/Scripts/jquery.animtrans.js",
-                      "~/Scripts/jquery.zoomooz.js",
-                      "~/Scripts/jquery.zoomooz.min.js"));
-            
+                      "~/Scripts/profile/jquery.zoomooz.min.js"));
+
             bundles.Add(new StyleBundle("~/Content/timeline").Include(
                       "~/Content/themes/profile/reset.css",
                       "~/Content/themes/profile/timeLine.css"));
@@ -86,7 +86,9 @@ namespace OmniDrome
                       "~/Scripts/profile/deleteBackgroundInfo.js",
                       "~/Scripts/profile/showCurrentPosition.js",
                       "~/Scripts/profile/addCurrentPosition.js",
-                      "~/Scripts/profile/editCurrentPosition.js"));
+                      "~/Scripts/profile/editCurrentPosition.js",
+                      "~/Scripts/profile/AddDreamJob.js",
+                      "~/Scripts/profile/ShowDreamJob.js"));
         }
     }
 }

@@ -18,12 +18,14 @@ personalInfoModule.controller('ShowBackgroundInfoCtrl', function ($scope, $state
     //    $scope.BackgroundInfoList = data.data;
     //    //console.log(data);
     //});
+    $scope.AddBackgroundInfo = function () {     
+        $state.go('AddBackgroundInfo');
+    };
 
     $scope.EditBackgroundInfo = function (id) {
         //console.log($scope.BackgroundInfoModel);
         personalInfoService.setSharedProperty(id);
         $state.go('EditBackgroundInfo');
-        //alert('jjjjj');
     };
 
     $scope.DeleteBackgroundInfo = function (id) {

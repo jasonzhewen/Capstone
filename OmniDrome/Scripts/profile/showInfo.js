@@ -1,4 +1,4 @@
-﻿personalInfoModule.controller('ShowPersonalInfoCtrl', function ($scope, personalInfoService) {
+﻿personalInfoModule.controller('ShowPersonalInfoCtrl', function ($scope, $state, personalInfoService) {
 
     $scope.PersonalDetailsModel =
         {
@@ -23,6 +23,10 @@
         $scope.PersonalDetailsModel.dateOfBirth = data.data.personalDetailsModel.dateOfBirth;
         $scope.PersonalDetailsModel.imageUrl = data.data.personalDetailsModel.imageUrl;
     });
+
+    $scope.Edit = function () {        
+        $state.go('EditInfo');
+    }
 
     $scope.isEmpty = function (obj) {
         var isEmpty = true;

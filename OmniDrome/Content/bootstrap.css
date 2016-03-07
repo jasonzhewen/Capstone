@@ -311,11 +311,13 @@ html {
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.428571429;
-  color: #333333;
-  background-color: #ffffff;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #333333;
+    background-color: #35624a;
+    
+    
 }
 
 input,
@@ -3182,6 +3184,10 @@ input[type="button"].btn-block {
 .glyphicon-pushpin:before {
   content: "\1f4cc";
 }
+@font-face {
+    font-family: 'Lato-Hairline';
+    src: url('../Resources/Lato-Hairline.ttf') format('truetype');
+}
 
 .glyphicon-paperclip:before {
   content: "\1f4ce";
@@ -3336,11 +3342,16 @@ input[type="button"].btn-block {
   left: auto;
 }
 
+@font-face {
+    font-family: 'CaviarDreams_Bold';
+    src: url('../fonts/CaviarDreams_Bold.ttf') format('truetype');
+}
 .dropup .caret,
 .navbar-fixed-bottom .dropdown .caret {
   border-top: 0 dotted;
   border-bottom: 4px solid #000000;
   content: "";
+   font-family:CaviarDreams_Bold;
 }
 
 .dropup .dropdown-menu,
@@ -3348,6 +3359,7 @@ input[type="button"].btn-block {
   top: auto;
   bottom: 100%;
   margin-bottom: 1px;
+   font-family:CaviarDreams_Bold;
 }
 
 @media (min-width: 768px) {
@@ -4146,6 +4158,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .container > .navbar-collapse {
   margin-right: -15px;
   margin-left: -15px;
+   font-family:CaviarDreams_Bold;
 }
 
 @media (min-width: 768px) {
@@ -4153,6 +4166,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   .container > .navbar-collapse {
     margin-right: 0;
     margin-left: 0;
+     font-family:CaviarDreams_Bold;
   }
 }
 
@@ -4172,6 +4186,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   right: 0;
   left: 0;
   border-width: 0 0 1px;
+
 }
 
 @media (min-width: 768px) {
@@ -4501,7 +4516,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse {
-  background-color: #222222;
+  background-color: black;
   border-color: #080808;
 }
 
@@ -4511,7 +4526,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
-  color: #ffffff;
+  color: #68fc32;
   background-color: transparent;
 }
 
@@ -4525,7 +4540,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
-  color: #ffffff;
+  color: #68fc32;
   background-color: transparent;
 }
 

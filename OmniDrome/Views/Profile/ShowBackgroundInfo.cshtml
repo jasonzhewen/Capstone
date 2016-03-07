@@ -8,9 +8,10 @@
     <button type="button" ng-click="DeleteBackgroundInfo(bi.ID);" class="btn btn-primary">Delete</button>
 </div>*@
 <div>
-    <button type="button" id="btn_viewtl" class="btn btn-primary">View TimeLine</button>
+    <button type="button" id="btn_viewtl" class="btn btn-primary  btnzoom">View TimeLine</button>
 </div>
 <script>
+
     $('#btn_viewtl').click(function () {
         $('#main_timeline').css("visibility", "visible");
         $('<div id="overlay">').css({
@@ -30,3 +31,15 @@
 </script>
         
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.zoomooz.setup({ nativeanimation: true, debug: false });
+        $(".test").click(function (evt) {
+            if (evt.target !== this)
+                return;
+            evt.stopPropagation();
+            $(this).zoomTo({ duration: 1000, targetsize: 0.6 });
+
+        })
+    });
+</script>

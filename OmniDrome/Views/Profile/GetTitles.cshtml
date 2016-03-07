@@ -1,0 +1,43 @@
+﻿
+<div id="MyWizard" class="wizard">
+    <div class="step-content">
+        <div id="step1"><input type="text" ng-model="searchString" /><button id="search" type="button" ng-click="GetJobTitles()">Search</button></div>
+        <br />
+    </div>
+    <div id="step2">
+                <select id="ddl_titles" ng-model="noc" ng-change="getTitleName()">
+        <option value="">Choose title</option>
+        <option data-ng-repeat="title in titleList" value="{{ title.NocCode }}">{{ title.Titl }}  </option>
+    </select>
+
+        @*<select ng-model="noc" ng-change="getTitleName()" ng-options="title as title.Titl for title in titleList track by title">
+            <option value="">Choose title</option>
+            
+        </select>*@
+        <button id="ssss" type="button" ng-click="GetSomeDuties(); GetSomeRequirements()">ssss</button>
+        Duties
+       <ul>
+           <li data-ng-repeat="duty in dutyList">
+               <p>{{duty.Titl}}</p>
+           </li>
+       </ul>
+        Requirements
+        <ul>
+            <li data-ng-repeat="requirement in requirementList">
+                <p>{{requirement.Req}}</p>
+            </li>
+        </ul>
+        </div>
+    <span>Company Name:</span>:
+    <input type="text" class="form-control" ng-model="dreamJobModel.companyName" />
+
+    <span>Start Date:</span>:
+    <input type="date" class="form-control" ng-model="dreamJobModel.startDate" />
+
+    <button type="button" ng-click="AddDreamJobToTable();" class="btn btn-primary">Save</button>
+    <button type="button" ng-click="Cancel();" class="btn btn-primary">Cancel</button>
+
+       </div>
+ 
+
+
