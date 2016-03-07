@@ -1,46 +1,46 @@
 ﻿<div class="test">
-    <table>
+    <table class="tblEditCur">
         <tr>
             <td>
-                <strong>Title:</strong>
+                <label class="smallCircleC">Title: </label>
             </td>
             <td>
-                <input type="text" class="form-control" ng-model="CurrentPositionModel.title" />
+                <input type="text" class="formc-controll" ng-model="CurrentPositionModel.title" />
             </td>
         </tr>
         <tr>
             <td>
-                <strong>Type:</strong>
+                <label class="smallCircleC">Type:</label>
             </td>
             <td>
-                <select class="form-control" ng-model="CurrentPositionModel.type">
-                    <option value="">--Select --</option>
-                    <option ng-repeat="type in Types" value="{{type.Id}}" ng-selected="type.Id == CurrentPositionModel.type">{{type.Name}}</option>
+                <select class="formc-controll" ng-model="CurrentPositionModel.type">
+                    <option value="" style="font-size:1vw;"><p class="formc-control">--Select --</p></option>
+                    <option style="font-size:1vw;" ng-repeat="type in Types" value="{{type.Id}}" ng-selected="type.Id == CurrentPositionModel.type"><p class="formc-control">{{type.Name}}</p></option>
                 </select>
             </td>
         </tr>
         <tr>
             <td>
-                <strong>Start Date:</strong>
+                <label class="smallCircleC">Start Date:</label>
             </td>
             <td>
-                <input type="date" class="form-control" ng-model="CurrentPositionModel.startDate" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <strong>Description:</strong>
-            </td>
-            <td>
-                <input type="text" class="form-control" ng-model="CurrentPositionModel.description" />
+                <input type="date" class="formc-controll" ng-model="CurrentPositionModel.startDate" />
             </td>
         </tr>
         <tr>
             <td>
-                <button type="button" ng-click="UpdateCurrentPosition();" class="btn btn-primary">Update</button>
+                <label class="smallCircleC">Description:</label>
             </td>
             <td>
-                <button type="button" ng-click="Cancel();" class="btn btn-primary">Cancel</button>
+                <input type="text" class="formc-controll" ng-model="CurrentPositionModel.description" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="button" id="btncUpdate" ng-click="UpdateCurrentPosition();" class="btnn btn-primary">Update</button>
+            </td>
+            <td>
+                <button type="button" id="btncCancel" ng-click="Cancel();" class="btnn btn-primary">Cancel</button>
             </td>
         </tr>
 

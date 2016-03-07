@@ -1,0 +1,14 @@
+﻿
+.dashboard { float: left; width: 100%;}
+.dashboard .dashboard3col {width:100%; float:left;}
+.dashboardCol {float:left; width:33%; overflow:hidden; margin:0;}
+
+.dashboardItem { margin:0 10px 10px 0; border:solid 1px #e7e7e7;}
+.dashboardItemHeader { font-size:1.2em; font-weight:bold; padding:10px 15px; background-color:#dbdbdb;}
+.dashboardItemBody { margin:10px; overflow:hidden;}
+.dashboardFooter {clear:both; width:100%; background-color:Red;}
+
+/* ======== Table ======== */
+.tbl { table-layout:auto; border-collapse:collapse; width:100%;}
+.tbl thead th { border-bottom:solid 1px #ededed; background-color:#ededed; padding:5px; text-align:left; color:#9c9c9c; font-size:0.9em; font-weight:normal;}
+.tbl tbody td { border-bottom:solid 1px #ededed; padding:5px; color:#686868; font-size:0.9em}

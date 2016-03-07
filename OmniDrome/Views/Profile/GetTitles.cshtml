@@ -1,43 +1,72 @@
 ﻿
 <div id="MyWizard" class="wizard">
-    <div class="step-content">
-        <div id="step1"><input type="text" ng-model="searchString" /><button id="search" type="button" ng-click="GetJobTitles()">Search</button></div>
-        <br />
-    </div>
-    <div id="step2">
-                <select id="ddl_titles" ng-model="noc" ng-change="getTitleName()">
-        <option value="">Choose title</option>
-        <option data-ng-repeat="title in titleList" value="{{ title.NocCode }}">{{ title.Titl }}  </option>
-    </select>
+    <table style="margin-left:1.5vw;margin-right:0.5vw;">
+        <tr>
+            <td>
+                <input class="formd-controll" type="text" ng-model="searchString" />
+            </td>
+            <td>
+                <button class="btnn btn-primary" id="search" type="button" ng-click="GetJobTitles()">Search</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <select class="formd-controll" id="ddl_titles" ng-model="noc" ng-change="getTitleName()">
+                    <option value="" style="font-size:1vw;">Choose title</option>
+                    <option style="font-size:1vw;" data-ng-repeat="title in titleList" value="{{ title.NocCode }}">{{ title.Titl }}  </option>
+                </select>
+            </td>
+            @*<select ng-model="noc" ng-change="getTitleName()" ng-options="title as title.Titl for title in titleList track by title">
+                    <option value="">Choose title</option>
 
-        @*<select ng-model="noc" ng-change="getTitleName()" ng-options="title as title.Titl for title in titleList track by title">
-            <option value="">Choose title</option>
-            
-        </select>*@
-        <button id="ssss" type="button" ng-click="GetSomeDuties(); GetSomeRequirements()">ssss</button>
-        Duties
-       <ul>
-           <li data-ng-repeat="duty in dutyList">
-               <p>{{duty.Titl}}</p>
-           </li>
-       </ul>
-        Requirements
-        <ul>
-            <li data-ng-repeat="requirement in requirementList">
-                <p>{{requirement.Req}}</p>
-            </li>
-        </ul>
-        </div>
-    <span>Company Name:</span>:
-    <input type="text" class="form-control" ng-model="dreamJobModel.companyName" />
+                </select>*@
+            <td>
+                <button id="ssss" class="btnn btn-primary" type="button" ng-click="GetSomeDuties(); GetSomeRequirements()">Get description</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <lablel class="lblDjD"> Duties: </lablel><br />
+                <ul>
+                    <li data-ng-repeat="duty in dutyList">
+                        <p id="dutylisting">{{duty.Titl}}</p><br />
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <label class="lblDj"> Requirements</label><br />
+                <ul>
+                    <li data-ng-repeat="requirement in requirementList">
+                        <p id="reqlisting">{{requirement.Req}}</p><br />
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="lblDjD"> Company Name: </label>
+            </td>
+            <td>
+                <input type="text" class="formd-controll" ng-model="dreamJobModel.companyName" />
+            </td>
+        </tr>
 
-    <span>Start Date:</span>:
-    <input type="date" class="form-control" ng-model="dreamJobModel.startDate" />
+        <tr>
+            <td>
+                <span><label class="lblDjD"> Start Date:</label></span>:
+            </td>
+            <td>
+                <input type="date" class="formd-controll" ng-model="dreamJobModel.startDate" />
+            </td>
+        </tr>
 
-    <button type="button" ng-click="AddDreamJobToTable();" class="btn btn-primary">Save</button>
-    <button type="button" ng-click="Cancel();" class="btn btn-primary">Cancel</button>
-
-       </div>
- 
-
-
+        <tr>
+            <td>
+                <button type="button" id="drjeditSave" ng-click="AddDreamJobToTable();" class="btnc btn-primary">Save</button>
+            </td>
+            <td>
+                <button type="button" id="drjeditCancel" ng-click="Cancel();" class="btnc btn-primary">Cancel</button>
+            </td>
+        </tr>
+    </table>
+</div>

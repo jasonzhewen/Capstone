@@ -1,0 +1,34 @@
+﻿@model IEnumerable<OmniDrome.Models.BackgroundInfo>
+
+
+<div class="dashboardItem">
+    <div class="dashboardItemHeader">BackGround Informations</div>
+    <div class="dashboardItemBody">
+        <table class="tbl">
+            <thead>
+                <tr>
+                    <th>EMail</th>
+                    <th>Start Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.UserInfo.Email)
+                        </td>
+
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.startDate)
+                        </td>
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

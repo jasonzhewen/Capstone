@@ -44,6 +44,7 @@
     $scope.UpdateCurrentPosition = function () {
         $scope.CurrentPositionModel.isCurrentPosition = true;
         $scope.CurrentPositionModel.startDate = $filter('date')($scope.CurrentPositionModel.startDate, 'yyyy-MM-dd');
+        $scope.CurrentPositionModel.endDate = $filter('date')($scope.CurrentPositionModel.startDate, 'yyyy-MM-dd');
         var editCurrentPosition = personalInfoService.updateCurrentPosition($scope.CurrentPositionModel);
         $state.go('ShowCurrentPosition');
     }

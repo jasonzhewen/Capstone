@@ -1,16 +1,19 @@
-﻿<table class="test" ng-show="!isEmpty(CurrentPositionModel)">
+﻿<table class="showCurPosTable" ng-show="!isEmpty(CurrentPositionModel)">
     <tr>
-        <td colspan="2">{{ CurrentPositionModel.title }}</td>
+        <td><label class="cpLbl">Title:&nbsp;</label></td>
+        <td><label class="cpTxt">{{ CurrentPositionModel.title }}</label></td>
     </tr>
     <tr>
-        <td colspan="2">{{ CurrentPositionModel.startDate }} - Now</td>
+        <td><label class="cpLbl">Start Date:&nbsp;</label></td>
+        <td><label class="cpTxt">{{ CurrentPositionModel.startDate }} - Now</label></td>
     </tr>
     <tr>
-        <td colspan="2">{{ CurrentPositionModel.description }}</td>
+        <td><label class="cpLbl">Description:&nbsp;</label></td>
+        <td><label class="cpTxt">{{ CurrentPositionModel.description }}</label></td>
     </tr>
     <tr>
-        <td><button type="button" ng-click="Edit()" class="btn btn-primary">Edit</button></td>
-        <td><button type="button" ng-click="Done()"  class="btn btn-primary">Finish</button></td>
+        <td><button type="button" id="btncEdit" ng-click="Edit()" class="btnnc btn-primary">Edit</button></td>
+        <td><button type="button" id="btncFinish" ng-click="Done()" class="btnnc btn-primary">Finish</button></td>
     </tr>
 </table>
 <p ng-show="isEmpty(CurrentPositionModel)">There is no data yet. Click <a ui-sref="AddCurrentPosition">here</a> to create your current position!</p>

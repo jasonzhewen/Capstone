@@ -1,0 +1,87 @@
+﻿
+body
+{
+    font:normal 1em Arial;
+    color: #232323;
+    background-color: #fff;
+    margin:0px auto; 
+    padding:0px;
+}
+
+header,
+footer,
+nav,
+section {
+    display: block;
+}
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+
+fieldset 
+{
+    border:1px solid #ddd;
+    padding:0 1.4em 1.4em 1.4em;
+    margin:0 0 1.5em 0;
+}
+
+legend 
+{
+    font-size:1.2em;
+    font-weight: bold;
+}
+
+textarea 
+{
+    min-height: 75px;
+}
+
+.editor-label 
+{
+    margin: 1em 0 0 0;
+}
+
+.editor-field 
+{
+    margin:0.5em 0 0 0;
+}
+
+td{
+    font-style:italic;
+}
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error
+{
+    color: #ff0000;
+}
+
+.field-validation-valid
+{
+    display: none;
+}
+
+.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors
+{
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid
+{
+    display: none;
+}
+
+
+.pageHeader {height:20px; background-color:#056cd5; padding:10px 10px; margin-bottom:10px; color:black; position:relative;}
+.pageHeader h1{font:normal 1.2em Arial; color:black; margin:0px; padding:0px;}
+.pageHeader .platformular {position:absolute; top:10px; right:10px;}
+.pageBody {margin:0 10px;}
+.pageFooter {clear:both; padding-top:10px; width:100%; text-align:center; font-size:0.8em; color:#686868; margin:25px 0 0 0; border-top:solid 1px #e7e7e7;}

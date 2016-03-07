@@ -1,0 +1,43 @@
+﻿
+
+
+ 
+    <script src="@(Url.Content("~/Scripts/jquery-1.10.2.min.js"))" type="text/javascript"></script>
+
+    <link href="@(Url.Content("~/Content/CssForDashBoard.css"))" rel="stylesheet" type="text/css" />
+    <link href="@(Url.Content("~/Content/dashboard.css"))" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+
+<body>
+    
+    <div class="pageBody">
+        <div class="dashboard">
+            <div class="dashboard3Col">
+                <div class="dashboardCol">
+                    @{ Html.RenderAction("DashBoard_Users", "DBoard");}
+
+                    @*@{ Html.RenderAction("DashBoardItem_SalesPie", "DBoard");}*@
+
+                </div>
+                <div class="dashboardCol">
+                    @{ Html.RenderAction("DashboardItem_SalesPie", "DBoard");}
+
+                   
+                   
+                   
+
+                </div>
+                <div class="dashboardCol">
+                    @{Html.RenderAction("UserInfoTable","DBoard");}
+
+                    <div class="dashboardFooter"></div>
+
+                </div>
+               
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

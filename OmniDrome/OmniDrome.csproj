@@ -186,6 +186,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DBoardController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="DataAccessLayer\PersonalInfoERPDAL.cs" />
@@ -233,6 +234,8 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CssForDashBoard.css" />
+    <Content Include="Content\dashboard.css" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\LoginLayout.css" />
     <Content Include="Content\themes\base\accordion.css" />
@@ -318,6 +321,8 @@
     <Content Include="fonts\CaviarDreams_Bold.ttf" />
     <Content Include="fonts\CaviarDreams_BoldItalic.ttf" />
     <Content Include="fonts\CaviarDreams_Italic.ttf" />
+    <Content Include="fonts\Lato-Medium.ttf" />
+    <Content Include="fonts\Lato-MediumItalic.ttf" />
     <None Include="Properties\PublishProfiles\od.pubxml" />
     <None Include="Properties\PublishProfiles\thezhewen.com - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\zhewensun.co.nf - Web Deploy %282%29.pubxml" />
@@ -1167,6 +1172,14 @@
     <Content Include="Views\Profile\EditCurrentPosition.cshtml" />
     <Content Include="Views\Profile\GetTitles.cshtml" />
     <Content Include="Views\Profile\ShowDreamJob.cshtml" />
+    <Content Include="Views\DBoard\DashboardItem_SalesPie.cshtml" />
+    <Content Include="Views\DBoard\DashBoard_Users.cshtml" />
+    <Content Include="Views\DBoard\Details.cshtml" />
+    <Content Include="Views\DBoard\Index.cshtml" />
+    <Content Include="Views\DBoard\MyChartOwn.cshtml" />
+    <Content Include="Views\DBoard\SearchForUser.cshtml" />
+    <Content Include="Views\DBoard\UserInDB.cshtml" />
+    <Content Include="Views\DBoard\UserInfoTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

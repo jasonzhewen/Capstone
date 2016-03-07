@@ -84,7 +84,7 @@ namespace OmniDrome.Models
         public List<Requirement>GetRequirementsForTitle(int NocCode)
         {
             var result = db.Requirements
-                         .Where(r => r.NocCode == NocCode);
+                         .Where(r => r.NocCode == NocCode).Take(7);
 
             foreach(Requirement req in result)
             {

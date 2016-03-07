@@ -1,0 +1,75 @@
+﻿@model IEnumerable<OmniDrome.Models.PersonalDetails>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserInfo.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.firstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contactNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.profession)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.currentCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.currentCountry)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateOfBirth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.imageUrl)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserInfo.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.firstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.contactNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.profession)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.currentCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.currentCountry)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dateOfBirth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.imageUrl)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

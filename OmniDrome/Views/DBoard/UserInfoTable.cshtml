@@ -1,0 +1,38 @@
+﻿@model IEnumerable<OmniDrome.Models.UserInfo>
+
+
+<div class="dashboardItem">
+    <div class="dashboardItemHeader">New Users</div>
+    <div class="dashboardItemBody">
+        <table class="tbl">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Date of Registration</th>
+                </tr>
+                
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td style="color:black">
+                            @Html.DisplayFor(modelItem => item.RegisterDate)
+                        </td>
+                        <td>
+
+                            @Html.ActionLink("Details", "Details", new { id = item.Id })
+
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
