@@ -26,6 +26,33 @@
             </div>
         </div>
     </div>
+
+    <div class="wrapper" id="circle_current" style="position:absolute; left:27vw;">
+        <div class="outer" style="display:block; text-align: center; background:grey; width:10vw;height:10vw;">
+            <div class="inner" style="background-position: center center; display:inline-block;background:lightblue; width:9vw; height:9vw; position:absolute;">
+                <div class="box" style="display:inline-block; position:absolute; top:3vw; right:3vw;">
+                    <h3>Where am I now</h3>
+                    <div class="innerDiv" style="visibility:hidden">
+                        <div class="test" ui-view="currentPosition"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper" id="circle_dream" style="position:absolute; left:63vw;">
+        <div class="outer" style="display:block; text-align: center; background:grey; width:10vw;height:10vw;">
+            <div class="inner" style="background-position: center center; display:inline-block;background:lightblue; width:9vw; height:9vw; position:absolute;">
+                <div class="box" style="display:inline-block; position:absolute; top:3vw; right:3vw;">
+                    <h3>Where I want to go</h3>
+                    <div class="innerDiv" style="visibility:hidden">
+                        <div ui-view="dreamJob"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="wrapperMid" id="circle_profile">
         <div class="outer" style="display:block; text-align: center; background:grey; width:30vw;height:30vw;">
             <div class="inner" style="background-position: center center; display:inline-block;background:lightblue; width:29vw; height:29vw; position:absolute;">
@@ -39,31 +66,7 @@
         </div>
     </div>
     
-    <div class="wrapper" id="circle_current">
-        <div class="outer" style="display:block; text-align: center; background:grey; width:10vw;height:10vw;">
-            <div class="inner" style="background-position: center center; display:inline-block;background:lightblue; width:9vw; height:9vw; position:absolute;">
-                <div class="box" style="display:inline-block; position:absolute; top:3vw; right:3vw;">
-                    <h3>Where am I now</h3>
-                    <div class="innerDiv" style="visibility:hidden">
-                        <div class="test" ui-view="currentPosition"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="wrapper" id="circle_dream">
-        <div class="outer" style="display:block; text-align: center; background:grey; width:10vw;height:10vw;">
-            <div class="inner" style="background-position: center center; display:inline-block;background:lightblue; width:9vw; height:9vw; position:absolute;">
-                <div class="box" style="display:inline-block; position:absolute; top:3vw; right:3vw;">
-                    <h3>Where I want to go</h3>
-                    <div class="innerDiv" style="visibility:hidden">
-                        <div ui-view="dreamJob"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
     
     <div id="main_timeline" style="background-color:white;width:50vw;height:30vw">
         @{Html.RenderAction("TimeLinePartial");}
@@ -96,9 +99,11 @@
 
        
 
-        $(window).click(function (evt) {         
-            evt.stopPropagation();
-            $("body").zoomTo({ duration: 1000, targetsize: 1.0 });
+        $(window).click(function (evt) {
+            if (evt.target.tagName.toLowerCase() !== 'input' && evt.target.tagName.toLowerCase() !== 'select') {
+                evt.stopPropagation();
+                $("body").zoomTo({ duration: 1000, targetsize: 1.0 });
+            };
         });
 
         $('body').click(function () {
