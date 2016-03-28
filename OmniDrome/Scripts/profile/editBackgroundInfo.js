@@ -38,7 +38,10 @@ personalInfoModule.controller('EditBackgroundInfoCtrl', function ($scope, $filte
         $scope.BackgroundInfoModel.startDate = $filter('date')($scope.BackgroundInfoModel.startDate, 'yyyy-MM-dd');
         $scope.BackgroundInfoModel.endDate = $filter('date')($scope.BackgroundInfoModel.endDate, 'yyyy-MM-dd');
         var editBackgroundInfo = personalInfoService.updateBackgroundInfo($scope.BackgroundInfoModel);
-        $state.go('ShowCurrentPosition');
+        editBackgroundInfo.then(function (mess) {
+            $state.go('ShowInfo');
+        })
+        
     }
 
     $scope.Cancel = function () {

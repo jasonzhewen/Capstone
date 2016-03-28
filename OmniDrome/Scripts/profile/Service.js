@@ -67,7 +67,7 @@
             dataType: 'json',
             //contentType: 'application/json',
         });
-        //return ServerData;
+        return ServerData;
     }
 
     this.deleteBackgroundInfo = function (infoID) {
@@ -93,7 +93,7 @@
             dataType: 'json',
             //contentType: 'application/json',
         });
-        //return ServerData;
+        return ServerData;
     }
 
     this.updateCurrentPosition = function (BackgroundInfo) {
@@ -104,7 +104,7 @@
             dataType: 'json',
             //contentType: 'application/json',
         });
-        //return ServerData;
+        return ServerData;
     }
 
     this.getJobTitles = function (searchString) {

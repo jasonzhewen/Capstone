@@ -1,5 +1,5 @@
-﻿<div class="test">
-    <table class="tblEditCur">
+﻿<div style="position:absolute;left:0.5vw;top:2vw;">
+    <table>
         <tr>
             <td>
                 <label class="smallCircleC">Title: </label>
@@ -35,21 +35,14 @@
                 <input type="text" class="formc-controll" ng-model="CurrentPositionModel.description" />
             </td>
         </tr>
-        <tr>
-            <td>
-                <button type="button" id="btncUpdate" ng-click="UpdateCurrentPosition();" class="btnn btn-primary">Update</button>
-            </td>
-            <td>
-                <button type="button" id="btncCancel" ng-click="Cancel();" class="btnn btn-primary">Cancel</button>
-            </td>
-        </tr>
-
     </table>
+    <button style="margin-top:0.5vw;" type="button" ng-click="UpdateCurrentPosition();" class="btnn btn-primary">Update</button>
+    <button style="margin-top:0.5vw;" type="button" ng-click="Cancel();" class="btnn btn-primary">Cancel</button>
 </div>
 
 
 
-<script type="text/javascript">
+@*<script type="text/javascript">
     $(document).ready(function () {
         $.zoomooz.setup({ nativeanimation: true, debug: false });
         $(".cd-horizontal-timeline").click(function (evt) {
@@ -60,4 +53,4 @@
 
         })
     });
-</script>
+</script>*@

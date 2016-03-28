@@ -44,3 +44,4 @@
 /// <reference path="sylvester.js" />
 /// <reference path="profile/showdreamjob.js" />
 /// <reference path="profile/adddreamjob.js" />
+/// <reference path="jquery.steps.js" />

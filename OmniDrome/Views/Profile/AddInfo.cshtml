@@ -1,82 +1,74 @@
-﻿<div>
+﻿<div style="position:absolute;left:2.5vw;top:2vw;">
     <table>
         <tr>
             <td>
-                <strong>Head Image:</strong>
+                <label class="bigCircleT">Head Image:</label>
             </td>
             <td>
-                <input type="file" class="form-control" ng-model="PersonalDetailsModel.imageUrl" />
+                <input type="file" class="formi-control" ng-model="PersonalDetailsModel.imageUrl" />
             </td>
         </tr>
 
         <tr>
             <td>
-                <strong>First Name:</strong>
+                <label class="bigCircleT">First Name:</label>
             </td>
             <td>
-                <input type="text" class="form-control" ng-model="PersonalDetailsModel.firstName" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <strong>Last Name:</strong>
-            </td>
-            <td>
-                <input type="text" class="form-control" ng-model="PersonalDetailsModel.lastName" />
+                <input type="text" class="formi-control" ng-model="PersonalDetailsModel.firstName" />
             </td>
         </tr>
         <tr>
             <td>
-                <strong>Contact Number:</strong>
+                <label class="bigCircleT">Last Name:</label>
             </td>
             <td>
-                <input type="text" class="form-control" ng-model="PersonalDetailsModel.contactNumber" />
+                <input type="text" class="formi-control" ng-model="PersonalDetailsModel.lastName" />
             </td>
         </tr>
         <tr>
             <td>
-                <strong>Profession:</strong>
+                <label class="bigCircleT">Contact Number:</label>
             </td>
             <td>
-                <input type="text" class="form-control" ng-model="PersonalDetailsModel.profession" />
+                <input type="text" class="formi-control" ng-model="PersonalDetailsModel.contactNumber" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label class="bigCircleT">Profession:</label>
+            </td>
+            <td>
+                <input type="text" class="formi-control" ng-model="PersonalDetailsModel.profession" />
             </td>
         </tr>
 
         <tr>
             <td>
-                <strong>Current City:</strong>
+                <label class="bigCircleT">Current City:</label>
             </td>
             <td>
-                <input type="text" class="form-control" ng-model="PersonalDetailsModel.currentCity" />
+                <input type="text" class="formi-control" ng-model="PersonalDetailsModel.currentCity" />
             </td>
         </tr>
 
         <tr>
             <td>
-                <strong>Current Country:</strong>
+                <label class="bigCircleT">Current Country:</label>
             </td>
             <td>
-                <input type="text" class="form-control" ng-model="PersonalDetailsModel.currentCountry" />
+                <input type="text" class="formi-control" ng-model="PersonalDetailsModel.currentCountry" />
             </td>
         </tr>
 
         <tr>
             <td>
-                <strong>Date of Birth:</strong>
+                <label class="bigCircleT">Date Of Birth:</label>
             </td>
             <td>
-                <input type="date" class="form-control" ng-model="realdate" />
+                <input type="date" class="formi-control" ng-model="realdate" />
             </td>
         </tr>
-
-        <tr>
-            <td>
-            </td>
-            <td>
-                <button type="button" ng-click="AddPersonalInfo();" class="btn btn-primary">Save</button>
-                <button type="button" ng-click="Cancel();" class="btn btn-primary">Cancel</button>
-            </td>
-        </tr>
-
     </table>
+    <button type="button" ng-click="AddPersonalInfo();" class="btnnn btn-primary">Save</button>
+    <button type="button" ng-click="Cancel();" class="btnnn btn-primary">Cancel</button>
 </div>

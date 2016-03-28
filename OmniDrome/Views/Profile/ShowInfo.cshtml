@@ -1,19 +1,18 @@
-﻿<div ng-show="!isEmpty(PersonalDetailsModel)">
+﻿<div style="position:absolute; top:3vw;left:4.5vw;" ng-show="!isEmpty(PersonalDetailsModel)">
     <table>
         <tr>
-            <td><img alt="No Image" style="width:20vw; height:15vw;" ng-src="@Url.Content("{{ PersonalDetailsModel.imageUrl }}")" /></td>
+            <td><img alt="No Image" style="width:8vw; height:8vw;" ng-src="@Url.Content("{{ PersonalDetailsModel.imageUrl }}")" /></td>
         </tr>
         <tr>
-            <td>{{ PersonalDetailsModel.firstName + " " +  PersonalDetailsModel.lastName }}</td>
+            <td><p style="font-size:2vw;">{{ PersonalDetailsModel.firstName + " " +  PersonalDetailsModel.lastName }}</p></td>
         </tr>
-        <tr></tr>
         <tr>
-            <td>{{ PersonalDetailsModel.profession }}</td>
+            <td><p style="font-size:1vw;">{{ PersonalDetailsModel.profession }}</p></td>
         </tr>
     </table>
-    <button type="button" ng-click="Edit();" class="btn btn-primary">Edit</button>
+    <button type="button" ng-click="Edit();" class="btnnn btn-primary">Edit</button>
 </div>
-<p ng-show="isEmpty(PersonalDetailsModel)">There is no profile yet. Click <a ui-sref="AddInfo">here</a> to create your own profile!</p>
+<p class="noDataBig" ng-show="isEmpty(PersonalDetailsModel)">There is no profile yet. Click <a ui-sref="AddInfo">here</a> to create your own profile!</p>
 
 
 

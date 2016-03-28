@@ -1,26 +1,23 @@
-﻿<table style="margin-top:1.5vw; margin-right:1.5vw; " ng-show="!isEmpty(DreamJobModel)">
-
-    <tr>
-        <td><label class="djLbl" >Company Name:</label> </td>
-        <td><label class="cpTxt">{{ DreamJobModel.companyName}}</label></td>
-    </tr>
-    <tr>
-        <td><label class="djLbl">Title: </label></td>
-        <td><label class="cpTxt">{{ DreamJobModel.position }}</label></td>
-    </tr>
-    <tr>
-        <td><label class="djLbl">Start Date: </label></td>
-        <td><label class="djTxt">{{ DreamJobModel.startDate }}</label></td>
-    </tr>
-    <tr>
-        <td><label class="djLbl">Description: </label></td>
-        <td><label id="drjDesc">{{ DreamJobModel.description }}</label></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td><button id="btnDremJobdelete" ng-click="DeleteDreamJob(DreamJobModel.ID)" class="btn btn-primary">Delete</button></td>
-    </tr>
-
-</table>
-<p ng-show="isEmpty(DreamJobModel)" style="position: absolute;top: 0vw;left: 1vw; right:2vw;font-size: 0.7vw;">No dream job is set up Click <a ui-sref="AddDreamJob">here</a> to set your dream job!</p>
+﻿<div ng-show="!isEmpty(DreamJobModel)" style="position:absolute;left:1vw;top:1.5vw;">
+    <table>
+        <tr>
+            <td><label class="smallCircleCC">Company:</label> </td>
+            <td><label class="smallCircleCC">{{ DreamJobModel.companyName}}</label></td>
+        </tr>
+        <tr>
+            <td><label class="smallCircleCC">Title:</label></td>
+            <td><label class="smallCircleCC">{{ DreamJobModel.position }}</label></td>
+        </tr>
+        <tr>
+            <td><label class="smallCircleCC">Start Date:</label></td>
+            <td><label class="smallCircleCC">{{ DreamJobModel.startDate }}</label></td>
+        </tr>
+        <tr>
+            <td><label class="smallCircleCC" style="margin-bottom:1.3vw;">Description:&nbsp;</label></td>
+            <td><label class="smallCircleCC" style="text-align:left;">{{ DreamJobModel.description }}</label></td>
+        </tr>
+    </table>
+    <button ng-click="DeleteDreamJob(DreamJobModel.ID)" class="btnn btn-primary">Delete</button>
+</div>
+<p ng-show="isEmpty(DreamJobModel)" class="noData">No dream job is set up Click <a ui-sref="AddDreamJob">here</a> to set your dream job!</p>
 

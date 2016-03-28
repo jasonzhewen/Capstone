@@ -61,7 +61,7 @@ namespace OmniDrome.Models
         {
 
             var result = db.Duties
-                    .Where(b => b.NocCode == NocCode);
+                    .Where(b => b.NocCode == NocCode).Take(2);
 
 
             foreach (Duty duty in result)
@@ -84,7 +84,7 @@ namespace OmniDrome.Models
         public List<Requirement>GetRequirementsForTitle(int NocCode)
         {
             var result = db.Requirements
-                         .Where(r => r.NocCode == NocCode).Take(7);
+                         .Where(r => r.NocCode == NocCode).Take(1);
 
             foreach(Requirement req in result)
             {

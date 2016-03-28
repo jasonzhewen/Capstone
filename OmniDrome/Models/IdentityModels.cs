@@ -34,6 +34,8 @@ namespace OmniDrome.Models
         public virtual ICollection<BackgroundInfo> BackgroundInfo { get; set; }
         public virtual ICollection<DreamJob> DreamJob { get; set; }
         public virtual ICollection<MySkills> MySkills { get; set; }
+        public virtual ICollection<Friend> Friend { get; set; }
+        public virtual ICollection<Post> Post { get; set; }
         //public virtual UserInfo UserInfo { get; set; }
     }
 

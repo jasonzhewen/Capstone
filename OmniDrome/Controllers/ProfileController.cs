@@ -272,6 +272,7 @@ namespace OmniDrome.Controllers
             int id = currentUser.UserInfo.Id;
             BackgroundInfo bi = new BackgroundInfo();
             bi.UserInfoID = id;
+            bi.type = BackgroundInfoClient.type;
             bi.title = BackgroundInfoClient.title;
             bi.endDate = new DateTime(2013,02,08);
             bi.startDate = BackgroundInfoClient.startDate;

@@ -1,20 +1,22 @@
-﻿<table class="showCurPosTable" ng-show="!isEmpty(CurrentPositionModel)">
-    <tr>
-        <td><label class="cpLbl">Title:&nbsp;</label></td>
-        <td><label class="cpTxt">{{ CurrentPositionModel.title }}</label></td>
-    </tr>
-    <tr>
-        <td><label class="cpLbl">Start Date:&nbsp;</label></td>
-        <td><label class="cpTxt">{{ CurrentPositionModel.startDate }} - Now</label></td>
-    </tr>
-    <tr>
-        <td><label class="cpLbl">Description:&nbsp;</label></td>
-        <td><label class="cpTxt">{{ CurrentPositionModel.description }}</label></td>
-    </tr>
-    <tr>
-        <td><button type="button" id="btncEdit" ng-click="Edit()" class="btnnc btn-primary">Edit</button></td>
-        <td><button type="button" id="btncFinish" ng-click="Done()" class="btnnc btn-primary">Finish</button></td>
-    </tr>
-</table>
-<p ng-show="isEmpty(CurrentPositionModel)">There is no data yet. Click <a ui-sref="AddCurrentPosition">here</a> to create your current position!</p>
+﻿<div ng-show="!isEmpty(CurrentPositionModel)" style="position:absolute;left:2vw;top:2vw;">
+    <table class="showCurPosTable">
+        <tr>
+            <td><label class="cpLbl">Title:&nbsp;</label></td>
+            <td><label class="cpTxt">{{ CurrentPositionModel.title }}</label></td>
+        </tr>
+        <tr>
+            <td><label class="cpLbl">Start Date:&nbsp;</label></td>
+            <td><label class="cpTxt">{{ CurrentPositionModel.startDate }} - Now</label></td>
+        </tr>
+        <tr>
+            <td><label class="cpLbl">Description:&nbsp;</label></td>
+            <td><label class="cpTxt">{{ CurrentPositionModel.description }}</label></td>
+        </tr>
+        <tr>
+            <td><button type="button" id="btncEdit" ng-click="Edit()" class="btnnc btn-primary">Edit</button></td>
+            <td><button type="button" id="btncFinish" ng-click="Done()" class="btnnc btn-primary">Finish</button></td>
+        </tr>
+    </table>
+</div>
+<p class="noData" ng-show="isEmpty(CurrentPositionModel)">There is no data yet. Click <a ui-sref="AddCurrentPosition">here</a> to create your current position!</p>
 

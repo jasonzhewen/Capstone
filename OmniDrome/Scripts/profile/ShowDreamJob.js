@@ -10,8 +10,7 @@
       };
 
     var GetDJInfo = personalInfoService.getDreamJobInfo();
-    GetDJInfo.then(function (data) {
-        
+    GetDJInfo.then(function (data) {     
         if (data.data !== "") {
             $scope.DreamJobModel.ID = data.data.ID;
             $scope.DreamJobModel.companyName = data.data.companyName;
@@ -20,7 +19,7 @@
             $scope.DreamJobModel.startDate = $filter('date')(new Date(parseInt(data.data.startDate.substr(6))), "yyyy-MM-dd");
             $scope.DreamJobModel.UserInfoID = data.data.UserInfoID;
         }
-        console.log($scope.isEmpty($scope.DreamJobModel));
+        //console.log($scope.isEmpty($scope.DreamJobModel));
     });
     //$filter('date')(new Date(parseInt(data.data.startDate.substr(6))), "yyyy-MM-dd");
    // $filter('date')(new Date(), "yyyy-MM-dd");
@@ -35,11 +34,10 @@
         return isEmpty;
     };
 
-
-
-
     $scope.DeleteDreamJob = function (dreamjobinfoID) {
-        personalInfoService.deleteDreamJob(dreamjobinfoID);
-        $state.go('ShowDreamJob');
+        var dD = personalInfoService.deleteDreamJob(dreamjobinfoID);
+        dD.then(function (mess) {
+            $state.go('ShowInfo');
+        })
     };
 });

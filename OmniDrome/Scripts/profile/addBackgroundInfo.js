@@ -21,7 +21,7 @@
     $scope.AddBackgroundInfo = function () {
         //$scope.CurrentPositionModel.startDate = $filter('date')(new Date($scope.CurrentPositionModel.startDate), "yyyy-MM-dd");
         personalInfoService.addBackgroundInfo($scope.BackgroundInfoModel);
-        $state.go('ShowBackgroundInfo');
+        $state.go('ShowInfo');
     }
 
     $scope.Cancel = function () {

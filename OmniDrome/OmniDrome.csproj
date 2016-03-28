@@ -205,6 +205,10 @@
     <Compile Include="Migrations\201602250407338_gvdb.Designer.cs">
       <DependentUpon>201602250407338_gvdb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603281554161_socialNetWork.cs" />
+    <Compile Include="Migrations\201603281554161_socialNetWork.Designer.cs">
+      <DependentUpon>201603281554161_socialNetWork.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BackgroundInfo.cs" />
@@ -213,10 +217,12 @@
     <Compile Include="Models\DreamJob.cs" />
     <Compile Include="Models\DreamJobBusinessLayer.cs" />
     <Compile Include="Models\Duty.cs" />
+    <Compile Include="Models\Friend.cs" />
     <Compile Include="Models\GovDbBusinessLayer.cs" />
     <Compile Include="Models\MySkills.cs" />
     <Compile Include="Models\PersonalDetails.cs" />
     <Compile Include="Models\PersonalDetailsBusinessLayer.cs" />
+    <Compile Include="Models\Post.cs" />
     <Compile Include="Models\Requirement.cs" />
     <Compile Include="Models\Subcategory.cs" />
     <Compile Include="Models\Title.cs" />
@@ -272,6 +278,9 @@
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Content\themes\img\cd-arrow.svg" />
+    <Content Include="Content\themes\profile\jquery.steps.css" />
+    <Content Include="Content\themes\profile\steps.css" />
+    <Content Include="Content\themes\profile\normalize.css" />
     <Content Include="Content\themes\profile\pastCircle.css" />
     <Content Include="Content\themes\profile\Profile.css" />
     <Content Include="Content\themes\profile\reset.css" />
@@ -284,7 +293,7 @@
     <Content Include="Images\Ambox_clock.png" />
     <Content Include="Images\login.png" />
     <Content Include="Images\logo_mockup_alto.png" />
-    <Content Include="Images\PersonalImages\john.png" />
+    <Content Include="Images\PersonalImages\john.jpg" />
     <Content Include="Images\PersonalImages\no-image.png" />
     <Content Include="Images\Sign_In_Large_Default.png" />
     <Content Include="Scripts\angular-animate.js" />
@@ -1091,6 +1100,8 @@
     <Content Include="Scripts\jquery-ui-1.11.4.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
     <Content Include="Scripts\jquery.animtrans.js" />
+    <Content Include="Scripts\jquery.steps.js" />
+    <Content Include="Scripts\jquery.steps.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -1203,6 +1214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602250407338_gvdb.resx">
       <DependentUpon>201602250407338_gvdb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603281554161_socialNetWork.resx">
+      <DependentUpon>201603281554161_socialNetWork.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,50 +1,51 @@
-﻿
-<div id="MyWizard" class="wizard">
+﻿<div style="position:absolute;top:1.5vw;">
     <table style="margin-left:1.5vw;margin-right:0.5vw;">
         <tr>
             <td>
-                <input class="formd-controll" type="text" ng-model="searchString" />
+                <label class="smallCircleCC">Search: </label>
             </td>
             <td>
-                <button class="btnn btn-primary" id="search" type="button" ng-click="GetJobTitles()">Search</button>
+                <input class="formd-controll" type="text" ng-model="searchString" ng-change="GetJobTitles()" />
             </td>
         </tr>
         <tr>
             <td>
-                <select class="formd-controll" id="ddl_titles" ng-model="noc" ng-change="getTitleName()">
+                <label class="smallCircleCC">Job Title: </label>
+            </td>
+            <td>
+                <select class="formd-controll" id="ddl_titles" ng-model="noc" ng-change="getTitleName();GetSomeDuties(); GetSomeRequirements()">
                     <option value="" style="font-size:1vw;">Choose title</option>
                     <option style="font-size:1vw;" data-ng-repeat="title in titleList" value="{{ title.NocCode }}">{{ title.Titl }}  </option>
                 </select>
             </td>
-            @*<select ng-model="noc" ng-change="getTitleName()" ng-options="title as title.Titl for title in titleList track by title">
-                    <option value="">Choose title</option>
-
-                </select>*@
-            <td>
-                <button id="ssss" class="btnn btn-primary" type="button" ng-click="GetSomeDuties(); GetSomeRequirements()">Get description</button>
-            </td>
         </tr>
         <tr>
+            <td style="padding-top:0.5vw">
+                <lablel class="smallCircleCC"> Duties: </lablel>
+            </td>
             <td>
-                <lablel class="lblDjD"> Duties: </lablel><br />
                 <ul>
                     <li data-ng-repeat="duty in dutyList">
-                        <p id="dutylisting">{{duty.Titl}}</p><br />
+                        <label class="smallCircleCCC">{{duty.Titl}}</label>
                     </li>
                 </ul>
             </td>
+        </tr>
+        <tr>
+            <td style="padding-top:0.5vw; padding-bottom:0.5vw">
+                <label class="smallCircleCC"> Requirements:</label>
+            </td>
             <td>
-                <label class="lblDj"> Requirements</label><br />
                 <ul>
                     <li data-ng-repeat="requirement in requirementList">
-                        <p id="reqlisting">{{requirement.Req}}</p><br />
+                        <label class="smallCircleCCC">{{requirement.Req}}</label>
                     </li>
                 </ul>
             </td>
         </tr>
         <tr>
             <td>
-                <label class="lblDjD"> Company Name: </label>
+                <label class="smallCircleCC"> Company Name: </label>
             </td>
             <td>
                 <input type="text" class="formd-controll" ng-model="dreamJobModel.companyName" />
@@ -53,7 +54,7 @@
 
         <tr>
             <td>
-                <span><label class="lblDjD"> Start Date:</label></span>:
+                <span><label class="smallCircleCC"> Start Date:</label></span>
             </td>
             <td>
                 <input type="date" class="formd-controll" ng-model="dreamJobModel.startDate" />
@@ -61,7 +62,7 @@
         </tr>
 
         <tr>
-            <td>
+            <td style="padding-top:0.3vw;">
                 <button type="button" id="drjeditSave" ng-click="AddDreamJobToTable();" class="btnc btn-primary">Save</button>
             </td>
             <td>
@@ -70,3 +71,12 @@
         </tr>
     </table>
 </div>
+
+@*<script>
+    $("#example-basic").steps({
+        headerTag: "h3",
+        bodyTag: "section",
+        transitionEffect: "slideLeft",
+        autoFocus: true
+    });
+</script>*@

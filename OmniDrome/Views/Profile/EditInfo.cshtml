@@ -1,83 +1,72 @@
-﻿<div style="height:40px">
+﻿<div style="position:absolute;left:2.5vw;top:2vw;">
     <table ng-show ="!isEmpty(PersonalDetailsModel)">
         <tr>
             <td>
-                <strong>Head Image:</strong>
+                <label class="bigCircleT">Head Image:</label>
             </td>
             <td>
-                <input type="file" class="form-control" />
+                <input type="file" class="formi-control" />
             </td>
         </tr>
 
         <tr>
             <td>
-                <strong>First Name:</strong>
+                <label class="bigCircleT">First Name:</label>
             </td>
             <td>
-                <input type="text" class="form-control" ng-model="PersonalDetailsModel.firstName" />
+                <input type="text" class="formi-control" ng-model="PersonalDetailsModel.firstName" />
             </td>
         </tr>
         <tr>
             <td>
-                <strong>Last Name:</strong>
+                <label class="bigCircleT">Last Name:</label>
             </td>
             <td>
-                <input type="text" class="form-control" ng-model="PersonalDetailsModel.lastName" />
+                <input type="text" class="formi-control" ng-model="PersonalDetailsModel.lastName" />
             </td>
         </tr>
         <tr>
             <td>
-                <strong>Contact Number:</strong>
+                <label class="bigCircleT">Contact Number:</label>
             </td>
             <td>
-                <input type="text" class="form-control" ng-model="PersonalDetailsModel.contactNumber" />
+                <input type="text" class="formi-control" ng-model="PersonalDetailsModel.contactNumber" />
             </td>
         </tr>
         <tr>
             <td>
-                <strong>Profession:</strong>
+                <label class="bigCircleT">Profession:</label>
             </td>
             <td>
-                <input type="text" class="form-control" ng-model="PersonalDetailsModel.profession" />
+                <input type="text" class="formi-control" ng-model="PersonalDetailsModel.profession" />
             </td>
         </tr>
-
         <tr>
             <td>
-                <strong>Current City:</strong>
+                <label class="bigCircleT">Current City:</label>
             </td>
             <td>
-                <input type="text" class="form-control" ng-model="PersonalDetailsModel.currentCity" />
+                <input type="text" class="formi-control" ng-model="PersonalDetailsModel.currentCity" />
             </td>
         </tr>
-
         <tr>
             <td>
-                <strong>Current Country:</strong>
+                <label class="bigCircleT">Current Country:</label>
             </td>
             <td>
-                <input type="text" class="form-control" ng-model="PersonalDetailsModel.currentCountry" />
+                <input type="text" class="formi-control" ng-model="PersonalDetailsModel.currentCountry" />
             </td>
         </tr>
-
         <tr>
             <td>
-                <strong>Date of Birth:</strong>
+                <label class="bigCircleT">Date Of Birth:</label>
             </td>
             <td>
-                <input type="date" class="form-control" ng-model="realdate" />
-            </td>
-        </tr>
-
-        <tr>
-            <td>               
-            </td>
-            <td>
-                <button type="button" ng-click="EditPersonalInfo();" class="btn btn-primary">Update</button>
-                <button type="button" ng-click="Cancel();" class="btn btn-primary">Cancel</button>
+                <input type="date" class="formi-control" ng-model="realdate" />
             </td>
         </tr>
     </table>
-
+    <button type="button" ng-click="EditPersonalInfo();" class="btnn btn-primary">Update</button>
+    <button type="button" ng-click="Cancel();" class="btnn btn-primary">Cancel</button>
     <p ng-show="isEmpty(PersonalDetailsModel)">There is no profile to be edited. Click <a ui-sref="AddInfo">here</a> to create your own profile!</p>
 </div>

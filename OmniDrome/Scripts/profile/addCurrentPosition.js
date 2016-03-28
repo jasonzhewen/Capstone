@@ -17,9 +17,12 @@
 
     $scope.AddCurrentPosition = function () {
         //$scope.CurrentPositionModel.startDate = $filter('date')(new Date($scope.CurrentPositionModel.startDate), "yyyy-MM-dd");
-        personalInfoService.addCurrentPosition($scope.CurrentPositionModel);
-        $state.go('ShowCurrentPosition');
         console.log($scope.CurrentPositionModel);
+        var add = personalInfoService.addCurrentPosition($scope.CurrentPositionModel);
+        add.then(function (mess) {
+            $state.go('ShowCurrentPosition');
+        })
+        
     }
 
     $scope.Cancel = function () {

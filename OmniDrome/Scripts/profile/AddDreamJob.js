@@ -89,7 +89,7 @@
         $scope.dreamJobModel.position = titleselected;
         $scope.dreamJobModel.description = des + desduty;
         personalInfoService.addDreamJobInfo($scope.dreamJobModel);
-        $state.go('ShowDreamJob');
+        $state.go('ShowInfo');
         console.log($scope.dreamJobModel);
     }
 

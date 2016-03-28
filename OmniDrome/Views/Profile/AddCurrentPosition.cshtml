@@ -15,9 +15,9 @@
             <td>
                 <select class="formc-controll" ng-model="CurrentPositionModel.type">
                     <option style="font-size:1vw;" value="1">Education</option>
-                    <option style="font-size:1vw;" value="2">Work</option>
-                    <option style="font-size:1vw;" value="3">Volunteer</option>
-                    <option style="font-size:1vw;" value="4">Internship</option>
+                    <option style="font-size:1vw;" value="3">Work</option>
+                    <option style="font-size:1vw;" value="4">Volunteer</option>
+                    <option style="font-size:1vw;" value="2">Internship</option>
                 </select>
             </td>
         </tr>
@@ -37,14 +37,8 @@
                 <input type="text" class="formc-controll" ng-model="CurrentPositionModel.description" />
             </td>
         </tr>
-        <tr>
-            <td>                
-            </td>
-            <td>
-                <button type="button" ng-click="AddCurrentPosition();" class="btnn btn-primary">Save</button>
-                <button type="button" ng-click="Cancel();" class="btnn btn-primary">Cancel</button>
-            </td>
-        </tr>
-
     </table>
+    <br/>
+    <button type="button" ng-click="AddCurrentPosition();" class="btnn btn-primary">Save</button>
+    <button type="button" ng-click="Cancel();" class="btnn btn-primary">Cancel</button>
 </div>

@@ -34,7 +34,10 @@
         $scope.CurrentPositionModel.endDate = $filter('date')(new Date(), "yyyy-MM-dd");
         $scope.CurrentPositionModel.isCurrentPosition = false;
         var DoneCurrentPosition = personalInfoService.updateCurrentPosition($scope.CurrentPositionModel);
-        $state.go('ShowCurrentPosition');
+        DoneCurrentPosition.then(function (mess) {
+            $state.go('ShowInfo');
+        })
+        
     };
 
     $scope.isEmpty = function (obj) {

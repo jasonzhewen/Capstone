@@ -130,3 +130,4 @@ C:\Users\Zhewen\Documents\GitHub\Capstone\Capstone\OmniDrome\obj\Debug\OmniDrome
 C:\Users\Zhewen\Documents\GitHub\Capstone\Capstone\OmniDrome\obj\Debug\OmniDrome.csproj.GenerateResource.Cache
 C:\Users\Zhewen\Documents\GitHub\Capstone\Capstone\OmniDrome\obj\Debug\OmniDrome.dll
 C:\Users\Zhewen\Documents\GitHub\Capstone\Capstone\OmniDrome\obj\Debug\OmniDrome.pdb
+C:\Users\Zhewen\Documents\GitHub\Capstone\Capstone\OmniDrome\obj\Debug\OmniDrome.Migrations.socialNetWork.resources
