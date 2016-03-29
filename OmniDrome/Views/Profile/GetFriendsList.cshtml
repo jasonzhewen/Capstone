@@ -1,0 +1,44 @@
+﻿<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#searchTxt').autocomplete({
+            minLength: 1,
+            source: function (request, response) {
+                $.ajax({
+                    url: "/Profile/GetFriendsListCtrl",
+                    type: "POST",
+                    dataType: "json",
+                    data: { searchFriendText: request.term },
+                    success: function (data) {
+                        //response($.map(data, function (item) {
+                        //    //console.log(item.lastName);
+                        //    return { label: (item.firstName + " " + item.lastName), value: (item.firstName + " " + item.lastName) };
+                        //    //return { label: item.lastName, value: item.lastName };
+                        //}))
+                        response(data);
+
+                    }
+                })
+            },
+            messages: {
+                noResults: "", results: ""
+            }
+        }).autocomplete('instance')._renderItem = function(ul,item){
+            return $("<li>")
+            .append("<img src=" + item.imageUrl + "alt ='no picture' />")
+            .append("<a>" + item.firstName + "</a>")
+            .append("<a>" + item.lastName + "</a>")
+            appendTo(ul);
+
+        }
+            //.data("autocomplete")._renderItem = function (ul, item) {
+            //return $("<li>")
+            //.append("<img src=" + item.imageUrl + "/>")
+            //.appendTo(ul);
+          // };
+    })
+</script>
+
+<b>Search: </b><input type="text" id="searchTxt" class="search"/>

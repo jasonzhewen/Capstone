@@ -226,6 +226,7 @@
     <Compile Include="Models\DreamJobBusinessLayer.cs" />
     <Compile Include="Models\Duty.cs" />
     <Compile Include="Models\Friend.cs" />
+    <Compile Include="Models\FriendsBusinessLayer.cs" />
     <Compile Include="Models\GovDbBusinessLayer.cs" />
     <Compile Include="Models\MySkills.cs" />
     <Compile Include="Models\PersonalDetails.cs" />
@@ -1199,6 +1200,7 @@
     <Content Include="Views\DBoard\SearchForUser.cshtml" />
     <Content Include="Views\DBoard\UserInDB.cshtml" />
     <Content Include="Views\DBoard\UserInfoTable.cshtml" />
+    <Content Include="Views\Profile\GetFriendsList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

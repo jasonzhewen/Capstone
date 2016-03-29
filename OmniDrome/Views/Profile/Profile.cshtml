@@ -13,6 +13,11 @@
 }
 
 <div id="mainProfile" ng-app="PersonalInfo">
+    <div>
+        @{
+            Html.RenderPartial("GetFriendsList");
+        }
+    </div>
 
     <div class="smallC" style="margin:0 auto;">
         <h3 class="smallCT" style="position:absolute; top:2.5vw; left:2vw;">Now</h3>

@@ -379,5 +379,27 @@ namespace OmniDrome.Controllers
             DreamJobBusinessLayer drjobdb = new DreamJobBusinessLayer();
             drjobdb.UpdateDreamJobById(DreamJobClient);
         }
+
+        public ActionResult GetFriendsListCtrl()
+        {
+            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var currentUser = manager.FindById(User.Identity.GetUserId());
+            int id = currentUser.UserInfo.Id;
+            return View();
+
+        }
+
+        [Authorize]
+        [HttpPost]
+
+        public JsonResult GetFriendsListCtrl(string searchFriendText)
+        {
+            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var currentUser = manager.FindById(User.Identity.GetUserId());
+            int id = currentUser.UserInfo.Id;
+
+            FriendsBusinessLayer fbl = new FriendsBusinessLayer();
+            return Json(fbl.getListOfFriends(searchFriendText), JsonRequestBehavior.AllowGet);
+        }
     }
 }
