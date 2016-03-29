@@ -41,15 +41,16 @@ namespace OmniDrome.Models
             return cP;
         }
 
-        public void InsertCurrentPosition([Bind(Include = "ID,type,title,startDate,endDate,description,isCurrentPosition,UserInfoID")] BackgroundInfo backgroundInfo)
+        public void InsertCurrentPosition([Bind(Include = "ID,type,title,startDate,endDate,description,isCurrentPosition,UserInfoID, createdDate, updatedDate")] BackgroundInfo backgroundInfo)
         {
             db.BackgroundInfoes.Add(backgroundInfo);
             db.SaveChanges();
         }
 
-        public void UpdateCurrentPosition([Bind(Include = "ID,type,title,startDate,endDate,description,isCurrentPosition,UserInfoID")] BackgroundInfo backgroundInfo)
+        public void UpdateCurrentPosition([Bind(Include = "ID,type,title,startDate,endDate,description,isCurrentPosition,UserInfoID,createdDate,updatedDate")] BackgroundInfo backgroundInfo)
         {
             db.Entry(backgroundInfo).State = EntityState.Modified;
+            db.Entry(backgroundInfo).Property("createdDate").IsModified = false;
             db.Entry(backgroundInfo).Property("UserInfoID").IsModified = false;
             db.SaveChanges();
         }

@@ -23,7 +23,8 @@
             endDate: '',
             description: '',
             isCurrentPosition: '',
-            UserInfoID: ''
+            UserInfoID: '',
+            updatedDate: ''
         };
 
     $scope.Edit = function () {       
@@ -32,6 +33,7 @@
 
     $scope.Done = function () {
         $scope.CurrentPositionModel.endDate = $filter('date')(new Date(), "yyyy-MM-dd");
+        $scope.CurrentPositionModel.updatedDate = $filter('date')(new Date(), "yyyy-MM-dd");
         $scope.CurrentPositionModel.isCurrentPosition = false;
         var DoneCurrentPosition = personalInfoService.updateCurrentPosition($scope.CurrentPositionModel);
         DoneCurrentPosition.then(function (mess) {

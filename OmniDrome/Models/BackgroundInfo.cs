@@ -15,6 +15,8 @@ namespace OmniDrome.Models
         public string description { get; set; }
         public Boolean isCurrentPosition { get; set; }
         public int UserInfoID { get; set; }
+        public DateTime? createdDate { get; set; }
+        public DateTime? updatedDate { get; set; }
 
         public virtual UserInfo UserInfo { get; set; }
     }

@@ -278,6 +278,8 @@ namespace OmniDrome.Controllers
             bi.startDate = BackgroundInfoClient.startDate;
             bi.description = BackgroundInfoClient.description;
             bi.isCurrentPosition = true;
+            bi.createdDate = DateTime.Now;
+            bi.updatedDate = null;
             CurrentPositionBusinessLayer cpBal = new CurrentPositionBusinessLayer();
             cpBal.InsertCurrentPosition(bi);
         }

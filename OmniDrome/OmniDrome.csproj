@@ -209,6 +209,14 @@
     <Compile Include="Migrations\201603281554161_socialNetWork.Designer.cs">
       <DependentUpon>201603281554161_socialNetWork.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603291808076_CP.cs" />
+    <Compile Include="Migrations\201603291808076_CP.Designer.cs">
+      <DependentUpon>201603291808076_CP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603291819413_newCP.cs" />
+    <Compile Include="Migrations\201603291819413_newCP.Designer.cs">
+      <DependentUpon>201603291819413_newCP.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BackgroundInfo.cs" />
@@ -1217,6 +1225,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603281554161_socialNetWork.resx">
       <DependentUpon>201603281554161_socialNetWork.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603291808076_CP.resx">
+      <DependentUpon>201603291808076_CP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603291819413_newCP.resx">
+      <DependentUpon>201603291819413_newCP.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

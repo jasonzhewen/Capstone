@@ -131,3 +131,5 @@ C:\Users\Zhewen\Documents\GitHub\Capstone\Capstone\OmniDrome\obj\Debug\OmniDrome
 C:\Users\Zhewen\Documents\GitHub\Capstone\Capstone\OmniDrome\obj\Debug\OmniDrome.dll
 C:\Users\Zhewen\Documents\GitHub\Capstone\Capstone\OmniDrome\obj\Debug\OmniDrome.pdb
 C:\Users\Zhewen\Documents\GitHub\Capstone\Capstone\OmniDrome\obj\Debug\OmniDrome.Migrations.socialNetWork.resources
+C:\Users\Zhewen\Documents\GitHub\Capstone\Capstone\OmniDrome\obj\Debug\OmniDrome.Migrations.CP.resources
+C:\Users\Zhewen\Documents\GitHub\Capstone\Capstone\OmniDrome\obj\Debug\OmniDrome.Migrations.newCP.resources

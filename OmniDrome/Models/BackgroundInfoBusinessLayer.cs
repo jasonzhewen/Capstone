@@ -77,10 +77,12 @@ namespace OmniDrome.Models
             db.SaveChanges();
         }
 
-        public void UpdateBackgroundInfo([Bind(Include = "ID,type,title,startDate,endDate,description,isCurrentPosition,UserInfoID")] BackgroundInfo backgroundInfo)
+        public void UpdateBackgroundInfo([Bind(Include = "ID,type,title,startDate,endDate,description,isCurrentPosition,UserInfoID,createdDate,updatedDate")] BackgroundInfo backgroundInfo)
         {
             db.Entry(backgroundInfo).State = EntityState.Modified;
-            //db.Entry(personalDetails).Property("UserInfoID").IsModified = false;
+            db.Entry(backgroundInfo).Property("UserInfoID").IsModified = false;
+            db.Entry(backgroundInfo).Property("createdDate").IsModified = false;
+            db.Entry(backgroundInfo).Property("updatedDate").IsModified = false;
             db.SaveChanges();
         }
 
