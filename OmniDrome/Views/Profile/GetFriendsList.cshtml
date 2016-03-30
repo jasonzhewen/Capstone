@@ -8,37 +8,65 @@
             source: function (request, response) {
                 $.ajax({
                     url: "/Profile/GetFriendsListCtrl",
-                    type: "POST",
+                    type: "post",
                     dataType: "json",
                     data: { searchFriendText: request.term },
                     success: function (data) {
-                        //response($.map(data, function (item) {
-                        //    //console.log(item.lastName);
-                        //    return { label: (item.firstName + " " + item.lastName), value: (item.firstName + " " + item.lastName) };
-                        //    //return { label: item.lastName, value: item.lastName };
-                        //}))
                         response(data);
-
                     }
-                })
-            },
-            messages: {
-                noResults: "", results: ""
+                });
             }
-        }).autocomplete('instance')._renderItem = function(ul,item){
-            return $("<li>")
-            .append("<img src=" + item.imageUrl + "alt ='no picture' />")
-            .append("<a>" + item.firstName + "</a>")
-            .append("<a>" + item.lastName + "</a>")
-            appendTo(ul);
+            //,
+            //messages: {
+            //    noResults: "", results: ""
+            //}
+        })
+        .autocomplete('instance')._renderItem = function (ul, item) {
+            var ss = "../.." + item.imageUrl;
+            return $('<li>')
+            .append('<img src=' + ss + '/>')
+            .append('<a>' + item.firstName + '' + '</a>')
+            .append('<a>' + item.lastName + '</a>')
+            .append('<input type="button" id="btn_addFriend" value="Add" onclick="show('+ item.UserInfoID +')" />')
+            .appendTo(ul);
+        };
 
-        }
-            //.data("autocomplete")._renderItem = function (ul, item) {
-            //return $("<li>")
-            //.append("<img src=" + item.imageUrl + "/>")
-            //.appendTo(ul);
-          // };
-    })
+        $('#btn_addFriendYes,#btn_addFriendNo').click(function () {
+            $('#confirm_addFriend').css({
+                visibility:'hidden'
+            });
+            $('#overlay2').remove();
+        });
+    });
+</script>
+<script>
+    function show(n) {
+        $('#confirm_addFriend').css({
+            visibility:'visible',
+            left: (($(window).width() - $('#confirm_addFriend').width()) / 2),
+            top: (($(window).height() - $('#confirm_addFriend').height()) / 2),
+            zIndex: 50,
+        });
+        $('<div id="overlay2">').css({
+            width: $(document).width(),
+            height: $(document).height(),
+            opacity: 0.6,
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            backgroundColor: 'black',
+            zIndex: 40
+        }).appendTo('body').click(function () {
+            $(this).remove();
+            $('#confirm_addFriend').css("visibility", "hidden");
+        });
+    }
 </script>
 
 <b>Search: </b><input type="text" id="searchTxt" class="search"/>
+<div id="confirm_addFriend" style="visibility:hidden;width:20vw;height:15vw;position:fixed;background-color:white;text-align:center;padding-top:4vw;">
+    <p>Request Message:</p>
+    <textarea rows="4" cols="50">Hello, can u add me as your friend?</textarea><br/>
+    <button id="btn_addFriendYes">Add</button>
+    <button id="btn_addFriendNo">Cancel</button>
+</div>

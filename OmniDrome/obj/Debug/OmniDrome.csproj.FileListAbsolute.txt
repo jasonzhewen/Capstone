@@ -123,7 +123,6 @@ C:\Users\Zhewen\Documents\GitHub\Capstone\Capstone\OmniDrome\bin\Microsoft.Owin.
 C:\Users\Zhewen\Documents\GitHub\Capstone\Capstone\OmniDrome\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Zhewen\Documents\GitHub\Capstone\Capstone\OmniDrome\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Zhewen\Documents\GitHub\Capstone\Capstone\OmniDrome\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Zhewen\Documents\GitHub\Capstone\Capstone\OmniDrome\obj\Debug\OmniDrome.csprojResolveAssemblyReference.cache
 C:\Users\Zhewen\Documents\GitHub\Capstone\Capstone\OmniDrome\obj\Debug\OmniDrome.Migrations.init.resources
 C:\Users\Zhewen\Documents\GitHub\Capstone\Capstone\OmniDrome\obj\Debug\OmniDrome.Migrations._new.resources
 C:\Users\Zhewen\Documents\GitHub\Capstone\Capstone\OmniDrome\obj\Debug\OmniDrome.Migrations.gvdb.resources
@@ -133,3 +132,4 @@ C:\Users\Zhewen\Documents\GitHub\Capstone\Capstone\OmniDrome\obj\Debug\OmniDrome
 C:\Users\Zhewen\Documents\GitHub\Capstone\Capstone\OmniDrome\obj\Debug\OmniDrome.Migrations.socialNetWork.resources
 C:\Users\Zhewen\Documents\GitHub\Capstone\Capstone\OmniDrome\obj\Debug\OmniDrome.Migrations.CP.resources
 C:\Users\Zhewen\Documents\GitHub\Capstone\Capstone\OmniDrome\obj\Debug\OmniDrome.Migrations.newCP.resources
+C:\Users\Zhewen\Documents\GitHub\Capstone\Capstone\OmniDrome\obj\Debug\OmniDrome.csprojResolveAssemblyReference.cache
