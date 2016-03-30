@@ -391,7 +391,6 @@ namespace OmniDrome.Controllers
 
         [Authorize]
         [HttpPost]
-
         public JsonResult GetFriendsListCtrl(string searchFriendText)
         {
             var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
@@ -400,6 +399,25 @@ namespace OmniDrome.Controllers
 
             FriendsBusinessLayer fbl = new FriendsBusinessLayer();
             return Json(fbl.getListOfFriends(searchFriendText), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public void AddFriendRequest(Friend f)
+        {
+            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var currentUser = manager.FindById(User.Identity.GetUserId());
+            int id = currentUser.UserInfo.Id;
+            Friend amigo = new Friend();
+            amigo.RequestFrom = id;
+            amigo.RequestDate = DateTime.Now;
+            amigo.RequestMessage = f.RequestMessage;
+            amigo.RequestStatus = "undefined";
+            amigo.MeOnLine = false;
+            amigo.FriendOnLine = false;
+            amigo.UserInfoID = f.UserInfoID;
+            FriendsBusinessLayer fbl = new FriendsBusinessLayer();
+            fbl.InsertFriendRequest(amigo);
         }
     }
 }

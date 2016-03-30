@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace OmniDrome.Models
 {
@@ -54,6 +55,12 @@ namespace OmniDrome.Models
                 return null;
             }
             return suggestedFriendsList;
+        }
+
+        public void InsertFriendRequest([Bind(Include = "FriendshipID,RequestFrom,RequestDate,RequestMessage,RequestStatus,MeOnline,FriendOnline,UserInfoID")] Friend friend)
+        {
+            db.Friends.Add(friend);
+            db.SaveChanges();
         }
     }
 }

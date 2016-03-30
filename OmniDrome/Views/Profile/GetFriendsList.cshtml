@@ -1,5 +1,4 @@
 ﻿<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -16,10 +15,6 @@
                     }
                 });
             }
-            //,
-            //messages: {
-            //    noResults: "", results: ""
-            //}
         })
         .autocomplete('instance')._renderItem = function (ul, item) {
             var ss = "../.." + item.imageUrl;
@@ -30,13 +25,6 @@
             .append('<input type="button" id="btn_addFriend" value="Add" onclick="show('+ item.UserInfoID +')" />')
             .appendTo(ul);
         };
-
-        $('#btn_addFriendYes,#btn_addFriendNo').click(function () {
-            $('#confirm_addFriend').css({
-                visibility:'hidden'
-            });
-            $('#overlay2').remove();
-        });
     });
 </script>
 <script>
@@ -60,13 +48,39 @@
             $(this).remove();
             $('#confirm_addFriend').css("visibility", "hidden");
         });
+
+        $('#btn_addFriendYes,#btn_addFriendNo').click(function () {
+            $('#confirm_addFriend').css({
+                visibility: 'hidden'
+            });
+            $('#overlay2').remove();
+        });
+
+        $('#btn_addFriendYes').click(function () {
+            $.ajax({
+                type: 'POST',
+                url: '/Profile/AddFriendRequest',
+                dataType: 'json',
+                data: {
+                    RequestFrom: '',
+                    RequestDate: '',
+                    RequestMessage: $('#txt_addMessage').val(),
+                    RequestStatus: '',
+                    MeOnLine: '',
+                    FriendOnLine: '',
+                    UserInfoID:n
+                },
+                success: function (data) {
+                }
+            });
+        });
     }
 </script>
 
 <b>Search: </b><input type="text" id="searchTxt" class="search"/>
 <div id="confirm_addFriend" style="visibility:hidden;width:20vw;height:15vw;position:fixed;background-color:white;text-align:center;padding-top:4vw;">
     <p>Request Message:</p>
-    <textarea rows="4" cols="50">Hello, can u add me as your friend?</textarea><br/>
+    <textarea id="txt_addMessage" rows="4" cols="50">Hello, can u add me as your friend?</textarea><br/>
     <button id="btn_addFriendYes">Add</button>
     <button id="btn_addFriendNo">Cancel</button>
 </div>
