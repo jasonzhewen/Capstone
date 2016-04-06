@@ -189,6 +189,7 @@
     <Compile Include="Controllers\DBoardController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\SocialNetworkController.cs" />
     <Compile Include="DataAccessLayer\PersonalInfoERPDAL.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -226,6 +227,7 @@
     <Compile Include="Models\DreamJobBusinessLayer.cs" />
     <Compile Include="Models\Duty.cs" />
     <Compile Include="Models\Friend.cs" />
+    <Compile Include="Models\FriendNumberRequests.cs" />
     <Compile Include="Models\FriendsBusinessLayer.cs" />
     <Compile Include="Models\GovDbBusinessLayer.cs" />
     <Compile Include="Models\MySkills.cs" />
@@ -244,6 +246,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\BackgroundInfoListViewModel.cs" />
+    <Compile Include="ViewModels\FriendListViewModel.cs" />
+    <Compile Include="ViewModels\FriendRequestPersonViewModel.cs" />
     <Compile Include="ViewModels\PersonalDetailsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -341,6 +345,7 @@
     <Content Include="fonts\CaviarDreams_Italic.ttf" />
     <Content Include="fonts\Lato-Medium.ttf" />
     <Content Include="fonts\Lato-MediumItalic.ttf" />
+    <Content Include="Content\jquery-ui.min.css" />
     <None Include="Properties\PublishProfiles\od.pubxml" />
     <None Include="Properties\PublishProfiles\thezhewen.com - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\zhewensun.co.nf - Web Deploy %282%29.pubxml" />
@@ -1108,6 +1113,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Scripts\jquery.animtrans.js" />
     <Content Include="Scripts\jquery.steps.js" />
     <Content Include="Scripts\jquery.steps.min.js" />
@@ -1200,7 +1206,11 @@
     <Content Include="Views\DBoard\SearchForUser.cshtml" />
     <Content Include="Views\DBoard\UserInDB.cshtml" />
     <Content Include="Views\DBoard\UserInfoTable.cshtml" />
-    <Content Include="Views\Profile\GetFriendsList.cshtml" />
+    <Content Include="Views\SocialNetwork\GetFriendsList.cshtml" />
+    <Content Include="Views\SocialNetwork\SocialNetwork.cshtml" />
+    <Content Include="Views\SocialNetwork\FriendList.cshtml" />
+    <Content Include="Views\SocialNetwork\Posts.cshtml" />
+    <Content Include="Views\SocialNetwork\FriendRequest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

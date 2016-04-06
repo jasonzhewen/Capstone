@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "SocialNetwork";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section HeaderSection{
+    @Styles.Render("~/Content/tabs")
+    @Scripts.Render("~/bundles/tabs")
+}
+
+<script>
+       $(function() {
+           $("#tabs").tabs();
+       });
+</script>
+
+<div id="tabs">
+    <ul>
+        <li><a href="#tabs-1">Posts</a></li>
+        <li><a href="#tabs-2">Friend List</a></li>
+        <li><a href="#tabs-3">Friend Request @{Html.RenderAction("GetYourFriendsRequests");}</a></li>
+    </ul>
+    <div id="tabs-1">
+        <p>Tab A</p>
+    </div>
+    <div id="tabs-2">
+        @{Html.RenderAction("FriendList");}
+    </div>
+    <div id="tabs-3">
+        @{Html.RenderAction("getRequests", "SocialNetwork");}
+    </div>
+</div>
+

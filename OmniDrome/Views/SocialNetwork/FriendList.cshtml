@@ -1,0 +1,22 @@
+﻿@using OmniDrome.ViewModels
+@using OmniDrome.Models
+@model FriendListViewModel
+
+<div>
+    @{
+        Html.RenderPartial("GetFriendsList");
+    }
+    <br/>
+    <table>
+        @foreach (PersonalDetails item in Model.friendListViewModel)
+        {
+            <tr>
+                <td><img alt="no image" src="@item.imageUrl" style="height:4vw;width:4vw;" /></td>
+                <td>@item.firstName " " @item.lastName</td>
+                <td>@item.profession</td>
+                <td>@item.currentCity</td>
+                <td>@item.currentCountry</td>
+            </tr>
+        }
+    </table>
+</div>

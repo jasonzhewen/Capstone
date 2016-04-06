@@ -89,6 +89,12 @@ namespace OmniDrome
                       "~/Scripts/profile/editCurrentPosition.js",
                       "~/Scripts/profile/AddDreamJob.js",
                       "~/Scripts/profile/ShowDreamJob.js"));
+
+            bundles.Add(new StyleBundle("~/Content/tabs").Include(
+                      "~/Content/jquery-ui.min.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/tabs").Include(
+                      "~/Scripts/jquery-ui.min.js"));
         }
     }
 }

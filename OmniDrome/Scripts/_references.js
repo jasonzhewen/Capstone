@@ -45,3 +45,4 @@
 /// <reference path="profile/showdreamjob.js" />
 /// <reference path="profile/adddreamjob.js" />
 /// <reference path="jquery.steps.js" />
+/// <reference path="jquery-ui.min.js" />

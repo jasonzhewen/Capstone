@@ -6,7 +6,7 @@
             minLength: 1,
             source: function (request, response) {
                 $.ajax({
-                    url: "/Profile/GetFriendsListCtrl",
+                    url: "/SocialNetwork/GetFriendsListCtrl",
                     type: "post",
                     dataType: "json",
                     data: { searchFriendText: request.term },
@@ -59,7 +59,7 @@
         $('#btn_addFriendYes').click(function () {
             $.ajax({
                 type: 'POST',
-                url: '/Profile/AddFriendRequest',
+                url: '/SocialNetwork/AddFriendRequest',
                 dataType: 'json',
                 data: {
                     RequestFrom: '',

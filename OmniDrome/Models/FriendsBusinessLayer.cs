@@ -1,4 +1,5 @@
 ﻿using OmniDrome.DataAccessLayer;
+using OmniDrome.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +16,11 @@ namespace OmniDrome.Models
         public List<PersonalDetails> suggestedFriendsList = new List<PersonalDetails>();
         //list friends
 
-        public List<PersonalDetails> getListOfFriends(string searchFriends)
+        public List<PersonalDetails> getListOfFriends(string searchFriends, int? id)
         {
             var friendsList = from f in db.PersonalInfoes
-                              where f.firstName.ToLower().Contains(searchFriends.ToLower()) || 
-                              f.lastName.ToLower().Contains(searchFriends.ToLower())
+                              where f.UserInfoID != id && (f.firstName.ToLower().Contains(searchFriends.ToLower()) ||
+                              f.lastName.ToLower().Contains(searchFriends.ToLower()))
                               select f;
 
             if (!String.IsNullOrEmpty(searchFriends))
@@ -28,9 +29,6 @@ namespace OmniDrome.Models
                 friendsList = friendsList.Take(10);
                 friendsList = friendsList.OrderByDescending(f => f.firstName);
             }
-
-
-
             foreach (PersonalDetails pdet in friendsList)
             {
                 PersonalDetails person = new PersonalDetails();
@@ -46,10 +44,6 @@ namespace OmniDrome.Models
                 person.UserInfoID = pdet.UserInfoID;
                 suggestedFriendsList.Add(person);
             }
-
-
-
-
             if (suggestedFriendsList == null)
             {
                 return null;
@@ -59,8 +53,72 @@ namespace OmniDrome.Models
 
         public void InsertFriendRequest([Bind(Include = "FriendshipID,RequestFrom,RequestDate,RequestMessage,RequestStatus,MeOnline,FriendOnline,UserInfoID")] Friend friend)
         {
+            if (db.Friends.Any(o => o.RequestFrom == friend.RequestFrom)) return;
             db.Friends.Add(friend);
             db.SaveChanges();
         }
+
+        public List<PersonalDetails> getAllFriends(int id)
+        {
+            List<PersonalDetails> fl = new List<PersonalDetails>();
+            var friendsList = (from p in db.PersonalInfoes 
+                               from f in db.Friends
+                               where f.UserInfoID == id
+                               && p.UserInfoID == f.RequestFrom
+                               && f.RequestStatus == "Accepted" 
+                               select p).ToList();
+
+            foreach (PersonalDetails pdet in friendsList)
+            {
+                fl.Add(pdet);
+            }
+            if (fl == null)
+            {
+                return null;
+            }
+            return fl;
+        }
+
+        public int GetFriendsRequstNumber(int id)
+        {
+            var numberRequests = db.Friends.Where(x => x.RequestStatus == "undefined" && x.UserInfoID == id)
+                .Select(i => new FriendNumberRequests { RequestFrom = i.RequestFrom, RequestStatus = i.RequestStatus, UserInfoID = i.UserInfoID }).Distinct().Count();
+            //var nuberRequests = db.Friends.Select(i => i.RequestFrom, i=>i.RequestStatus,i=>i.UserInfoID).
+            int result = Convert.ToInt32(numberRequests);
+            return result;
+        }
+
+        public List<FriendRequestPersonViewModel> GetRequestList(int id)
+        {
+            //var numberRequests = db.Friends.
+            //    Where(x => x.RequestStatus == "undefined" && x.UserInfoID == id).OrderByDescending(x => x.RequestDate);
+            //FriendRequestPersonListViewModel frlvm = new FriendRequestPersonListViewModel();
+            List<FriendRequestPersonViewModel> lfrvm = new List<FriendRequestPersonViewModel>();
+            var listrequest = (from p in db.PersonalInfoes
+                               from f in db.Friends
+                               where f.UserInfoID == id
+                               && p.UserInfoID == f.RequestFrom
+                               && f.RequestStatus == "undefined"
+                               select new { p.imageUrl, p.firstName, p.lastName, p.profession, f.RequestMessage, f.RequestDate }).ToList();
+
+
+
+            foreach (var f in listrequest)
+            {
+                FriendRequestPersonViewModel frvm = new FriendRequestPersonViewModel();
+                frvm.firstName = f.firstName;
+                frvm.lastName = f.lastName;
+                frvm.RequestDate = f.RequestDate;
+                frvm.RequestMessage = f.RequestMessage;
+                frvm.imageUrl = f.imageUrl;
+                frvm.profession = f.profession;
+                lfrvm.Add(frvm);
+            }
+
+            return lfrvm;
+
+        }
+
+
     }
 }

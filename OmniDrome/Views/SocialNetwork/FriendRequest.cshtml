@@ -1,0 +1,29 @@
+﻿@model IEnumerable<OmniDrome.ViewModels.FriendRequestPersonViewModel>
+
+<table class="table">
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img alt="no image" src="@item.imageUrl" style="height:4vw;width:4vw;"/>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.firstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequestMessage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequestDate)
+            </td>
+            <td><button class="btn_addFriend">Add</button></td>
+            <td><button class="btn_RejectRequest">Reject</button></td>
+        </tr>
+            
+    }
+</table>
+
