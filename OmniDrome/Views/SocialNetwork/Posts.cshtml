@@ -6,6 +6,14 @@
     <input type="submit" value="Search" />
 }
 
+<table>
+    <tr>
+        <td>My Post</td>
+        <td><textarea id="txt_post" cols="40" rows="4"></textarea></td>
+        <td><input type="button" id="btn_addPost" value="Publish" /></td>
+    </tr>
+</table>
+
 <table class="table">
 
     @foreach (var item in Model)
@@ -27,3 +35,18 @@
         </tr>
     }
 </table>
+
+<script>
+    $('#btn_addPost').click(function () {
+        $.ajax({
+            type: 'POST',
+            url: '/SocialNetwork/AddPost',
+            dataType: 'json',
+            data: {
+                txt: $('#txt_post').val()
+            },
+            success: function (data) {
+            }
+        });
+    });
+</script>

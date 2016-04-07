@@ -167,20 +167,13 @@ namespace OmniDrome.Models
                     lpvm.Add(pvm);
                 }
             }
-            //var listposts = (from p in db.PersonalInfoes
-            //                 from f in db.Friends
-            //                 from t in db.Posts
-            //                 where f.UserInfoID == id
-            //                 && f.RequestStatus == "Accepted"
-            //                 && p.UserInfoID == f.RequestFrom
-            //                 && p.UserInfoID == t.UserInfoID
-            //                 && p.firstName == un
-            //                 select new { p.imageUrl, p.firstName, p.lastName, t.PostText, t.PostDate, t.UserInfoID }).ToList();
-
-            
-
             return lpvm;
+        }
 
+        public void InsertPost([Bind(Include = "PostID,PostToID,PostFromID,PostText,PostDate,UserInfoID")] Post p)
+        {
+            db.Posts.Add(p);
+            db.SaveChanges();
         }
     }
 }

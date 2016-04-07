@@ -119,5 +119,24 @@ namespace OmniDrome.Controllers
             FriendsBusinessLayer fbl = new FriendsBusinessLayer();
             return fbl.GetPostsList(id,un);
         }
+
+        [Authorize]
+        public void AddPost(String txt)
+        {
+            if (txt != null && txt != "")
+            {
+                var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+                var currentUser = manager.FindById(User.Identity.GetUserId());
+                int id = currentUser.UserInfo.Id;
+                Post p = new Post();
+                p.PostToID = id;
+                p.PostFromID = id;
+                p.UserInfoID = id;
+                p.PostText = txt;
+                p.PostDate = DateTime.Now;
+                FriendsBusinessLayer fbl = new FriendsBusinessLayer();
+                fbl.InsertPost(p);
+            }
+        }
     }
 }
