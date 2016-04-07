@@ -249,6 +249,8 @@
     <Compile Include="ViewModels\FriendListViewModel.cs" />
     <Compile Include="ViewModels\FriendRequestPersonViewModel.cs" />
     <Compile Include="ViewModels\PersonalDetailsViewModel.cs" />
+    <Compile Include="ViewModels\PostsListViewModel.cs" />
+    <Compile Include="ViewModels\PostsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />

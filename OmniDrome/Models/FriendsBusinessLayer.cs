@@ -61,6 +61,7 @@ namespace OmniDrome.Models
         public List<PersonalDetails> getAllFriends(int id)
         {
             List<PersonalDetails> fl = new List<PersonalDetails>();
+            
             var friendsList = (from p in db.PersonalInfoes 
                                from f in db.Friends
                                where f.UserInfoID == id
@@ -101,8 +102,6 @@ namespace OmniDrome.Models
                                && f.RequestStatus == "undefined"
                                select new { p.imageUrl, p.firstName, p.lastName, p.profession, f.RequestMessage, f.RequestDate }).ToList();
 
-
-
             foreach (var f in listrequest)
             {
                 FriendRequestPersonViewModel frvm = new FriendRequestPersonViewModel();
@@ -119,6 +118,69 @@ namespace OmniDrome.Models
 
         }
 
+        public List<PostsViewModel> GetPostsList(int id, string un)
+        {
+            List<PostsViewModel> lpvm = new List<PostsViewModel>();
+            //var listposts = new List<>();
+            if (un == null || un == "")
+            {
+               var listposts = (from p in db.PersonalInfoes
+                             from f in db.Friends
+                             from t in db.Posts
+                             where f.UserInfoID == id
+                             && f.RequestStatus == "Accepted"
+                             && p.UserInfoID == f.RequestFrom
+                             && p.UserInfoID == t.UserInfoID
+                             select new { p.imageUrl, p.firstName, p.lastName, t.PostText, t.PostDate, t.UserInfoID }).ToList();
+               foreach (var po in listposts)
+               {
+                   PostsViewModel pvm = new PostsViewModel();
+                   pvm.firstName = po.firstName;
+                   pvm.lastName = po.lastName;
+                   pvm.imageUrl = po.imageUrl;
+                   pvm.PostDate = po.PostDate;
+                   pvm.PostText = po.PostText;
+                   pvm.UserInfoID = po.UserInfoID;
+                   lpvm.Add(pvm);
+               }
+            }
+            else
+            {
+                var listposts = (from p in db.PersonalInfoes
+                             from f in db.Friends
+                             from t in db.Posts
+                             where f.UserInfoID == id
+                             && f.RequestStatus == "Accepted"
+                             && p.UserInfoID == f.RequestFrom
+                             && p.UserInfoID == t.UserInfoID
+                             && p.firstName == un
+                             select new { p.imageUrl, p.firstName, p.lastName, t.PostText, t.PostDate, t.UserInfoID }).ToList();
+                foreach (var po in listposts)
+                {
+                    PostsViewModel pvm = new PostsViewModel();
+                    pvm.firstName = po.firstName;
+                    pvm.lastName = po.lastName;
+                    pvm.imageUrl = po.imageUrl;
+                    pvm.PostDate = po.PostDate;
+                    pvm.PostText = po.PostText;
+                    pvm.UserInfoID = po.UserInfoID;
+                    lpvm.Add(pvm);
+                }
+            }
+            //var listposts = (from p in db.PersonalInfoes
+            //                 from f in db.Friends
+            //                 from t in db.Posts
+            //                 where f.UserInfoID == id
+            //                 && f.RequestStatus == "Accepted"
+            //                 && p.UserInfoID == f.RequestFrom
+            //                 && p.UserInfoID == t.UserInfoID
+            //                 && p.firstName == un
+            //                 select new { p.imageUrl, p.firstName, p.lastName, t.PostText, t.PostDate, t.UserInfoID }).ToList();
 
+            
+
+            return lpvm;
+
+        }
     }
 }

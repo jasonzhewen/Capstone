@@ -27,6 +27,7 @@ namespace OmniDrome.DataAccessLayer
         public DbSet<BackgroundInfo> BackgroundInfoes { get; set; }
         public DbSet<DreamJob> DreamJobs { get; set; }
         public DbSet<Friend> Friends { get; set; }
+        public DbSet<Post> Posts { get; set; }
 
         public DbSet<MainCategory> MainCategories { get; set; }
         public DbSet<Subcategory> Subcategory { get; set; }

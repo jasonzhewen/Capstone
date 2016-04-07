@@ -22,7 +22,7 @@
         <li><a href="#tabs-3">Friend Request @{Html.RenderAction("GetYourFriendsRequests");}</a></li>
     </ul>
     <div id="tabs-1">
-        <p>Tab A</p>
+        @{Html.RenderAction("Posts");}
     </div>
     <div id="tabs-2">
         @{Html.RenderAction("FriendList");}

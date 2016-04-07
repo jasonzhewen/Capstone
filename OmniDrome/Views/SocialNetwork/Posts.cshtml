@@ -1,1 +1,29 @@
-﻿
+﻿@model IEnumerable<OmniDrome.ViewModels.PostsViewModel>
+
+@using (Html.BeginForm("SocialNetwork", "SocialNetwork", FormMethod.Post))
+{
+    @:UserName : @Html.TextBox("firstName")
+    <input type="submit" value="Search" />
+}
+
+<table class="table">
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img alt="no image" src="@item.imageUrl" style="height:4vw;width:4vw;" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.firstName) &nbsp; @Html.DisplayFor(modelItem => item.lastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostDate)
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td colspan="2">@Html.DisplayFor(modelItem => item.PostText)</td>
+        </tr>
+    }
+</table>

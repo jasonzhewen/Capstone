@@ -12,9 +12,11 @@ namespace OmniDrome.Controllers
 {
     public class SocialNetworkController : Controller
     {
+
         [Authorize]
-        public ActionResult SocialNetwork()
+        public ActionResult SocialNetwork(String firstName)
         {
+            Posts(firstName);
             return View();
         }
 
@@ -26,14 +28,12 @@ namespace OmniDrome.Controllers
             return PartialView(GetFriendsCtrl(id));
         }
 
-        public ActionResult Posts()
+        public ActionResult Posts(string firstName)
         {
-            return PartialView();
-        }
-
-        public ActionResult FriendRequest()
-        {
-            return PartialView();
+            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var currentUser = manager.FindById(User.Identity.GetUserId());
+            int id = currentUser.UserInfo.Id;
+            return PartialView(GetAllPosts(id, firstName));
         }
 
         [Authorize]
@@ -103,6 +103,7 @@ namespace OmniDrome.Controllers
             FriendsBusinessLayer fbl = new FriendsBusinessLayer();
             return fbl.GetRequestList(id);
         }
+
         [Authorize]
         public ActionResult getRequests()
         {
@@ -112,6 +113,11 @@ namespace OmniDrome.Controllers
             return PartialView("FriendRequest",GetListOfFriendsRequests(id));
         }
 
-
+        [Authorize]
+        public List<PostsViewModel> GetAllPosts(int id, string un)
+        {
+            FriendsBusinessLayer fbl = new FriendsBusinessLayer();
+            return fbl.GetPostsList(id,un);
+        }
     }
 }
