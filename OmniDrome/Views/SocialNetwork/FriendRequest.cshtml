@@ -21,9 +21,32 @@
                 @Html.DisplayFor(modelItem => item.RequestDate)
             </td>
             <td><button class="btn_addFriend">Add</button></td>
-            <td><button class="btn_RejectRequest">Reject</button></td>
+            <td><input type="button" value="Reject" onclick="reject(@item.RequestFrom);" /></td>
         </tr>
             
     }
 </table>
+
+<script>
+    $('#btn_addFriend').click(function () {
+        $.ajax({
+            type: 'POST',
+            url: '/SocialNetwork/UpdateFriendRequest',
+            dataType: 'json',
+            success: function (data) {
+            }
+        });
+    });
+
+    function reject(id) {
+        $.ajax({
+            type: 'POST',
+            url: '/SocialNetwork/RemoveFriend',
+            dataType: 'json',
+            data: { requesiFromId: id },
+            success: function (data) {
+            }
+        });
+    }
+</script>
 

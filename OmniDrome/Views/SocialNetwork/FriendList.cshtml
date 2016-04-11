@@ -16,7 +16,21 @@
                 <td>@item.profession</td>
                 <td>@item.currentCity</td>
                 <td>@item.currentCountry</td>
+                <td><input type="button" value="Remove" onclick="remove(@item.UserInfoID);" /></td>
             </tr>
         }
     </table>
 </div>
+
+<script>
+    function remove(id) {
+        $.ajax({
+            type: 'POST',
+            url: '/SocialNetwork/RemoveFriend',
+            dataType: 'json',
+            data: { requesiFromId: id },
+            success: function (data) {
+            }
+        });
+    }
+</script>

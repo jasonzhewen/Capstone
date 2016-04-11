@@ -113,6 +113,33 @@ namespace OmniDrome.Controllers
             return PartialView("FriendRequest",GetListOfFriendsRequests(id));
         }
 
+        [HttpPost]
+        [Authorize]
+        public void RemoveFriend(int requesiFromId)
+        {
+            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var currentUser = manager.FindById(User.Identity.GetUserId());
+            int id = currentUser.UserInfo.Id;
+
+            FriendsBusinessLayer fbl = new FriendsBusinessLayer();
+            fbl.RejectFriend(id, requesiFromId);
+        }
+
+
+        [HttpPost]
+        [Authorize]
+        public void UpdateFriendRequest()
+        {
+            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var currentUser = manager.FindById(User.Identity.GetUserId());
+            int id = currentUser.UserInfo.Id;
+
+
+            FriendsBusinessLayer fbl = new FriendsBusinessLayer();
+            fbl.UpdateFriendRequestById(id);
+
+        }
+
         [Authorize]
         public List<PostsViewModel> GetAllPosts(int id, string un)
         {

@@ -100,7 +100,9 @@ namespace OmniDrome.Models
                                where f.UserInfoID == id
                                && p.UserInfoID == f.RequestFrom
                                && f.RequestStatus == "undefined"
-                               select new { p.imageUrl, p.firstName, p.lastName, p.profession, f.RequestMessage, f.RequestDate }).ToList();
+                               select new { p.imageUrl, p.firstName, p.lastName, p.profession, f.RequestMessage, f.RequestDate, f.UserInfoID, f.RequestFrom }).ToList();
+
+
 
             foreach (var f in listrequest)
             {
@@ -111,12 +113,28 @@ namespace OmniDrome.Models
                 frvm.RequestMessage = f.RequestMessage;
                 frvm.imageUrl = f.imageUrl;
                 frvm.profession = f.profession;
+                frvm.UserInfoID = f.UserInfoID;
+                frvm.RequestFrom = f.RequestFrom;
                 lfrvm.Add(frvm);
             }
 
             return lfrvm;
 
         }
+
+        public void UpdateFriendRequestById(int id)
+        {
+
+            var updateRequest = db.Friends.Where(x => x.UserInfoID == id);
+            foreach (Friend f in updateRequest)
+            {
+                f.RequestStatus = "Accepted";
+            }
+
+            db.SaveChanges();
+        }
+
+
 
         public List<PostsViewModel> GetPostsList(int id, string un)
         {
@@ -173,6 +191,18 @@ namespace OmniDrome.Models
         public void InsertPost([Bind(Include = "PostID,PostToID,PostFromID,PostText,PostDate,UserInfoID")] Post p)
         {
             db.Posts.Add(p);
+            db.SaveChanges();
+        }
+
+        public void RejectFriend(int? id, int requestId)
+        {
+
+            var request = db.Friends.Where(x => x.UserInfoID == id && x.RequestFrom == requestId);
+            foreach (Friend f in request)
+            {
+                db.Friends.Remove(f);
+
+            }
             db.SaveChanges();
         }
     }

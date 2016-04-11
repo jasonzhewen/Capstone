@@ -13,5 +13,7 @@ namespace OmniDrome.ViewModels
         public string profession { get; set; }
         public DateTime RequestDate { get; set; }
         public string RequestMessage { get; set; }
+        public int UserInfoID { get; set; }
+        public int RequestFrom { get; set; }
     }
 }
